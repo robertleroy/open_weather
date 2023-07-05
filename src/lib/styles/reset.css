@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab&family=Source+Serif+4:opsz@8..100&family=Anonymous+Pro&family=Lora&family=Aleo&family=Arimo&family=Roboto+Serif&family=Lato&display=swap");
+:root {
+  --font-size: 16px;
+  --text-color: #2C3E50;
+  --active-color: #3FB27F;
+  --background-color: #fff;
+  --sans-serif: "Lato","Arimo","Open Sans", sans-serif;
+  --serif: "Roboto Serif","Source Serif 4","Aleo","Roboto Slab", serif;
+  --monospace: "Anonymous Pro", monospace, monospace;
+  
+  @media (min-width: 768px) {
+    --font-size: 17px;
+  }
+  /* @media (min-width: 1600px) {
+    --font-size: 18px;
+  } */
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { 
+  font-size: var(--font-size);
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+}
+body {
+  font-family: var(--sans-serif);
+  font-size: 1em;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
+  overflow-y: scroll;
+}
+h1, h2, h3, h4, h5, h6 { margin: 0; }
+h5, h6 { line-height: 1.5rem; }
+p { margin: 0.5em 0; }
+ul, ol {
+  margin-top: 0;
+  list-style-position: inside;
+}
+ul:not(ul ul), ol:not(ol ol) { padding: 0; }
+ul ul, ol ol { padding-left: 2ch; }
+a {
+  color: inherit;
+
+  &:not(:hover),
+  &:active {
+    text-decoration: none;
+  }
+}
+pre {
+  white-space: pre-wrap;
+}

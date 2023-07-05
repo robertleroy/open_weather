@@ -1,0 +1,82 @@
+  [
+    {
+    "sender_name": "NWS Buffalo (Western New York)",
+    "event": "Severe Thunderstorm Warning",
+    "start": 1680373560,
+    "end": 1680378300,
+    "description": "The National Weather Service in Buffalo has issued a\n* Severe Thunderstorm Warning for...\nWyoming County in western New York...\nCattaraugus County in western New York...\nErie County in western New York...\nEastern Chautauqua County in western New York...\nWestern Allegany County in western New York...\nGenesee County in western New York...\n* Until 345 PM EDT.\n* At 225 PM EDT, a severe thunderstorm was located 9 miles northwest\nof Derby, or 12 miles west of Lackawanna, moving northeast at 55\nmph.\nHAZARD...60 mph wind gusts and penny size hail.\nSOURCE...Radar indicated.\nIMPACT...Expect damage to trees and power lines.\n* Locations impacted include...\nBuffalo, Cheektowaga, West Seneca, North Tonawanda, Jamestown,\nClarence, Lackawanna, Batavia, Kenmore and Depew.\nThis includes the following highways...\nInterstate 90 between exits 47 and 59.\nInterstate 86 between exits 11 and 28.\nTORNADO...POSSIBLE\nHAIL THREAT...RADAR INDICATED\nMAX HAIL SIZE...0.75 IN\nWIND THREAT...RADAR INDICATED\nMAX WIND GUST...60 MPH",
+    "tags": [
+      "Thunderstorm"
+    ]
+  },
+  {
+    "sender_name": "NWS Buffalo (Western New York)",
+    "event": "Severe Thunderstorm Warning",
+    "start": 1680375120,
+    "end": 1680378300,
+    "description": "The National Weather Service in Buffalo has issued a\n* Severe Thunderstorm Warning for...\nSouthwestern Wayne County in western New York...\nWyoming County in western New York...\nSoutheastern Cattaraugus County in western New York...\nLivingston County in western New York...\nAllegany County in western New York...\nSouthern Monroe County in western New York...\nGenesee County in western New York...\nOntario County in western New York...\n* Until 345 PM EDT.\n* At 250 PM EDT, severe thunderstorms were located along a line\nextending from near Medina to near Houghton to Marshburg, moving\neast at 70 mph.\nHAZARD...60 mph wind gusts and penny size hail.\nSOURCE...Radar indicated.\nIMPACT...Expect damage to trees and power lines.\n* Locations impacted include...\nRochester, Chili, Batavia, Olean, Geneva, Canandaigua, Geneseo,\nEast Rochester, Fairport and Dansville.\nThis includes the following highways...\nInterstate 390 between exits 4 and 12.\nInterstate 90 between exits 42 and 48.\nInterstate 86 between exits 24 and 33.\nHAIL THREAT...RADAR INDICATED\nMAX HAIL SIZE...0.75 IN\nWIND THREAT...RADAR INDICATED\nMAX WIND GUST...60 MPH",
+    "tags": [
+      "Thunderstorm"
+    ]
+  },
+  {
+    "sender_name": "NWS Buffalo (Western New York)",
+    "event": "Severe Weather Statement",
+    "start": 1680376860,
+    "end": 1680378300,
+    "description": "...A SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 345 PM EDT\nFOR WYOMING...EASTERN CATTARAUGUS...EASTERN ERIE...ALLEGANY AND\nGENESEE COUNTIES...\nAt 320 PM EDT, a severe thunderstorm was located near Oakfield, or 7\nmiles north of Batavia, moving east at 55 mph.\nHAZARD...60 mph wind gusts.\nSOURCE...Radar indicated.\nIMPACT...Expect damage to trees and power lines.\nLocations impacted include...\nClarence, Batavia, Olean, East Aurora, Salamanca, Allegany State\nPark, Darien Lakes State Park, Letchworth State Park, Elma and\nMarilla.\nThis includes the following highways...\nInterstate 90 between exits 47 and 48A.\nInterstate 86 between exits 20 and 28.\nHAIL THREAT...RADAR INDICATED\nMAX HAIL SIZE...<.75 IN\nWIND THREAT...RADAR INDICATED\nMAX WIND GUST...60 MPH",
+    "tags": [
+      "Other dangers"
+    ]
+  },
+  {
+    "sender_name": "NWS Buffalo (Western New York)",
+    "event": "Severe Thunderstorm Warning",
+    "start": 1680376860,
+    "end": 1680378300,
+    "description": "...A SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 345 PM EDT\nFOR WYOMING...EASTERN CATTARAUGUS...EASTERN ERIE...ALLEGANY AND\nGENESEE COUNTIES...\nAt 320 PM EDT, a severe thunderstorm was located near Oakfield, or 7\nmiles north of Batavia, moving east at 55 mph.\nHAZARD...60 mph wind gusts.\nSOURCE...Radar indicated.\nIMPACT...Expect damage to trees and power lines.\nLocations impacted include...\nClarence, Batavia, Olean, East Aurora, Salamanca, Allegany State\nPark, Darien Lakes State Park, Letchworth State Park, Elma and\nMarilla.\nThis includes the following highways...\nInterstate 90 between exits 47 and 48A.\nInterstate 86 between exits 20 and 28.\nHAIL THREAT...RADAR INDICATED\nMAX HAIL SIZE...<.75 IN\nWIND THREAT...RADAR INDICATED\nMAX WIND GUST...60 MPH",
+    "tags": [
+      "Thunderstorm"
+    ]
+  },
+  {
+    "sender_name": "NWS Buffalo (Western New York)",
+    "event": "Wind Advisory",
+    "start": 1680366660,
+    "end": 1680390000,
+    "description": "...WIND ADVISORY REMAINS IN EFFECT UNTIL 7 PM EDT THIS EVENING...\n* WHAT...Southwest winds 25 to 35 mph with gusts up to 50 mph.\n* WHERE...Niagara, Orleans, Monroe, Erie, Genesee, Wyoming,\nLivingston, Ontario, Chautauqua, Cattaraugus, and Allegany\ncounties.\n* WHEN...Until 7 PM EDT this evening.\n* IMPACTS...Gusty winds could blow around unsecured objects.\nTree limbs could be blown down and a few power outages may\nresult.",
+    "tags": [
+      "Wind"
+    ]
+  },
+  {
+    "sender_name": "NWS Buffalo (Western New York)",
+    "event": "Severe Thunderstorm Watch",
+    "start": 1680373620,
+    "end": 1680386400,
+    "description": "SEVERE THUNDERSTORM WATCH 105 REMAINS VALID UNTIL 6 PM EDT THIS\nEVENING FOR THE FOLLOWING AREAS\nIN NEW YORK THIS WATCH INCLUDES 12 COUNTIES\nIN WESTERN NEW YORK\nALLEGANY              CATTARAUGUS           CHAUTAUQUA\nERIE                  GENESEE               LIVINGSTON\nMONROE                NIAGARA               ONTARIO\nORLEANS               WAYNE                 WYOMING\nTHIS INCLUDES THE CITIES OF BATAVIA, BUFFALO, CANANDAIGUA,\nGENESEO, JAMESTOWN, MEDINA, NEWARK, NIAGARA FALLS, OLEAN,\nROCHESTER, WARSAW, AND WELLSVILLE.",
+    "tags": [
+      "Thunderstorm"
+    ]
+  },
+  {
+    "sender_name": "NWS",
+    "event": "TORNADO WATCH",
+    "start": 1680373620,
+    "end": 1680386400,
+    "description": "TORNADO WATCH 370 IS IN EFFECT UNTIL 700 PM CDT FOR THE\nFOLLOWING LOCATIONS\nIA\n.    IOWA COUNTIES INCLUDED ARE\nADAIR                APPANOOSE           BENTON\nBLACK HAWK           BOONE               BREMER\nBUCHANAN             BUTLER              CALHOUN\nCARROLL              CERRO GORDO         CHICKASAW\nCLARKE               DALLAS              DAVIS\nDECATUR              FAYETTE             FLOYD\nFRANKLIN             GREENE              GRUNDY\nGUTHRIE              HAMILTON            HANCOCK\nHARDIN               HOWARD              HUMBOLDT\nIOWA                 JASPER              JEFFERSON\nJOHNSON              KEOKUK              KOSSUTH\nLINN                 LUCAS               MADISON\nMAHASKA              MARION              MARSHALL\nMITCHELL             MONROE              POCAHONTAS\nPOLK                 POWESHIEK           STORY\nTAMA                 UNION               VAN BUREN\nWAPELLO              WARREN              WASHINGTON\nWAYNE                WEBSTER             WINNEBAGO\nWINNESHIEK           WORTH               WRIGHT",
+    "tags": [
+      "TORNADO WATCH"
+    ]
+  },
+  {
+    "sender_name": "NWS",
+    "event": "WIND ADVISORY",
+    "start": 1680373620,
+    "end": 1680386400,
+    "description": "...WIND ADVISORY REMAINS IN EFFECT UNTIL 7 PM EDT THIS EVENING...\n* WHAT...Southwest winds 25 to 35 mph with gusts up to 50 mph.\n* WHERE...Niagara, Orleans, Monroe, Erie, Genesee, Wyoming,\nLivingston, Ontario, Chautauqua, Cattaraugus, and Allegany\ncounties.\n* WHEN...Until 7 PM EDT this evening.\n* IMPACTS...Gusty winds could blow around unsecured objects.\nTree limbs could be blown down and a few power outages may\nresult.",
+    "tags": [
+      "WIND ADVISORY"
+    ]
+  }
+]
