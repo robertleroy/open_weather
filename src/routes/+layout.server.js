@@ -6,7 +6,7 @@ export async function load(event) {
   let ipData;
 
   if (dev) { // if development => return static data
-    ipData = {
+    ipData = { 
       src: "vercel-ip",
       ip: "107.207.41.105",
       id: uid(12),

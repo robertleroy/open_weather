@@ -17,14 +17,14 @@
 			</div>
 		</slot>
 		
-		<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" class:rotate={isOpen}>
+		<!-- <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" class:rotate={isOpen}>
 			<path d="m0 0 10 10L0 20" />
-		</svg>
+		</svg> -->
 	</div>
 	
 	{#if isOpen}
-	<div class="body" transition:slide={{ duration}}>
-		<slot />
+	<div class="body" transition:slide={{ duration }}>
+		<slot name="body"></slot>
 	</div>
 	{/if}
 </div>
@@ -35,22 +35,16 @@
     --radius: 0.2rem;
     --header-font-size: inherit;
     --body-font-size: inherit;
-    /* --seperator: inset 0 1px 0 0 #cccccc55; */
     --seperator: none;
-    border-bottom: 1px solid hsl(210,20%,80%); 
-  }
-	.shell:first-of-type { border-radius: var(--radius) var(--radius) 0 0; }
-	.shell:last-of-type { border-radius: 0 0 var(--radius) var(--radius); }
-	.shell:not(:last-of-type) { border-bottom-style: none; }
+  }	
 	.header {
 		font-size: var(--header-font-size);
-		padding: 1rem 1rem;
 		display: flex;
 		justify-content: space-between;
 		align-items: baseline;
 		cursor: pointer; 
 	}
-	.header svg {
+	/* .header svg {
 		width: 0.6rem;
 		fill: none;
 		stroke: currentColor;
@@ -58,10 +52,10 @@
 		transition: transform var(--duration) ;
 		transform-origin: 20% 50%;
 	}
-	.rotate { transform: rotate(90deg); }
-	.body {
-		font-size: var(--body-font-size);
-		padding: 0 1rem 1rem;
-		box-shadow: var(--seperator);
-	}
+	.rotate { transform: rotate(90deg); } */
+	/* .body { */
+		/* font-size: var(--body-font-size); */
+		/* padding: 0 1rem 1rem; */
+		/* box-shadow: var(--seperator); */
+	/* } */
 </style>

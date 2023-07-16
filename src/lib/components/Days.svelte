@@ -3,44 +3,43 @@
   import WeatherIcon from '$lib/components/WeatherIcon.svelte';
   import Accordion from '$lib/components/Accordion.svelte';
   import RangeBar from '$lib/components/RangeBar.svelte';
-  import { titlecase, round, mmToInches } from '$lib/store/filters.js';
+  import { round } from '$lib/store/filters.js';
   import dateObj from '$lib/store/dateObj.js';
-  export let days = [];
-  export let fiveDayHours = [];
-  let day_hours = splitHours();
+  import { weatherData } from "$lib/store";
   
-
-  // console.log("days",fiveDayHours);
+  let day_hours = splitHours();
+  let weekrange = getRange($weatherData?.daily);
+  
   function splitHours() {
-    let todaysDate = new Date(fiveDayHours[0].dt * 1000).getDate();    
+    let todaysDate = new Date($weatherData.fiveDay[0].dt * 1000).getDate();    
     let arr = [ [], [], [], [], [], [], [] ];
 
-    for (let i = 0; i < fiveDayHours?.length; ++i) {
-      let dayDate = new Date(fiveDayHours[i].dt * 1000).getDate();
+    for (let i = 0; i < $weatherData.hourly?.length; ++i) {
+      let dayDate = new Date($weatherData.hourly[i].dt * 1000).getDate();
       
-      if (dayDate === todaysDate) {
-        arr[0].push(fiveDayHours[i])
+      if (dayDate === todaysDate && i % 2) {
+        arr[0].push($weatherData.hourly[i])
       } 
-      if (dayDate === todaysDate + 1) {
-        arr[1].push(fiveDayHours[i])
+      if (dayDate === todaysDate + 1 && i % 2) {
+        arr[1].push($weatherData.hourly[i])
       } 
+    }
+
+    for (let i = 0; i < $weatherData.fiveDay?.length; ++i) {
+      let dayDate = new Date($weatherData.fiveDay[i].dt * 1000).getDate();
+      
       if (dayDate === todaysDate + 2) {
-        arr[2].push(fiveDayHours[i])
+        arr[2].push($weatherData.fiveDay[i])
       } 
       if (dayDate === todaysDate + 3) {
-        arr[3].push(fiveDayHours[i])
+        arr[3].push($weatherData.fiveDay[i])
       } 
       if (dayDate === todaysDate + 4) {
-        arr[4].push(fiveDayHours[i])
+        arr[4].push($weatherData.fiveDay[i])
       } 
-      
     }
     return arr;
   }
-
-  // let hours = [...fiveDayHours];
-  // console.log(hours);
-  let weekrange = getRange(days);
 
   function precipSymbol(code) {
       let symbol = '';
@@ -61,66 +60,10 @@
     let lows = days.map(el => round(el.temp.min));
     return [Math.min.apply(null, lows), Math.max.apply(null, highs)];
   }
-  // function getHours() {
-    // const hrs = fiveDayHours.map(el => {
-    //   dt: el.dt,
-    //   temp: el.temp,
-    //   pop: el.main.pop,
-    //   rain: el.weather.temp,
-    //   humidity: el.main.humidity,
-    //   wind_speed: el.wind.speed,
-    //   wind_gust: el.wind.gust,
-    //   wind_deg: el.wind.deg,
-    //   clouds: el.clouds.all,
-    //   pressure: el.main.pressure,
-    //   weather: el.weather,
-      
-    // })
-    // rain['1h']: el?.rain['3h'],
-    // return  hrs;
-    /*
-    {
-      "dt": 1680868800,
-      "main": {
-        "temp": 39.04,
-        "feels_like": 33.69,
-        "temp_min": 39.04,
-        "temp_max": 39.31,
-        "pressure": 1037,
-        "sea_level": 1037,
-        "grnd_level": 983,
-        "humidity": 68,
-        "temp_kf": -0.15
-      },
-      "weather": [
-        {
-          "id": 801,
-          "main": "Clouds",
-          "description": "few clouds",
-          "icon": "02n"
-        }
-      ],
-      "clouds": {
-        "all": 20
-      },
-      "wind": {
-        "speed": 7.49,
-        "deg": 59,
-        "gust": 9.44
-      },
-      "visibility": 10000,
-      "pop": 0,
-      "sys": {
-        "pod": "n"
-      },
-      "dt_txt": "2023-04-07 12:00:00"
-    },
-    */
-  // }
 </script>
 
 <div class='days'>
-  {#each days as day, i}
+  {#each $weatherData.daily as day, i}
 
   <Accordion >
     <svelte:fragment slot="header">
@@ -144,11 +87,16 @@
       low="{round(day.temp.min)}" />
   </div>
 </svelte:fragment> 
-    
-<svelte:fragment >
-  {#if i < 5}
-  <Hours hours={day_hours[i]} />
-  {/if}
+
+<svelte:fragment slot="body">
+  <div class="body" >
+    <div class="summary">{day.summary}</div>
+    {#if i < 5}
+    <div class="">
+      <Hours hours={day_hours[i]} />
+    </div>  
+    {/if}
+  </div>
 </svelte:fragment>
 </Accordion>
   {/each}
@@ -156,14 +104,11 @@
 
 <style lang='postcss'>
   .day {
-    /* display: flex; */
-    /* justify-content: space-between; */
-    /* align-items: center; */
-    /* gap: 0 1ch; */
+    width: 100%;
     display: grid;
     grid-template-columns: 4.5rem 5rem 1fr;
     align-items: center;
-    padding-right: 1.1rem;
+    padding: 0.5rem 1.1rem 0.5rem 0;
 
     @media (min-width: 500px) {      
       grid-template-columns: 5rem 5rem 1fr;
@@ -197,5 +142,11 @@
           filter: grayscale(60%);
         }
       }
+    }
+    .body {
+      padding: 0 0 1em;
+    }
+    .summary {
+      margin: 0 0 0.5rem ;
     }
 </style>

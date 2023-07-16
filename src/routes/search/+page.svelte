@@ -183,7 +183,7 @@
   .dragzone {
     min-height: 2.5rem;
     max-width: 500px;
-    margin: 0 auto;
+    margin: 1rem auto 0;
     background: hsl(210,20%,95%);
     border-radius: 0.5rem;
   }

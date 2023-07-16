@@ -4,8 +4,6 @@
   import { fade } from 'svelte/transition';
 
   export let hours;
-  // const max_hours = 24;
-  // hours = hours.slice(0,max_hours);
   const tabs = [
     { name: "Temp", value: "temp" },
     { name: "Precip %", value: "pop" },
@@ -16,9 +14,6 @@
     { name: "Clouds", value: "clouds" },
     { name: "Pressure", value: "pressure" },
   ];
-
-  // console.log("hours",hours);
-  // console.log("5day_clouds", hours.map((el) => el?.clouds.all || el?.clouds));
 
   let selectedTab = 0;
   let domain = [],
@@ -48,10 +43,8 @@
     return { color: obj.color, text: obj.text };
   });
 
-  console.log("CLOOUD DOMAIN",[Math.min.apply(null, hours.map((el) => el?.clouds)), Math.max.apply(null, hours.map((el) => el?.clouds))])
-
   function offset(num) {
-    const leftPadding = (num - domain[0]) / (domain[1] - domain[0]) || 0;
+    const leftPadding = (num - domain[0]) / (domain[1] - domain[0]) ;
     const rightPadding = 1 - leftPadding;
     const width = 100;
 
@@ -121,71 +114,69 @@
   
   <!-- #region hours -->
   {#each hours as hour, i}
-    <!-- {#if i % 2} -->
-      <div class="hour">
-        <div class="stripe" 
-        style:background={stripes[i].color} 
-        class:topcap={ i === 0 } 
-        class:bottomcap={ i === hours.length-1 } />
+  <div class="hour">
+    <div class="stripe" 
+    style:background={stripes[i].color} 
+    class:topcap={ i === 0 } 
+    class:bottomcap={ i === hours.length-1 } />
 
-        <div class="time">
-          {dateObj(hour?.dt * 1000, "h aa")}
-        </div> <!-- time -->
-        
-        <div class="summary">
-          {i === 1 ? stripes[i].text : 
-            stripes[i].text === stripes[i].text ? "" : 
-            stripes[i].text}
+    <div class="time">
+      {dateObj(hour?.dt * 1000, "h aa")}
+    </div> <!-- time -->
+    
+    <div class="summary">
+      {i === 0 ? stripes[i].text : 
+        stripes[i].text === stripes[i-1].text ? "" : 
+        stripes[i].text}
 
-          <div class="line" />
-        </div> <!-- summary -->
-      
-        {#if 
-          (selectedTab != 1 ||
-          selectedTab != 2) &&
-          metric[i] > 0
-        }
-        <div class="metric" 
-        transition:fade="{{duration: 200}}"
-            style="margin-right: {offset(metric[i])}"
-            class:pressure={selectedTab === 7}
-        > 
-          <div class="metricValue"
-            class:temp={selectedTab === 0}
-            class:percent={selectedTab === 1 ||
-              selectedTab === 3 ||
-              selectedTab === 6}
-            class:wind={selectedTab === 4 || 
-              selectedTab === 5}
-          >
-            {metric[i]}
+      <div class="line" />
+    </div> <!-- summary -->
+  
+    {#if 
+      (selectedTab != 1 ||
+      selectedTab != 2) &&
+      metric[i] > 0
+    }
+    <div class="metric" 
+    transition:fade="{{duration: 200}}"
+        style="margin-right: {offset(metric[i])}"
+        class:pressure={selectedTab === 7}
+    > 
+      <div class="metricValue"
+        class:temp={selectedTab === 0}
+        class:percent={selectedTab === 1 ||
+          selectedTab === 3 ||
+          selectedTab === 6}
+        class:wind={selectedTab === 4 || 
+          selectedTab === 5}
+      >
+        {metric[i]}
 
-            {#if selectedTab === 4 || selectedTab === 5}
-            <div
-              class="wind_dir"
-              style="rotate: {(hours[i].wind_deg) - 90 + 'deg'} "
-            > &#10140; 
-            </div>
-            {/if}
-          </div> <!-- metricValue -->
-        </div> <!-- metric -->  
-        {/if}  
+        {#if selectedTab === 4 || selectedTab === 5}
+        <div
+          class="wind_dir"
+          style="rotate: {(hours[i].wind_deg) - 90 + 'deg'} "
+        > &#10140; 
+        </div>
+        {/if}
+      </div> <!-- metricValue -->
+    </div> <!-- metric -->  
+    {/if}  
 
-      </div> <!-- hour -->        
-    <!-- {/if} -->
+  </div> <!-- hour -->      
   {/each} <!-- hours as hour -->
   <!-- #endregion hours -->
 </section> <!-- hours component -->
 
+
 <style lang="postcss">
   .hours {
-    /* padding-bottom: 2rem; */
-    margin: 0 auto;
+    margin: 0 auto ;
   }
   .tabs {
     display: flex;
     flex-flow: row wrap;
-    margin: 0 auto ;
+    margin: 0 auto  1.5rem;
   
     .tab {
       flex: 1 0 25%;
@@ -227,14 +218,12 @@
     }
   }
   .stripe {
-    /* height: 100%; */
     align-self: stretch;
     min-width: 1rem;
     border: 1px none #ccc;
     border-right-style: solid;
     border-left-style: solid;
   }
-
   .topcap {
     border-radius: 0.4em 0.4em 0 0 ;
     border-top-style: solid;
@@ -243,7 +232,6 @@
     border-radius: 0 0 0.4em 0.4em;
     border-bottom-style: solid;
   }
-
   .metric {
     border: 1px solid #ccc;
     border-radius: 0.75rem;
@@ -258,7 +246,6 @@
       line-height: 1;
     }
   }
-
   .wind {
     display: grid;
     grid-auto-flow: column;
@@ -268,7 +255,6 @@
     font-size: 0.675rem;
     margin: 0 0 0.075rem 0.075rem;
   }
-
   .summary {
     --muted-7: #999;
     --muted-4: #999;
@@ -298,5 +284,4 @@
   .temp::after { content: "\00b0"; }
   .percent::after { content: "%"; }
   .metric.pressure { padding: 0.2rem 0.3rem 0.3rem;}
-
 </style>

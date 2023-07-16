@@ -4,10 +4,15 @@
   import { weatherData } from "$lib/store";
   import { titlecase, round, mmToInches } from "$lib/store/filters.js";
   import dateObj from "$lib/store/dateObj.js";
+  // import { slide } from 'svelte/transition';
 
-  const day = $weatherData?.daily[0];
+  // export let current;
+  export let day;
+  export let minutes;
 
-  let minutes_of_precip = $weatherData?.minutely
+  // console.log("day", day);
+  // console.log("current",current);
+  let minutes_of_precip = minutes
     .map((el) => el?.precipitation)
     .filter((el) => el > 0);
 </script>
@@ -34,9 +39,8 @@
 <!-- current -->
 
 <!-- #region WobbleChart -->
-<div >
-  {#if minutes_of_precip.length > 5}
-  <div class="precipChart" >
+{#if minutes_of_precip.length > 5}
+  <div class="precipChart">
     <div class="summary">
       {#if $weatherData?.current.snow}
       Snow this hour: <var>{round(mmToInches($weatherData?.current.snow['1h']), 2) + '"'}</var>
@@ -47,10 +51,9 @@
       {/if}
     </div>
 
-    <WobbleChart minutes={$weatherData?.minutely} />
+    <WobbleChart {minutes} />
   </div>
   {/if}
-</div>
 <!-- #endregion WobbleChart -->
 
 <div class="day_stats">
@@ -67,8 +70,8 @@
     <div class="sunset">{dateObj(day?.sunset * 1000, "h:mm aa")}</div>
   </div>
 </div>
-<!-- day_stats -->
 
+<!-- day_stats -->
 
 <style lang="postcss">
   .current {

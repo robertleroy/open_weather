@@ -1,5 +1,4 @@
 <script>
-  // import {minutes} from '$lib/stores/store';
   import * as d3 from "d3";
   import {onMount} from 'svelte';
 
@@ -13,45 +12,33 @@
   });
   let var_height = 150;
   let var_width = 350;
-  // let var_height = 165;
-  // let var_width = 385;
   let var_margin = {top: 12, right: 3, bottom: 24, left: 3};
 
-  // $: var_height = clientWidth > 610 ? 165 : 150;
-  // $:clientWidth > 610 ? var_width = 176 : '';
-
-  // function getMax(arr) {
-  //   return arr.reduce((a, b) => Math.max(a, b), -Infinity);
-  // }
-  function drawChart() {     
-    // let self = this;
+  function drawChart() {   
     const height = var_height, width = var_width,
           margin = var_margin, 
           values = var_values;
-          
-    // const yMax = d3.max(values,d => d.value*1.2),
-    //       dynamicY = yMax < 0.1 ? [0,0.1] : 
-    //                 yMax < 0.3 ? [0,0.3] : 
-    //                 yMax < 0.6 ? [0,0.6] : 
-    //                 yMax < 1 ? [0,1] : [0,yMax];
-    
-    // const yAxisLabels = yMax < 0.1 ? ["0.03","0.05","drizzle"] : 
-    //                     yMax < 0.3 ? ["light","0.2","medium"] : 
-    //                     yMax < 0.6 ? ["light","medium","heavy"] : 
-    //                     ["light","medium","heavy",""] ;
   
     const yMax = d3.max(values,d => d.value*1.2),
           dynamicY = yMax < 2.5 ? [0,2.5] : 
-                    yMax < 7.5 ? [0,7.5] : 
-                    yMax < 15 ? [0,15] : 
+                    yMax < 7.6 ? [0,7.6] : 
+                    yMax < 10 ? [0,10] : 
                     yMax < 50 ? [0,50] : [0,yMax];
     
     const yAxisLabels = yMax < 2.5 ? ["drizzle","","light"] : 
-                        yMax < 7.5 ? ["light","","moderate"] : 
-                        yMax < 15 ? ["light","moderate","heavy"] : 
-                        ["light","moderate","heavy", ""] ;
+                        yMax < 7.6 ? ["light","","moderate"] :
+                        yMax < 10 ? ["light","moderate","heavy"] :
+                        ["light","moderate","heavy","very heavy"];
+
+    /* intensity: mm to in conversion
+    2.5 = 0.1
+    7.6 = 0.3
+    10 = 0.4
+    15 = 0.6
+    25 = 1
+    50 = 2
+    */
                         
-  
     const x = d3.scaleTime() /* timeline x */
       .domain(d3.extent(values, d => d.time))
       .range([margin.left, width - margin.right])
@@ -59,7 +46,7 @@
     const y = d3.scaleLinear() /* dynamic y */
       .domain(dynamicY)
       .range([height - margin.bottom, margin.top]);
-    
+     
     const xAxis = g => g 
       .attr("transform", `translate(0,${height - margin.bottom + 6})`)
       .call(d3.axisBottom(x)
@@ -133,16 +120,11 @@
 </script>
 
 
-<!-- <div>{clientWidth}</div> -->
-
 <div id="chart" bind:clientWidth></div>
 
 <style>
   #chart {
-    /* max-width: 640px;
-    max-width: 512px; */
     min-width: 300px;
-    /* margin: 0 auto 3rem; */
   }
 </style>
 

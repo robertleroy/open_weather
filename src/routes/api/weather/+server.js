@@ -1,13 +1,14 @@
 import { json } from "@sveltejs/kit";
 import { WEATHER_KEY } from "$env/static/private";
-import testOneCall from "./wet/oneCall.json";
-import testFiveDay from "./wet/fiveDay.json";
+import testOneCall from "./wet_2/oneCall.json";
+import testFiveDay from "./wet_2/fiveDay.json";
 
-const testing = true;
+const testing = false;
 
-export async function POST({ request }) {
+export async function POST({ fetch, request }) {
+  let data = {};
   if (testing) {
-    return json({...testOneCall, fiveDay: testFiveDay.list ?? []});
+    data = {...testOneCall, fiveDay: testFiveDay.list ?? []};
   } else {
     const { lat, lon } = await request.json();
     try {      
@@ -23,15 +24,23 @@ export async function POST({ request }) {
 
       
     // console.log(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${WEATHER_KEY}`);
+
     // console.log(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${WEATHER_KEY}`);
 
-      return json({...onecall, fiveDay: fiveDay.list ?? []});
+
+      data = {...onecall, fiveDay: fiveDay.list ?? [],timestamp: Date.now()};
     } catch (error) {
       console.log("fetch error:", error);
     }
   }
+  
+  return json(data);
 }
 
+
+// function formatData(obj) {
+
+// }
 
 
 /*

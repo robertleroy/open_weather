@@ -13,23 +13,41 @@
     { name: "Home", path: "/" },
     { name: "Map", path: "/map" },
     // { name: "About", path: "/about" },
-    { name: "Search", path: "/search" }
+    // { name: "Search", path: "/search" }
   ]
 	let innerWidth, outerWidth, innerHeight, outerHeight;
-  let alerts = true;
-  
-  // $: console.log("$weatherData",$weatherData);
+  $: alerts = $weatherData?.alerts;
 
   $: currentRoute = $page.url.pathname.slice(1) || "home";
-  // $: currentRoute = data.pathname.slice(1) || "home";
-
+  $: console.log("$currentLocation",$currentLocation);
+  $: console.log("$weatherData",$weatherData);
   $: {
     if ($currentLocation) {
       getWeather($currentLocation?.lat, $currentLocation?.lon).then((result) => {
+        result.hourly = result?.hourly.map(el => formatHour(el))
+        result.fiveDay = result?.fiveDay.map(el => formatHour(el))
         $weatherData = result;
-
-        // console.log("result", result)
       });
+    }
+  }
+  function formatHour(obj) {
+    return {
+      clouds: obj.clouds.all || obj.clouds,
+      dt: obj.dt,
+      temp: obj.temp || obj.main.temp,
+      feels_like: obj.feels_like || obj.main.feels_like,
+      pressure: obj.pressure || obj.main.pressure,
+      humidity: obj.humidity || obj.main.humidity,
+      visibility: obj.visibility,
+      wind_speed: obj.wind_speed || obj.wind.speed,
+      wind_deg: obj.wind_deg || obj.wind.deg,
+      wind_gust: obj.wind_gust || obj.wind.gust,
+      weather_id: obj.weather.id || obj.weather[0].id,
+      weather_main: obj.weather.main || obj.weather[0].main,
+      weather_description: obj.weather.description || obj.weather[0].description,
+      weather_icon: obj.weather.icon || obj.weather[0].icon,
+      pop: obj.pop,
+      rain: obj.rain ? obj.rain["1h"] || obj.rain["3h"] : 0
     }
   }
 
@@ -49,8 +67,7 @@
     
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          
+        async (position) => {          
           lat = position.coords.latitude;
           lon = position.coords.longitude;
 
@@ -79,7 +96,6 @@
       $currentLocation = data?.ipData;
     }
     
-    $currentLocation = data?.ipData;
   } /* init */
 
   onMount(async () => {    
@@ -122,31 +138,7 @@
 </main>
 
 <footer>
-  <nav>
-  <!-- 
-    <div class="route" class:active={data?.pathname === "/"}>
-      <a href="/">Home</a>
-    </div>
-
-    <div class="spacer">|</div>
-    
-    <div class="route" class:active={data?.pathname === "/map"}>
-      <a href="/map">Map</a>
-    </div>
-    
-    <div class="spacer">|</div>
-    
-    <div class="route" class:active={data?.pathname === "/about"}>
-      <a href="/about">About</a>
-    </div>
-    
-    <div class="spacer">|</div>
-    
-    <div class="route" class:active={data?.pathname === "/search"}>
-      <a href="/search">Search</a>
-    </div> 
-  -->
-    
+  <nav>    
     {#each routes as route, i}
       <div class="route" class:active={data?.pathname === route.path}>
         <a href={route.path}>{route.name}</a>
