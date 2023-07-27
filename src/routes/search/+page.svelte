@@ -22,27 +22,25 @@
 
   async function additem() {
     /* test for duplicate locations */
-    // const test = $store?.list.findIndex(el => {
-    //   el.lat === form?.newLocation.lat && el.lon === form?.newLocation.lon;
-    // });
+    let test = $store?.list.some(el => el.lat === form?.newLocation.lat && el.lon === form?.newLocation.lon);
 
 
     $currentLocation = form?.newLocation;
 
     /* prevent saving duplicate locations */
-    // if (test) {
-    //   if (browser) { goto("/"); }
-    //   return;
-    // }
+    if (test) {
+      if (browser) { goto("/"); }
+      return;
+    }
 
     reorderList();
-    await tick();
-    $store = {
-      list: [...$store.list, form?.newLocation],
-      sortOrder: [...$store.sortOrder, form?.newLocation.id],
-    };
-    if (browser) { goto("/"); }
-  }
+      await tick();
+
+      $store.list = [...$store.list, form?.newLocation];
+      $store.sortOrder = [...$store.sortOrder, form?.newLocation.id];
+      
+      if (browser) { goto("/"); }
+    }
 
   async function deleteItem(obj) {
     $store.list = $store.list.filter((el) => el !== obj);
