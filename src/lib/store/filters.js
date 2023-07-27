@@ -1,4 +1,3 @@
-
 export function titlecase(value) {
   if (!value) return '';
   value = value.toString().toLowerCase();

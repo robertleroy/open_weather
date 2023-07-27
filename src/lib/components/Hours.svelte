@@ -1,7 +1,6 @@
 <script>
-  import dateObj from "$lib/store/dateObj";
-  import { round, mmToInches } from "$lib/store/filters";
   import { fade } from 'svelte/transition';
+  import { round, mmToInches, dateObj } from "$lib/store";
 
   export let hours;
   const tabs = [
@@ -155,7 +154,7 @@
         {#if selectedTab === 4 || selectedTab === 5}
         <div
           class="wind_dir"
-          style="rotate: {(hours[i].wind_deg) - 90 + 'deg'} "
+          style="rotate: {(hours[i].wind_deg) + 90 + 'deg'} "
         > &#10140; 
         </div>
         {/if}

@@ -1,392 +1,518 @@
-/* icons.js */
+export function getIcon(obj) {
+	if (obj.id < 299) {
+		return "thunderstorm";
+	} else if (obj.id < 399 || obj.id === 500 || obj.id === 520 ) {
+		return "rain-light";
+	} else if (obj.id < 599 ) {
+		return "rain";
+	} else if ( obj.id === 600 || obj.id === 615 || obj.id === 620 ) {
+		return "snow-light";
+	} else if (obj.id > 610 && obj.id < 614) {
+		return "sleet";
+	} else if (obj.id < 699) {
+		return "snow";
+	} else if (obj.id === 799) {
+		return "wind";
+	} else if (obj.id === 781) {
+		return "tornado";
+	} else if (obj.id < 781) {
+		return "fog";
+	} else if (obj.id === 800) {
+		if (obj.icon === "01d") return "clear-day"
+		return "clear-night";
+	} else if (obj.id === 801 || obj.id === 802) {
+		if (obj.icon === "02d" || obj.icon === "03d") return "partly-cloudy-day"
+		return "partly-cloudy-night";
+	} else if (obj.id === 803) {
+		if (obj.icon === "04d") return "mostly-cloudy-day"
+		return "mostly-cloudy-night";
+	} else if (obj.id === 804) {
+		return "cloudy";
+	}
+}
+
+
+
 export const icons = [
   {
     name: "clear-day",
-    tag: "01d",
-    defs: `<linearGradient id="gr-orb" x1="33" x2="39" y1="154.53" y2="160.53" gradientTransform="translate(-28.495 -165.22) scale(1.125)" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#ff8f00" offset="0"/>
-    <stop stop-color="#ffeb3b" offset="1"/>
-  </linearGradient>`,
-    path: `<g>
-    <path class="corona" d="M5 12l2.473-1.875L7.05 7.05l3.075.423L12 5l1.875 2.473 3.075-.423-.423 3.075L19 12l-2.473 1.875.423 3.075-3.075-.423L12 19l-1.875-2.473-3.075.423.423-3.075z" fill="#ff6f00" />
-    <circle class="orb" cx="12" cy="12" r="4.5" fill="url(#gr-orb)"/>
-  </g>`
+    innerHtml: `<defs>
+      <linearGradient id="gr-orb" x1="33" x2="39" y1="154.53" y2="160.53" gradientTransform="translate(-28.495 -165.22) scale(1.125)" gradientUnits="userSpaceOnUse">
+        <stop id="stop1112" offset="0" stop-color="#ff8f00"/>
+        <stop id="stop1114" offset="1" stop-color="#ffeb3b"/>
+      </linearGradient>
+    </defs>
+    <g>
+      <path fill="#ff6f00" d="m5 12 2.473-1.875L7.05 7.05l3.075.423L12 5l1.875 2.473 3.075-.423-.423 3.075L19 12l-2.473 1.875.423 3.075-3.075-.423L12 19l-1.875-2.473-3.075.423.423-3.075Z" class="corona"/>
+      <circle cx="12" cy="12" r="4.5" fill="url(#gr-orb)" class="orb"/>
+    </g>`
   },
   {
     name: "clear-night",
-    tag: "01n",
-    defs: `<linearGradient id="gr-moon" x1="14" x2="10" y1="169.53" y2="162.53" gradientTransform="matrix(1.25 0 0 1.25 -3 -194.91)" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#607d8b" offset="0"/>
-    <stop stop-color="#cfd8dc" offset="1"/>
-  </linearGradient>`,
-    path: `<path class="moon" d="M11.924 7A5 5 0 007 12a5 5 0 005 5 5 5 0 005-5 5 5 0 000-.065 3.125 3.125 0 01-.625.065 3.125 3.125 0 01-3.125-3.125 3.125 3.125 0 01.432-1.582A5 5 0 0012 7a5 5 0 00-.076 0z" fill="url(#gr-moon)"/>`
+    innerHtml: `<defs>
+      <linearGradient id="gr-moon" x1="14" x2="10" y1="169.53" y2="162.53" gradientTransform="matrix(1.25 0 0 1.25 -3 -194.91)" gradientUnits="userSpaceOnUse">
+        <stop id="stop1150" offset="0" stop-color="#607d8b"/>
+        <stop id="stop1152" offset="1" stop-color="#cfd8dc"/>
+      </linearGradient>
+    </defs>
+    <path fill="url(#gr-moon)" d="M11.924 7A5 5 0 0 0 7 12a5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0 0-.065 3.125 3.125 0 0 1-.625.065 3.125 3.125 0 0 1-3.125-3.125 3.125 3.125 0 0 1 .432-1.582A5 5 0 0 0 12 7a5 5 0 0 0-.076 0z" class="moon"/>`
   },
-  // {
-  //   name: "full-moon",
-  //   tag: "01n",
-  //   defs: `<linearGradient id="gr-moon" x1="14" x2="10" y1="16" y2="8" gradientUnits="userSpaceOnUse">
-  //   <stop offset="0" stop-color="#607d8b"/>
-  //   <stop offset="1" stop-color="#cfd8dc"/>`,
-  //   path: `<circle class="full-moon" cx="12" cy="12" r="5" fill="url(#gr-moon)"/>`
-  // },
+  {
+    name: "full-moon",
+    innerHtml: `<defs>
+      <linearGradient id="gr-moon-6" x1="14" x2="10" y1="16" y2="8" gradientUnits="userSpaceOnUse">
+        <stop id="stop1222" offset="0" stop-color="#607d8b"/>
+        <stop id="stop1224" offset="1" stop-color="#cfd8dc"/>
+      </linearGradient>
+    </defs>
+    <circle cx="12" cy="12" r="5" fill="url(#gr-moon-6)"/>`
+  },
   {
     name: "partly-cloudy-day",
-    tag: "02d",
-    defs: `<linearGradient id="gr-cloud">
-    <stop offset="0" stop-color="#90a4ae"/>
-    <stop offset="1" stop-color="#eceff1"/>
-  </linearGradient>
-  <linearGradient id="gr-orb" x1="11" x2="17" y1="7" y2="13" gradientUnits="userSpaceOnUse">
-    <stop offset="0" stop-color="#ff8f00"/>
-    <stop offset="1" stop-color="#ffeb3b"/>
-  </linearGradient>
-  <linearGradient id="b-p-c-day" x1="9" x2="7" y1="15" y2="9" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="d-p-c-day" x1="12" x2="9" y1="18" y2="11" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>`,
-    path: `<g class="partly-cloudy-day">
-    <path fill="url(#b-p-c-day)" d="M6.987 9a1.875 1.875 0 00-1.848 1.65 1.875 1.875 0 00.736 3.6 1.875 1.875 0 002.87.155 1.875 1.875 0 002.349-2.82 1.875 1.875 0 00-2.725-1.99A1.875 1.875 0 006.987 9z" class="small-cloud" />
-    <path fill="#ff6f00" d="M8 10l2.12-1.607-.363-2.636 2.636.363L14 4l1.607 2.12 2.636-.363-.363 2.636L20 10l-2.12 1.607.363 2.636-2.636-.363L14 16l-1.607-2.12-2.636.363.363-2.636z" class="corona" />
-    <circle cx="14" cy="10" r="4" fill="url(#gr-orb)" class="orb" />
-    <path fill="url(#d-p-c-day)" d="M10.035 11a2.285 2.285 0 00-1.784.875 2.29 2.29 0 00-.583.075c-1.2.313-1.913 1.512-1.59 2.68.136.494.488.875.877 1.22.463 1.56 1.815 1.864 2.778 1.638a2.02 2.02 0 00.474-.182c.567.59 1.423.829 2.226.62.983-.257 1.667-1.123 1.667-2.113a2.155 2.155 0 00.823-2.317c-.321-1.167-1.555-1.86-2.756-1.546a2.35 2.35 0 00-.216.068A2.266 2.266 0 0010.035 11z" class="cloud-small" />
-  </g>`
+    innerHtml: `<defs>
+      <linearGradient id="gr-cloud">
+        <stop id="stop1823" offset="0" stop-color="#90a4ae"/>
+        <stop id="stop1825" offset="1" stop-color="#eceff1"/>
+      </linearGradient>
+      <linearGradient id="gr-orb-3" x1="11" x2="17" y1="7" y2="13" gradientUnits="userSpaceOnUse">
+        <stop id="stop1915" offset="0" stop-color="#ff8f00"/>
+        <stop id="stop1917" offset="1" stop-color="#ffeb3b"/>
+      </linearGradient>
+      <linearGradient href="#gr-cloud" id="b-p-c-day" x1="9" x2="7" y1="15" y2="9" gradientTransform="translate(.001)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="d-p-c-day" x1="12" x2="9" y1="18" y2="11" gradientTransform="matrix(1.00017 0 0 .99992 -.001 0)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-orb-3" id="linearGradient3908" x1="11" x2="17" y1="7" y2="13" gradientUnits="userSpaceOnUse"/>
+    </defs>
+    <g>
+      <path fill="url(#b-p-c-day)" d="M6.988 9a1.875 1.875 0 0 0-1.848 1.65 1.875 1.875 0 0 0 .736 3.6 1.875 1.875 0 0 0 2.87.155 1.875 1.875 0 0 0 2.35-2.82 1.875 1.875 0 0 0-2.726-1.99A1.875 1.875 0 0 0 6.988 9Z" class="small-cloud"/>
+      <g>
+        <path fill="#ff6f00" d="m8 10 2.12-1.607-.363-2.636 2.636.363L14 4l1.607 2.12 2.636-.363-.363 2.636L20 10l-2.12 1.607.363 2.636-2.636-.363L14 16l-1.607-2.12-2.636.363.363-2.636Z" class="corona"/>
+        <circle cx="14" cy="10" r="4" fill="url(#linearGradient3908)" class="orb"/>
+      </g>
+      <path fill="url(#d-p-c-day)" d="M10.036 11a2.285 2.285 0 0 0-1.785.875 2.29 2.29 0 0 0-.583.075c-1.2.313-1.913 1.512-1.59 2.68.136.494.488.875.877 1.22.463 1.56 1.815 1.863 2.779 1.637a2.02 2.02 0 0 0 .474-.181c.567.59 1.423.828 2.226.62.983-.258 1.667-1.123 1.667-2.113a2.155 2.155 0 0 0 .824-2.317c-.321-1.167-1.556-1.86-2.757-1.546a2.35 2.35 0 0 0-.216.068A2.266 2.266 0 0 0 10.036 11Z" class="cloud-small"/>
+    </g>`
   },
   {
     name: "partly-cloudy-night",
-    tag: "02n",
-    defs: `<linearGradient id="gr-cloud">
-    <stop offset="0" stop-color="#90a4ae"/>
-    <stop offset="1" stop-color="#eceff1"/>
-  </linearGradient>
-  <linearGradient id="d-p-c-night" x1="12.828" x2="9.827" y1="18" y2="10.897" gradientTransform="translate(.171 .102) scale(1.0001)" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="b-p-c-night" x1="10.501" x2="8.501" y1="15.103" y2="9.103" gradientTransform="translate(.499 -.103)" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="gr-moon" x1="16" x2="13" y1="14" y2="6" gradientTransform="translate(-.5 -.103)" gradientUnits="userSpaceOnUse">
-    <stop offset="0" stop-color="#607d8b"/>
-    <stop offset="1" stop-color="#cfd8dc"/>
-  </linearGradient>`,
-    path: `<g>
-    <path fill="url(#b-p-c-night)" d="M10.512 9a1.875 1.875 0 011.848 1.65 1.875 1.875 0 01-.736 3.6 1.875 1.875 0 01-2.87.155 1.875 1.875 0 01-2.349-2.82 1.875 1.875 0 012.725-1.99A1.875 1.875 0 0110.512 9z" class="small-cloud" />
-    <path fill="url(#gr-moon)" d="M13.94 6A4 4 0 0010 10a4 4 0 004 4 4 4 0 004-4 4 4 0 000-.052 2.5 2.5 0 01-.5.052A2.5 2.5 0 0115 7.5a2.5 2.5 0 01.346-1.265A4 4 0 0014 6a4 4 0 00-.06 0z" class="moon" />
-    <path fill="url(#d-p-c-night)" d="M10.133 11c-.191 0-.382.026-.566.074-1.138.297-1.848 1.397-1.627 2.522a2.156 2.156 0 00-.864 2.345c.322 1.167 1.556 1.86 2.756 1.546a2.31 2.31 0 00.474-.182c.567.59 1.423.83 2.226.62a2.232 2.232 0 001.486-1.254c.106-.012.21-.032.314-.059 1.2-.312 1.913-1.512 1.59-2.68a2.223 2.223 0 00-1.684-1.568 2.283 2.283 0 00-2.585-.803 2.287 2.287 0 00-1.52-.561z" class="small-cloud" />
-  </g>`
+    innerHtml: `<defs>
+      <linearGradient id="gr-cloud">
+        <stop id="stop1823" offset="0" stop-color="#90a4ae"/>
+        <stop id="stop1825" offset="1" stop-color="#eceff1"/>
+      </linearGradient>
+      <linearGradient href="#gr-cloud" id="d-p-c-night" x1="12.828" x2="9.827" y1="18" y2="10.897" gradientTransform="matrix(1.0002 0 0 1.0001 .17 .102)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="b-p-c-night" x1="10.501" x2="8.501" y1="15.103" y2="9.103" gradientTransform="translate(.499 -.103)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient id="gr-moon-7" x1="16" x2="13" y1="14" y2="6" gradientTransform="translate(-.5 -.103)" gradientUnits="userSpaceOnUse">
+        <stop id="stop2546" offset="0" stop-color="#607d8b"/>
+        <stop id="stop2548" offset="1" stop-color="#cfd8dc"/>
+      </linearGradient>
+    </defs>
+    <g>
+      <path fill="url(#b-p-c-night)" d="M10.512 9a1.875 1.875 0 0 1 1.848 1.65 1.875 1.875 0 0 1-.736 3.6 1.875 1.875 0 0 1-2.87.155 1.875 1.875 0 0 1-2.35-2.82 1.875 1.875 0 0 1 2.726-1.99A1.875 1.875 0 0 1 10.512 9z" class="small-cloud"/>
+      <path fill="url(#gr-moon-7)" d="M13.94 6A4 4 0 0 0 10 10a4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0 0-.052 2.5 2.5 0 0 1-.5.052A2.5 2.5 0 0 1 15 7.5a2.5 2.5 0 0 1 .346-1.265A4 4 0 0 0 14 6a4 4 0 0 0-.06 0z" class="moon"/>
+      <path fill="url(#d-p-c-night)" d="M10.133 11a2.25 2.25 0 0 0-.567.074c-1.138.297-1.848 1.397-1.627 2.522a2.156 2.156 0 0 0-.864 2.345c.322 1.167 1.556 1.86 2.756 1.546a2.31 2.31 0 0 0 .475-.182 2.29 2.29 0 0 0 2.226.62 2.232 2.232 0 0 0 1.486-1.254c.106-.012.21-.032.314-.059 1.2-.312 1.913-1.512 1.59-2.68a2.223 2.223 0 0 0-1.684-1.568 2.283 2.283 0 0 0-2.585-.803 2.287 2.287 0 0 0-1.52-.56z" class="small-cloud"/>
+    </g>`
   },
   {
     name: "mostly-cloudy-day",
-    tag: "03d",
-    defs: `<linearGradient id="gr-cloud">
-    <stop offset="0" stop-color="#90a4ae"/>
-    <stop offset="1" stop-color="#eceff1"/>
-  </linearGradient>
-  <linearGradient id="gr-orb" x1="11" x2="17" y1="7" y2="13" gradientUnits="userSpaceOnUse">
-    <stop offset="0" stop-color="#ff8f00"/>
-    <stop offset="1" stop-color="#ffeb3b"/>
-  </linearGradient>
-  <linearGradient id="b-m-c-day" x1="11" x2="7" y1="14" y2="6" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="e-m-c-day" x1="10" x2="6" y1="17" y2="9" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="f-m-c-day" x1="16" x2="12" y1="18" y2="10" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="c-m-c-day" x1="18" x2="14" y1="15" y2="7" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>`,
-    path: `<g class="mostly-cloudy-day">
-    <path fill="url(#b-m-c-day)" d="M7.482 6.001a2.5 2.5 0 00-2.437 2.968 2.5 2.5 0 002.629 4.238 2.5 2.5 0 004.123-.724 2.5 2.5 0 00.245-4.923 2.5 2.5 0 00-2.871-.918A2.5 2.5 0 007.482 6z" class="cloud" />
-    <path fill="url(#c-m-c-day)" d="M14.982 7a2.5 2.5 0 00-2.463 2.201A2.5 2.5 0 0013.5 14a2.5 2.5 0 003.826.207 2.5 2.5 0 003.132-3.76 2.5 2.5 0 00-3.106-2.862 2.5 2.5 0 00-.526.208A2.5 2.5 0 0014.982 7z" class="cloud" />
-    <g class="sun">
-      <path fill="#ff6f00" d="M8 10l2.12-1.607-.363-2.636 2.636.363L14 4l1.607 2.12 2.636-.363-.363 2.636L20 10l-2.12 1.607.363 2.636-2.636-.363L14 16l-1.607-2.12-2.636.363.363-2.636z" class="corona" />
-      <circle cx="14" cy="10" r="4" fill="url(#gr-orb)" class="orb" />
+    innerHtml: `<defs>
+      <linearGradient id="gr-cloud">
+        <stop id="stop1823" offset="0" stop-color="#90a4ae"/>
+        <stop id="stop1825" offset="1" stop-color="#eceff1"/>
+      </linearGradient>
+      <linearGradient id="gr-orb-3" x1="11" x2="17" y1="7" y2="13" gradientUnits="userSpaceOnUse">
+        <stop id="stop1915" offset="0" stop-color="#ff8f00"/>
+        <stop id="stop1917" offset="1" stop-color="#ffeb3b"/>
+      </linearGradient>
+      <linearGradient href="#gr-cloud" id="b-m-c-day" x1="11" x2="7" y1="14" y2="6" gradientTransform="matrix(1.00109 0 0 1.00023 -.016 -.001)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="e-m-c-day" x1="10" x2="6" y1="17" y2="9" gradientTransform="matrix(1.00022 0 0 1.00055 -.003 -.005)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="f-m-c-day" x1="16" x2="12" y1="18" y2="10" gradientTransform="matrix(1.00008 0 0 1.00004 -.002 0)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="c-m-c-day" x1="18" x2="14" y1="15" y2="7" gradientTransform="matrix(1.00034 0 0 1.00004 -.005 0)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-orb-3" id="linearGradient3848" x1="11" x2="17" y1="7" y2="13" gradientTransform="scale(1 1.00004)" gradientUnits="userSpaceOnUse"/>
+    </defs>
+    <path fill="url(#b-m-c-day)" d="M7.474 6.001a2.503 2.5 0 0 0-2.44 2.969 2.503 2.5 0 0 0 2.633 4.239 2.503 2.5 0 0 0 4.127-.724 2.503 2.5 0 0 0 .245-4.925 2.503 2.5 0 0 0-2.874-.918A2.503 2.5 0 0 0 7.475 6Z" class="cloud"/>
+    <path fill="url(#c-m-c-day)" d="M14.982 7a2.5 2.5 0 0 0-2.464 2.201 2.5 2.5 0 0 0 .982 4.8 2.5 2.5 0 0 0 3.827.206 2.5 2.5 0 0 0 3.133-3.76 2.5 2.5 0 0 0-3.107-2.862 2.5 2.5 0 0 0-.526.208A2.5 2.5 0 0 0 14.982 7Z" class="cloud"/>
+    <g id="g1082">
+      <path fill="#ff6f00" d="m8 10 2.12-1.607-.363-2.636 2.636.363L14 4l1.607 2.12 2.636-.363-.363 2.636L20 10l-2.12 1.607.363 2.636-2.636-.363L14 16l-1.607-2.12-2.636.363.363-2.636Z" class="corona"/>
+      <circle id="ellipse9457" cx="14" cy="10" r="4" fill="url(#linearGradient3848)" class="orb"/>
     </g>
-    <path fill="url(#e-m-c-day)" d="M8.49 9a2.504 2.504 0 00-1.81.793 2.506 2.506 0 00-1.824-.208 2.5 2.5 0 00-1.213 4.086 2.504 2.504 0 004.19 2.536 2.506 2.506 0 003.221-.768c1.68-.398 2.144-2.019 1.875-3.086-.25-.99-1.104-1.712-2.12-1.834A2.503 2.503 0 008.49 9z" class="cloud" />
-    <path fill="url(#f-m-c-day)" d="M13.483 10a2.5 2.5 0 00-1.982 1 2.5 2.5 0 00-2.415 3.147c.152.566.543 1.002.975 1.396.515 1.783 2.017 2.13 3.087 1.872a2.24 2.24 0 00.526-.208A2.5 2.5 0 0018 15.5a2.5 2.5 0 00-2.388-4.337A2.5 2.5 0 0013.482 10z" class="cloud" />
-  </g>`
+    <path fill="url(#e-m-c-day)" d="M8.489 9a2.505 2.505 0 0 0-1.81.794 2.507 2.507 0 0 0-1.825-.208 2.5 2.501 0 0 0-1.213 4.088 2.505 2.505 0 0 0 4.19 2.537 2.507 2.507 0 0 0 3.222-.768c1.68-.398 2.145-2.02 1.876-3.088-.25-.99-1.105-1.713-2.12-1.835A2.504 2.504 0 0 0 8.488 9Z" class="cloud"/>
+    <path fill="url(#f-m-c-day)" d="M13.483 10a2.5 2.5 0 0 0-1.983 1 2.5 2.5 0 0 0-2.415 3.147c.152.566.543 1.002.975 1.396.515 1.784 2.017 2.13 3.087 1.873a2.24 2.24 0 0 0 .527-.208A2.5 2.5 0 0 0 18 15.5a2.5 2.5 0 0 0-2.388-4.337A2.5 2.5 0 0 0 13.482 10z" class="cloud"/>`
   },
   {
     name: "mostly-cloudy-night",
-    tag: "03n",
-    defs: `<linearGradient id="gr-cloud">
-    <stop offset="0" stop-color="#90a4ae"/>
-    <stop offset="1" stop-color="#eceff1"/>
-  </linearGradient>
-  <linearGradient id="gr-moon" x1="14.5" x2="10.5" y1="14" y2="6" gradientTransform="translate(.5)" gradientUnits="userSpaceOnUse">
-    <stop offset="0" stop-color="#607d8b"/>
-    <stop offset="1" stop-color="#cfd8dc"/>
-  </linearGradient>
-  <linearGradient id="b-m-c-night" x1="10.499" x2="6.5" y1="15" y2="7" gradientTransform="matrix(1.0003 0 0 1 .498 0)" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="e-m-c-night" x1="10.5" x2="6.501" y1="18" y2="10" gradientTransform="matrix(1.0001 0 0 1 1.499 0)" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="c-m-c-night" x1="17.503" x2="13.503" y1="17" y2="9" gradientTransform="matrix(1.0003 0 0 1.0006 -.506 -.006)" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>`,
-    path: `<g class="mostly-cloudy-night">
-    <path fill="url(#b-m-c-night)" d="M7.982 7a2.5 2.5 0 00-2.464 2.201A2.5 2.5 0 006.5 14a2.5 2.5 0 003.827.207 2.5 2.5 0 003.133-3.76 2.5 2.5 0 00-3.107-2.862 2.5 2.5 0 00-.526.208A2.5 2.5 0 007.982 7z" class="cloud" />
-    <path fill="url(#c-m-c-night)" d="M15.488 9a2.505 2.506 0 00-1.81.793 2.507 2.508 0 00-1.825-.208 2.5 2.502 0 00-1.213 4.088 2.505 2.506 0 004.19 2.538 2.507 2.508 0 003.223-.768c1.68-.4 2.144-2.021 1.875-3.089-.25-.99-1.104-1.713-2.12-1.835a2.504 2.505 0 00-2.32-1.52z" class="cloud" />
-    <path fill="url(#gr-moon)" d="M12.94 6A4 4 0 009 10a4 4 0 004 4 4 4 0 004-4 4 4 0 000-.053 2.5 2.5 0 01-.5.053A2.5 2.5 0 0114 7.5a2.5 2.5 0 01.346-1.266A4 4 0 0013 6a4 4 0 00-.06 0z" class="moon" />
-    <path fill="url(#e-m-c-night)" d="M9.482 10A2.5 2.5 0 007.5 11a2.5 2.5 0 00-2.415 3.147c.152.565.543 1.001.975 1.396.515 1.783 2.017 2.13 3.087 1.872a2.24 2.24 0 00.526-.208A2.5 2.5 0 0014 15.5a2.5 2.5 0 00-2.388-4.337A2.5 2.5 0 009.482 10z" class="cloud" />
-  </g>`
+    innerHtml: `<defs>
+      <linearGradient id="gr-cloud">
+        <stop id="stop1823" offset="0" stop-color="#90a4ae"/>
+        <stop id="stop1825" offset="1" stop-color="#eceff1"/>
+      </linearGradient>
+      <linearGradient id="gr-moon-3" x1="14.5" x2="10.5" y1="14" y2="6" gradientTransform="translate(.5 -1)" gradientUnits="userSpaceOnUse">
+        <stop id="stop1999" offset="0" stop-color="#607d8b"/>
+        <stop id="stop2001" offset="1" stop-color="#cfd8dc"/>
+      </linearGradient>
+      <linearGradient href="#gr-cloud" id="b-m-c-night" x1="10.499" x2="6.5" y1="15" y2="7" gradientTransform="matrix(1.0003 0 0 1 .498 -1)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="e-m-c-night" x1="10.5" x2="6.501" y1="18" y2="10" gradientTransform="matrix(1.0001 0 0 .99993 1.499 -1)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="c-m-c-night" x1="17.503" x2="13.503" y1="17" y2="9" gradientTransform="matrix(1.00041 0 0 1.00076 -.507 -1.006)" gradientUnits="userSpaceOnUse"/>
+    </defs>
+    <path fill="url(#b-m-c-night)" d="M7.982 6a2.5 2.5 0 0 0-2.464 2.201 2.5 2.5 0 0 0 .982 4.8 2.5 2.5 0 0 0 3.827.206 2.5 2.5 0 0 0 3.133-3.76 2.5 2.5 0 0 0-3.107-2.862 2.5 2.5 0 0 0-.526.208A2.5 2.5 0 0 0 7.982 6z" class="cloud"/>
+    <path fill="url(#c-m-c-night)" d="M15.488 8.001a2.505 2.506 0 0 0-1.81.793 2.507 2.508 0 0 0-1.825-.208 2.5 2.502 0 0 0-1.213 4.089 2.505 2.506 0 0 0 4.19 2.538 2.507 2.508 0 0 0 3.224-.768c1.68-.4 2.144-2.021 1.875-3.09-.25-.99-1.104-1.713-2.12-1.835A2.504 2.505 0 0 0 15.489 8Z" class="cloud"/>
+    <path fill="url(#gr-moon-3)" d="M12.94 5A4 4 0 0 0 9 9a4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0 0-.053 2.5 2.5 0 0 1-.5.053A2.5 2.5 0 0 1 14 6.5a2.5 2.5 0 0 1 .346-1.266A4 4 0 0 0 13 5a4 4 0 0 0-.06 0z" class="moon"/>
+    <path fill="url(#e-m-c-night)" d="M9.482 9A2.5 2.5 0 0 0 7.5 10a2.5 2.5 0 0 0-2.415 3.147c.152.565.543 1 .975 1.396.515 1.783 2.017 2.13 3.087 1.872a2.24 2.24 0 0 0 .526-.208A2.5 2.5 0 0 0 14 14.5a2.5 2.5 0 0 0-2.388-4.337A2.5 2.5 0 0 0 9.482 9z" class="cloud"/>`
   },
   {
     name: "cloudy",
-    tag: ["04d","04n"],
-    defs: `<linearGradient id="gr-cloud">
-    <stop stop-color="#90a4ae" offset="0"/>
-    <stop stop-color="#eceff1" offset="1"/>
-  </linearGradient>
-  <linearGradient id="b-cloud" x1="8.836" x2="5.867" y1="181.03" y2="173.13" gradientTransform="translate(2.102 -167.06)" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="c-cloud" x1="1.211" x2="5.211" y1="192.99" y2="185.39" gradientTransform="matrix(-1 0 0 1 11.211 -175.69)" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="d-cloud" x1="4.898" x2="8.898" y1="173.06" y2="181.06" gradientTransform="rotate(180 9.45 93.534)" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="e-cloud" x1="-10" x2="-6" y1="181.53" y2="189.53" gradientTransform="rotate(180 4 98.767)" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="f-cloud" x1="-6.219" x2="-9.469" y1="189.41" y2="181.75" gradientTransform="translate(19 -174.53)" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="g-cloud" x1=".804" x2="-2.506" y1="188.25" y2="181.02" gradientTransform="translate(13.79 -170.38)" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>`,
-    path: `<g>
-    <path class="cloud" d="M9.49 6.001a2.504 2.504 0 00-1.81.793 2.506 2.506 0 00-1.824-.208 2.5 2.5 0 00-1.212 4.085c-.168.476-.187.99-.057 1.477a2.504 2.504 0 004.247 1.06 2.506 2.506 0 003.22-.768c1.681-.399 2.144-2.02 1.875-3.087-.25-.99-1.104-1.712-2.119-1.834a2.503 2.503 0 00-2.32-1.518z" fill="url(#b-cloud)"/>
-    <path class="cloud" d="M9.518 9.564a2.5 2.5 0 012.437 2.968 2.5 2.5 0 01-2.628 4.238 2.5 2.5 0 01-4.124-.724 2.5 2.5 0 01-.245-4.923h.001a2.5 2.5 0 012.871-.918 2.5 2.5 0 011.688-.64z" fill="url(#c-cloud)"/>
-    <path class="cloud" d="M11.51 14.001a2.504 2.504 0 001.81-.793 2.51 2.51 0 001.825.208 2.5 2.5 0 001.212-4.085c.168-.476.187-.99.057-1.477a2.504 2.504 0 00-4.247-1.06 2.506 2.506 0 00-3.22.768c-1.681.399-2.144 2.02-1.875 3.087.25.99 1.104 1.712 2.119 1.834a2.503 2.503 0 002.32 1.518z" fill="url(#d-cloud)"/>
-    <path class="cloud" d="M16.596 8.003a2.501 2.501 0 00-1.922.791 2.5 2.5 0 00-3.133 3.76 2.499 2.499 0 003.633 2.654c.094.1.2.185.307.268a2.5 2.5 0 002.02 1.025 2.5 2.5 0 002.5-2.5 2.5 2.5 0 00-.047-.475A2.494 2.494 0 0018.5 9.001a2.5 2.5 0 00-1.904-.998z" fill="url(#e-cloud)"/>
-    <path class="cloud" d="M9.983 7.001A2.5 2.5 0 007.52 9.202a2.5 2.5 0 00.98 4.8 2.5 2.5 0 003.826.206 2.5 2.5 0 003.133-3.76 2.5 2.5 0 00-3.106-2.862 2.5 2.5 0 00-.527.208 2.5 2.5 0 00-1.843-.793z" fill="url(#f-cloud)"/>
-    <path class="cloud" d="M12.483 10.001a2.5 2.5 0 00-1.982 1 2.5 2.5 0 00-2.415 3.147c.152.565.544 1.001.976 1.396.514 1.783 2.016 2.13 3.086 1.872a2.24 2.24 0 00.527-.208A2.5 2.5 0 0017 15.501a2.5 2.5 0 00-2.387-4.337 2.5 2.5 0 00-2.13-1.163z" fill="url(#g-cloud)"/>
-  </g>`
-  },
-  {
-    name: "drizzle",
-    tag: ["09d","09n"],
-    defs: `<linearGradient id="gr-cloud">
-    <stop offset="0" stop-color="#90a4ae"/>
-    <stop offset="1" stop-color="#eceff1"/>
-  </linearGradient>
-  <linearGradient id="gr-rain">
-    <stop offset="0" stop-color="#e3f1fc"/>
-    <stop offset=".339" stop-color="#badefa"/>
-    <stop offset="1" stop-color="#64b6f6"/>
-  </linearGradient>
-  <linearGradient id="d-driz-cloud" x1="10" x2="6" y1="15.415" y2="7.608" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="h-driz-cloud" x1="15" x2="11" y1="16" y2="8" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="c-driz-cloud" x1="13" x2="9" y1="12" y2="4" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="e-driz-cloud" x1="18" x2="14" y1="14" y2="6" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <radialGradient id="g-drizz-drop" cx="9.226" cy="17.882" r="1.5" gradientTransform="matrix(1 0 0 1.3333 0 -6)" gradientUnits="userSpaceOnUse" xlink:href="#gr-rain"/>
-  <radialGradient id="f-drizz-drop" cx="17.168" cy="13.838" r="1.5" gradientTransform="matrix(1 0 0 1.3333 0 -4.667)" gradientUnits="userSpaceOnUse" xlink:href="#gr-rain"/>`,
-    path: `<g class="drizzle">
-    <path fill="url(#c-driz-cloud)" d="M10.511 12.001a2.504 2.504 0 001.81-.793c.56.297 1.212.372 1.824.208a2.5 2.5 0 001.213-4.085c.167-.476.187-.99.057-1.477a2.503 2.503 0 00-4.247-1.06 2.506 2.506 0 00-3.22.768c-1.681.399-2.144 2.02-1.875 3.087.25.99 1.104 1.712 2.119 1.834a2.504 2.504 0 002.319 1.518z" class="cloud"/>
-    <path fill="url(#d-driz-cloud)" d="M9.519 7.57a2.5 2.5 0 012.437 2.969 2.5 2.5 0 01-2.63 4.239 2.5 2.5 0 01-4.122-.725 2.5 2.5 0 01-.245-4.923 2.5 2.5 0 012.87-.918 2.5 2.5 0 011.69-.641z" class="cloud"/>
-    <path fill="url(#e-driz-cloud)" d="M17.019 14.001a2.5 2.5 0 002.463-2.201 2.5 2.5 0 00-.98-4.799 2.5 2.5 0 00-3.826-.207 2.5 2.5 0 00-3.133 3.76 2.5 2.5 0 003.106 2.862 2.5 2.5 0 00.527-.208 2.5 2.5 0 001.843.793z" class="cloud"/>
-    <path fill="url(#f-drizz-drop)" d="M19.001 14.401c0 .884-.672 1.6-1.5 1.6s-1.5-.716-1.5-1.6c0-.286.07-.554.193-.786.257-.486 1.307-1.614 1.307-1.614s1.05 1.128 1.307 1.614c.123.232.193.5.193.786z" class="raindrop"/>
-    <path fill="url(#g-drizz-drop)" d="M11.001 18.401c0 .884-.672 1.6-1.5 1.6s-1.5-.716-1.5-1.6c0-.286.07-.554.193-.786.257-.486 1.307-1.614 1.307-1.614s1.05 1.128 1.307 1.614c.123.232.193.5.193.786z" class="raindrop"/>
-    <path fill="url(#h-driz-cloud)" d="M12.484 8a2.5 2.5 0 00-1.982 1 2.5 2.5 0 00-2.415 3.148c.152.565.544 1 .976 1.396.514 1.783 2.016 2.13 3.086 1.872a2.24 2.24 0 00.526-.208 2.5 2.5 0 004.326-1.707 2.5 2.5 0 00-2.387-4.337A2.5 2.5 0 0012.484 8z" class="cloud"/>
-  </g>`
+    innerHtml: `<defs>
+      <linearGradient id="gr-cloud">
+        <stop id="stop1823" offset="0" stop-color="#90a4ae"/>
+        <stop id="stop1825" offset="1" stop-color="#eceff1"/>
+      </linearGradient>
+      <linearGradient href="#gr-cloud" id="b-cloud" x1="8.836" x2="5.867" y1="181.03" y2="173.13" gradientTransform="matrix(1.00036 0 0 .9999 2.097 -167.044)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="c-cloud" x1="1.211" x2="5.211" y1="192.99" y2="185.39" gradientTransform="matrix(-1.00135 0 0 1.00023 11.222 -175.797)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="d-cloud" x1="4.898" x2="8.898" y1="173.06" y2="181.06" gradientTransform="matrix(-1.00036 0 0 -.9999 18.904 187.05)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="e-cloud" x1="-10" x2="-6" y1="181.53" y2="189.53" gradientTransform="rotate(180 4 98.766)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="f-cloud" x1="-6.219" x2="-9.469" y1="189.41" y2="181.75" gradientTransform="matrix(1.00003 0 0 1 19 -174.53)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="g-cloud" x1=".804" x2="-2.506" y1="188.25" y2="181.02" gradientTransform="matrix(1.00018 0 0 1.0002 13.791 -170.416)" gradientUnits="userSpaceOnUse"/>
+    </defs>
+    <g>
+      <path fill="url(#b-cloud)" d="M9.488 6a2.505 2.504 0 0 0-1.81.793 2.507 2.506 0 0 0-1.825-.208A2.5 2.5 0 0 0 4.64 10.67c-.168.476-.187.99-.057 1.476a2.505 2.504 0 0 0 4.249 1.06 2.507 2.506 0 0 0 3.221-.768c1.682-.399 2.145-2.02 1.876-3.086-.25-.99-1.105-1.712-2.12-1.834A2.504 2.503 0 0 0 9.489 6Z" class="cloud"/>
+      <path fill="url(#c-cloud)" d="M9.527 9.5a2.503 2.5 0 0 1 2.44 2.969 2.503 2.5 0 0 1-2.631 4.239 2.503 2.5 0 0 1-4.13-.725 2.503 2.5 0 0 1-.245-4.924 2.503 2.5 0 0 1 2.876-.918 2.503 2.5 0 0 1 1.69-.64z" class="cloud"/>
+      <path fill="url(#d-cloud)" d="M11.511 14a2.505 2.504 0 0 0 1.81-.793 2.51 2.51 0 0 0 1.826.208 2.5 2.5 0 0 0 1.213-4.084c.168-.476.187-.99.057-1.477a2.505 2.504 0 0 0-4.249-1.06 2.507 2.506 0 0 0-3.22.768c-1.683.399-2.146 2.02-1.877 3.087.25.99 1.105 1.711 2.12 1.833A2.504 2.503 0 0 0 11.512 14z" class="cloud"/>
+      <path fill="url(#e-cloud)" d="M16.596 8.002a2.501 2.501 0 0 0-1.922.79 2.5 2.5 0 0 0-3.133 3.76 2.499 2.499 0 0 0 3.633 2.655c.094.1.2.185.307.268A2.5 2.5 0 0 0 17.5 16.5 2.5 2.5 0 0 0 20 14a2.5 2.5 0 0 0-.047-.475A2.494 2.494 0 0 0 18.5 9a2.5 2.5 0 0 0-1.904-.998z" class="cloud"/>
+      <path fill="url(#f-cloud)" d="M9.983 7A2.5 2.5 0 0 0 7.52 9.201a2.5 2.5 0 0 0 .98 4.8 2.5 2.5 0 0 0 3.826.206 2.5 2.5 0 0 0 3.133-3.76 2.5 2.5 0 0 0-3.106-2.862 2.5 2.5 0 0 0-.527.208A2.5 2.5 0 0 0 9.983 7z" class="cloud"/>
+      <path fill="url(#g-cloud)" d="M12.484 10a2.5 2.5 0 0 0-1.983 1 2.5 2.5 0 0 0-2.415 3.148c.152.565.544 1.001.976 1.396.514 1.783 2.016 2.13 3.087 1.873a2.24 2.24 0 0 0 .527-.209 2.5 2.5 0 0 0 4.326-1.707 2.5 2.5 0 0 0-2.388-4.338A2.5 2.5 0 0 0 12.484 10z" class="cloud"/>
+    </g>`
   },
   {
     name: "rain",
-    tag: ["10d","10n"],
-    defs: `<linearGradient id="gr-cloud">
-    <stop offset="0" stop-color="#90a4ae"/>
-    <stop offset="1" stop-color="#eceff1"/>
-  </linearGradient>
-  <linearGradient id="gr-rain">
-    <stop offset="0" stop-color="#e3f1fc"/>
-    <stop offset=".339" stop-color="#badefa"/>
-    <stop offset="1" stop-color="#64b6f6"/>
-  </linearGradient>
-  <linearGradient id="e-rain-cloud" x1="13" x2="9" y1="12" y2="4" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="f-rain-cloud" x1="10" x2="6" y1="15.588" y2="7.636" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="g-rain-cloud" x1="18" x2="14" y1="14" y2="6" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="i-rain-cloud" x1="15" x2="11" y1="16" y2="8" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <radialGradient id="h-rain-drop" cx="17.193" cy="13.847" r="1.5" gradientTransform="matrix(1 0 0 1.3333 0 -4.667)" gradientUnits="userSpaceOnUse" xlink:href="#gr-rain"/>
-  <radialGradient id="d-rain-drop" cx="12.152" cy="17.77" r="1.5" gradientTransform="matrix(1 0 0 1.3333 0 -6)" gradientUnits="userSpaceOnUse" xlink:href="#gr-rain"/>
-  <radialGradient id="c-rain-drop" cx="7.234" cy="15.877" r="1.5" gradientTransform="matrix(1 0 0 1.3333 0 -5.333)" gradientUnits="userSpaceOnUse" xlink:href="#gr-rain"/>`,
-    path: `<g class="rain">
-    <path fill="url(#c-rain-drop)" d="M9 16.4c0 .884-.672 1.6-1.5 1.6S6 17.284 6 16.4c0-.286.07-.554.193-.786C6.45 15.128 7.5 14 7.5 14s1.05 1.128 1.307 1.614c.123.232.193.5.193.786z" class="raindrop"/>
-    <path fill="url(#d-rain-drop)" d="M14 18.4c0 .884-.672 1.6-1.5 1.6s-1.5-.716-1.5-1.6c0-.286.07-.554.193-.786C11.45 17.128 12.5 16 12.5 16s1.05 1.128 1.307 1.614c.123.232.193.5.193.786z" class="raindrop"/>
-    <path fill="url(#e-rain-cloud)" d="M10.51 12a2.504 2.504 0 001.81-.793c.56.297 1.212.372 1.824.208a2.5 2.5 0 001.213-4.085c.167-.476.187-.99.057-1.477a2.503 2.503 0 00-4.247-1.06 2.506 2.506 0 00-3.22.768c-1.681.399-2.144 2.02-1.875 3.087.25.99 1.104 1.712 2.119 1.834A2.504 2.504 0 0010.51 12z" class="cloud"/>
-    <path fill="url(#f-rain-cloud)" d="M9.518 7.57a2.5 2.5 0 012.437 2.968 2.5 2.5 0 01-2.629 4.239 2.5 2.5 0 01-4.123-.725 2.5 2.5 0 01-.245-4.923 2.5 2.5 0 012.871-.918 2.5 2.5 0 011.689-.641z" class="cloud"/>
-    <path fill="url(#g-rain-cloud)" d="M17.018 14a2.5 2.5 0 002.463-2.201A2.5 2.5 0 0018.501 7a2.5 2.5 0 00-3.826-.207 2.5 2.5 0 00-3.133 3.76 2.5 2.5 0 003.106 2.862 2.5 2.5 0 00.527-.208 2.5 2.5 0 001.843.793z" class="cloud"/>
-    <path fill="url(#h-rain-drop)" d="M19 14.4c0 .884-.672 1.6-1.5 1.6s-1.5-.716-1.5-1.6c0-.286.07-.554.193-.786C16.45 13.128 17.5 12 17.5 12s1.05 1.128 1.307 1.614c.123.232.193.5.193.786z" class="raindrop"/>
-    <path fill="url(#i-rain-cloud)" d="M12.483 8a2.5 2.5 0 00-1.982 1 2.5 2.5 0 00-2.415 3.147c.152.565.544 1.001.976 1.396.514 1.783 2.016 2.13 3.086 1.872a2.24 2.24 0 00.526-.208A2.5 2.5 0 0017 13.5a2.5 2.5 0 00-2.387-4.337A2.5 2.5 0 0012.483 8z" class="cloud"/>
-  </g>`
+    innerHtml: `<defs>
+      <linearGradient id="gr-cloud">
+        <stop id="stop1823" offset="0" stop-color="#90a4ae"/>
+        <stop id="stop1825" offset="1" stop-color="#eceff1"/>
+      </linearGradient>
+      <linearGradient id="gr-rain">
+        <stop id="stop2624" offset="0" stop-color="#e3f1fc"/>
+        <stop id="stop2626" offset=".339" stop-color="#badefa"/>
+        <stop id="stop2628" offset="1" stop-color="#64b6f6"/>
+      </linearGradient>
+      <linearGradient href="#gr-cloud" id="f-rain-cloud" x1="10" x2="6" y1="15.588" y2="7.636" gradientTransform="matrix(1.00058 0 0 1.00023 -.002 1.928)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="linearGradient3933" x1="13" x2="9" y1="12" y2="4" gradientTransform="matrix(1.00038 0 0 .99978 -.003 2.003)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="linearGradient3935" x1="18" x2="14" y1="14" y2="6" gradientTransform="matrix(1.00026 0 0 1 -.004 2)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="linearGradient3937" x1="15" x2="11" y1="16" y2="8" gradientTransform="matrix(1.00018 0 0 1 -.002 2)" gradientUnits="userSpaceOnUse"/>
+      <radialGradient href="#gr-rain" id="h-rain-drop" cx="17.193" cy="13.847" r="1.5" gradientTransform="matrix(1 0 0 1.3333 0 -2.667)" gradientUnits="userSpaceOnUse"/>
+      <radialGradient href="#gr-rain" id="d-rain-drop" cx="12.152" cy="17.77" r="1.5" gradientTransform="matrix(1 0 0 1.3333 -1 -4)" gradientUnits="userSpaceOnUse"/>
+      <radialGradient href="#gr-rain" id="c-rain-drop" cx="7.234" cy="15.877" r="1.5" gradientTransform="matrix(1 0 0 1.3333 -1 -3.333)" gradientUnits="userSpaceOnUse"/>
+    </defs>
+    <g>
+      <path fill="url(#c-rain-drop)" d="M8 18.4c0 .884-.672 1.6-1.5 1.6S5 19.284 5 18.4c0-.286.07-.554.193-.786C5.45 17.128 6.5 16 6.5 16s1.05 1.128 1.307 1.614c.123.232.193.5.193.786Z" class="raindrop"/>
+      <path fill="url(#d-rain-drop)" d="M13 20.4c0 .884-.672 1.6-1.5 1.6s-1.5-.716-1.5-1.6c0-.286.07-.554.193-.786C10.45 19.128 11.5 18 11.5 18s1.05 1.128 1.307 1.614c.123.232.193.5.193.786Z" class="raindrop"/>
+      <path fill="url(#linearGradient3933)" d="M10.511 14a2.505 2.503 0 0 0 1.81-.793 2.51 2.51 0 0 0 1.825.208 2.501 2.5 0 0 0 1.214-4.084c.167-.476.187-.99.057-1.477a2.504 2.502 0 0 0-4.249-1.06 2.507 2.505 0 0 0-3.22.768c-1.683.4-2.146 2.02-1.877 3.087.25.99 1.105 1.711 2.12 1.833A2.505 2.503 0 0 0 10.511 14z" class="cloud"/>
+      <path fill="url(#f-rain-cloud)" d="M9.522 9.5a2.501 2.5 0 0 1 2.438 2.969 2.501 2.5 0 0 1-2.63 4.24 2.501 2.5 0 0 1-4.126-.725 2.501 2.5 0 0 1-.245-4.925 2.501 2.5 0 0 1 2.873-.918 2.501 2.5 0 0 1 1.69-.64Z" class="cloud"/>
+      <path fill="url(#linearGradient3935)" d="M17.018 16a2.5 2.5 0 0 0 2.464-2.201A2.5 2.5 0 0 0 18.502 9a2.5 2.5 0 0 0-3.828-.207 2.5 2.5 0 0 0-3.133 3.76 2.5 2.5 0 0 0 3.106 2.862 2.5 2.5 0 0 0 .528-.208 2.5 2.5 0 0 0 1.843.793z" class="cloud"/>
+      <path fill="url(#h-rain-drop)" d="M19 16.4c0 .884-.672 1.6-1.5 1.6s-1.5-.716-1.5-1.6c0-.286.07-.554.193-.786C16.45 15.128 17.5 14 17.5 14s1.05 1.128 1.307 1.614c.123.232.193.5.193.786Z" class="raindrop"/>
+      <path fill="url(#linearGradient3937)" d="M12.483 10a2.5 2.5 0 0 0-1.982 1 2.5 2.5 0 0 0-2.416 3.147c.152.565.544 1.001.976 1.396.514 1.783 2.017 2.13 3.087 1.872a2.24 2.24 0 0 0 .526-.208 2.5 2.5 0 0 0 4.327-1.707 2.5 2.5 0 0 0-2.388-4.337A2.5 2.5 0 0 0 12.483 10Z" class="cloud"/>
+    </g>`
+  },
+  {
+    name: "rain-light",
+    innerHtml: `<defs>
+      <linearGradient id="gr-cloud">
+        <stop id="stop1823" offset="0" stop-color="#90a4ae"/>
+        <stop id="stop1825" offset="1" stop-color="#eceff1"/>
+      </linearGradient>
+      <linearGradient id="gr-rain">
+        <stop id="stop2624" offset="0" stop-color="#e3f1fc"/>
+        <stop id="stop2626" offset=".339" stop-color="#badefa"/>
+        <stop id="stop2628" offset="1" stop-color="#64b6f6"/>
+      </linearGradient>
+      <linearGradient href="#gr-cloud" id="e-rain-cloud" x1="13" x2="9" y1="12" y2="4" gradientTransform="matrix(1.00038 0 0 .99978 -.004 2.002)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="g-rain-cloud" x1="18" x2="14" y1="14" y2="6" gradientTransform="matrix(1.00026 0 0 1 -.005 2)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="i-rain-cloud" x1="15" x2="11" y1="16" y2="8" gradientTransform="matrix(1.00015 0 0 .99994 -.003 2)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="d-driz-cloud" x1="10" x2="6" y1="15.415" y2="7.608" gradientTransform="matrix(1.0003 0 0 1.0002 -.001 1.928)" gradientUnits="userSpaceOnUse"/>
+      <radialGradient href="#gr-rain" id="g-drizz-drop" cx="9.226" cy="17.882" r="1.5" gradientTransform="matrix(1 0 0 1.3333 -2.001 -6.001)" gradientUnits="userSpaceOnUse"/>
+      <radialGradient href="#gr-rain" id="f-drizz-drop" cx="17.168" cy="13.838" r="1.5" gradientTransform="matrix(1 0 0 1.3333 -.001 -2.668)" gradientUnits="userSpaceOnUse"/>
+    </defs>
+    <g>
+      <path fill="url(#g-drizz-drop)" d="M9 18.4c0 .884-.672 1.6-1.5 1.6S6 19.284 6 18.4c0-.286.07-.554.193-.786C6.45 17.128 7.5 16 7.5 16s1.05 1.128 1.307 1.614c.123.232.193.5.193.786z" class="raindrop"/>
+      <path fill="url(#e-rain-cloud)" d="M10.511 14a2.505 2.503 0 0 0 1.81-.793 2.51 2.51 0 0 0 1.825.208 2.501 2.5 0 0 0 1.214-4.084c.167-.476.187-.99.057-1.477a2.504 2.502 0 0 0-4.249-1.06 2.507 2.505 0 0 0-3.22.768c-1.683.4-2.146 2.02-1.877 3.087.25.99 1.105 1.711 2.12 1.833A2.505 2.503 0 0 0 10.511 14z" class="cloud"/>
+      <path fill="url(#d-driz-cloud)" d="M9.52 9.5a2.5 2.5 0 0 1 2.438 2.97 2.5 2.5 0 0 1-2.63 4.24 2.5 2.5 0 0 1-4.124-.726 2.5 2.5 0 0 1-.245-4.924 2.5 2.5 0 0 1 2.87-.918 2.5 2.5 0 0 1 1.691-.641Z" class="cloud"/>
+      <path fill="url(#g-rain-cloud)" d="M17.018 16.001a2.5 2.5 0 0 0 2.464-2.201 2.5 2.5 0 0 0-.98-4.799 2.5 2.5 0 0 0-3.828-.207 2.5 2.5 0 0 0-3.133 3.76 2.5 2.5 0 0 0 3.106 2.862 2.5 2.5 0 0 0 .528-.208 2.5 2.5 0 0 0 1.843.793z" class="cloud"/>
+      <path fill="url(#f-drizz-drop)" d="M19 16.4c0 .884-.672 1.6-1.5 1.6s-1.5-.716-1.5-1.6c0-.286.07-.554.193-.786C16.45 15.128 17.5 14 17.5 14s1.05 1.128 1.307 1.614c.123.232.193.5.193.786z" class="raindrop"/>
+      <path fill="url(#i-rain-cloud)" d="M12.483 10a2.5 2.5 0 0 0-1.982 1 2.5 2.5 0 0 0-2.416 3.148c.152.565.545 1 .977 1.396.514 1.783 2.016 2.13 3.086 1.872a2.24 2.24 0 0 0 .526-.208 2.5 2.5 0 0 0 4.327-1.707 2.5 2.5 0 0 0-2.388-4.337A2.5 2.5 0 0 0 12.483 10z" class="cloud"/>
+    </g>`
   },
   {
     name: "snow",
-    tag: ["13d","13n"],
-    defs: `<linearGradient id="gr-cloud">
-    <stop offset="0" stop-color="#90a4ae"/>
-    <stop offset="1" stop-color="#eceff1"/>
-  </linearGradient>
-  <linearGradient id="gr-snowflake">
-    <stop offset="0" stop-color="#fff"/>
-    <stop offset="1" stop-color="#c5ddf1"/>
-  </linearGradient>
-  <linearGradient id="j-snow-cloud" x1="10" x2="6" y1="16" y2="8" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="i-snow-cloud" x1="18" x2="14" y1="16" y2="8" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="h-snow-cloud" x1="16" x2="12" y1="14" y2="6" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="f-snow-cloud" x1="16" x2="12" y1="12" y2="4" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="g-snow-cloud" x1="12" x2="8" y1="13" y2="5" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="e-snow-flake" x1="6.196" x2="7.438" y1="14.77" y2="17.287" gradientUnits="userSpaceOnUse" xlink:href="#gr-snowflake"/>
-  <linearGradient id="d-snow-flake" x1="10.196" x2="11.568" y1="18.77" y2="21.369" gradientUnits="userSpaceOnUse" xlink:href="#gr-snowflake"/>
-  <linearGradient id="c-snow-flake" x1="17.196" x2="18.409" y1="16.77" y2="19.316" gradientUnits="userSpaceOnUse" xlink:href="#gr-snowflake"/>`,
-    path: `<g class="snow">
-    <g class="snowflake" >
-      <path fill="#64b5f6" d="M17.778 16a.355.355 0 00-.351.351v.07c-.046-.025-.09-.06-.141-.06a.322.322 0 00-.227.094c-.048.047-.06.112-.071.175-.06-.022-.123-.043-.189-.025a.325.325 0 00-.194.148.194.194 0 00-.001 0c-.026.045-.018.1-.02.153l-.06-.034a.353.353 0 00-.478.13.354.354 0 00.129.477l.06.035c-.045.028-.097.048-.123.093a.318.318 0 00-.03.242c.016.066.066.11.116.15-.05.04-.1.085-.118.15a.315.315 0 00.032.244c.027.046.078.066.123.094l-.059.034a.353.353 0 00-.13.478.353.353 0 00.478.128l.06-.034c.002.054-.004.109.022.153a.321.321 0 00.194.149c.065.017.127-.003.188-.026.01.063.023.129.07.176a.323.323 0 00.228.094c.05 0 .094-.034.14-.058v.068a.355.355 0 00.352.35.355.355 0 00.352-.35v-.069c.046.025.09.058.141.058a.322.322 0 00.227-.093c.047-.048.06-.113.07-.176.06.022.122.044.188.026a.32.32 0 00.194-.149.194.194 0 00.001-.001c.025-.043.018-.1.02-.152l.06.034a.354.354 0 00.478-.128.353.353 0 00-.13-.478l-.059-.034c.045-.028.097-.05.122-.094a.194.194 0 00.002-.001.32.32 0 00.03-.243c-.017-.065-.065-.11-.115-.151.048-.04.098-.084.116-.149a.315.315 0 00-.033-.243c-.026-.045-.077-.066-.122-.094l.06-.033a.353.353 0 00.129-.478.353.353 0 00-.479-.129l-.06.034c-.001-.053.005-.108-.02-.153a.321.321 0 00-.194-.148c-.066-.018-.128.003-.189.025-.01-.063-.022-.128-.07-.175a.324.324 0 00-.225-.095c-.05 0-.096.035-.142.058v-.067a.355.355 0 00-.352-.351zm-.511 1.116l.16.16v.118l-.102-.06zm1.02 0l-.057.218-.1.058v-.117zm-1.312.825l.101.058-.102.058-.217-.058zm1.607 0l.216.058-.218.058-.1-.058zm-1.155.666v.116l-.16.16.059-.216zm.703 0l.1.058.058.218-.158-.158z"/>
-      <path fill="url(#c-snow-flake)" d="M17.778 16.194a.157.157 0 00-.157.158v.487l-.248-.247a.126.126 0 10-.177.178l.425.426v.532l-.462-.266-.155-.58a.126.126 0 10-.244.065l.09.337-.421-.244a.157.157 0 00-.216.058.156.156 0 00.058.214l.422.244-.337.09a.125.125 0 00-.076.058.127.127 0 00-.011.097.124.124 0 00.153.088l.58-.155.462.266-.462.267-.58-.156a.126.126 0 10-.066.243l.339.091-.422.244a.158.158 0 00-.06.215c.044.075.14.1.216.057l.422-.244-.09.337a.126.126 0 00.09.154.126.126 0 00.153-.089l.156-.579.461-.268v.533l-.425.425a.126.126 0 10.179.178l.246-.248v.49a.158.158 0 00.315-.001v-.487l.246.246a.126.126 0 10.178-.178l-.424-.424v-.534l.461.267.155.58a.126.126 0 10.244-.065l-.091-.337.422.244a.157.157 0 10.157-.272l-.422-.244.337-.09a.125.125 0 00.09-.155.126.126 0 00-.155-.09l-.58.157-.461-.267.462-.266.579.156a.126.126 0 10.065-.244l-.337-.09.422-.244a.156.156 0 00.058-.214.157.157 0 00-.215-.058l-.422.244.09-.337a.126.126 0 00-.09-.154.126.126 0 00-.153.088l-.156.581-.46.266v-.534l.423-.423a.126.126 0 00-.088-.215.126.126 0 00-.089.036l-.246.247v-.487a.157.157 0 00-.157-.158z"/>
-    </g>
-    <g class="snowflake" >
-      <path fill="#64b5f6" d="M10.778 18a.355.355 0 00-.351.351v.07c-.046-.025-.09-.06-.141-.06a.322.322 0 00-.227.094c-.048.047-.06.112-.071.175-.06-.022-.123-.043-.189-.025a.325.325 0 00-.194.148.194.194 0 00-.001 0c-.025.045-.018.1-.02.153l-.06-.034a.353.353 0 00-.478.13.354.354 0 00.129.477l.06.035c-.044.028-.097.048-.123.093a.318.318 0 00-.03.242c.016.066.066.11.116.15-.05.04-.1.085-.118.15a.315.315 0 00.032.244c.027.046.079.066.123.094l-.059.034a.353.353 0 00-.13.478.353.353 0 00.478.128l.06-.034c.002.054-.004.109.022.153a.321.321 0 00.194.149c.065.017.127-.003.188-.026.01.063.023.129.07.176a.323.323 0 00.228.094c.05 0 .094-.034.141-.058v.068a.355.355 0 00.351.35.355.355 0 00.352-.35v-.069c.046.025.09.058.141.058a.322.322 0 00.227-.093c.047-.048.06-.113.07-.176.06.022.122.044.188.026a.32.32 0 00.194-.149.194.194 0 00.001-.001c.025-.043.018-.1.02-.152l.06.034a.354.354 0 00.478-.128.353.353 0 00-.129-.478l-.06-.034c.046-.028.097-.05.122-.094a.194.194 0 00.002-.001.32.32 0 00.031-.243c-.017-.065-.066-.11-.116-.151.049-.04.099-.084.116-.149a.315.315 0 00-.033-.243c-.026-.045-.076-.066-.121-.094l.06-.033a.353.353 0 00.128-.478.353.353 0 00-.478-.129l-.06.034c-.002-.053.004-.108-.022-.153a.321.321 0 00-.193-.148c-.066-.018-.128.003-.189.025-.01-.063-.022-.128-.07-.175a.324.324 0 00-.225-.095c-.05 0-.096.035-.142.058v-.067a.355.355 0 00-.352-.351zm-.511 1.116l.16.16v.118l-.102-.06zm1.02 0l-.057.218-.1.058v-.117zm-1.312.825l.101.058-.101.058L9.757 20zm1.607 0l.216.058-.218.058-.1-.058zm-1.155.666v.116l-.16.16.059-.216zm.703 0l.1.058.058.218-.158-.158z"/>
-      <path fill="url(#d-snow-flake)" d="M10.778 18.194a.157.157 0 00-.157.158v.487l-.248-.247a.126.126 0 10-.177.178l.425.426v.532l-.462-.266-.155-.58a.126.126 0 10-.244.065l.09.337-.421-.244a.157.157 0 00-.216.058.156.156 0 00.058.214l.422.244-.337.09a.125.125 0 00-.076.058.127.127 0 00-.011.097.124.124 0 00.153.088l.58-.155.462.266-.462.267-.58-.156a.126.126 0 10-.066.243l.339.091-.422.244a.158.158 0 00-.06.215c.044.075.14.1.216.057l.422-.244-.09.337a.126.126 0 00.09.154.126.126 0 00.153-.089l.156-.579.461-.268v.533l-.425.425a.126.126 0 10.179.178l.246-.248v.49a.158.158 0 00.315-.001v-.487l.246.246a.126.126 0 10.178-.178l-.424-.424v-.534l.461.267.155.58a.126.126 0 10.244-.065l-.091-.337.422.244a.157.157 0 10.157-.272l-.422-.244.337-.09a.125.125 0 00.09-.155.126.126 0 00-.155-.09l-.58.157-.461-.267.462-.266.579.156a.126.126 0 10.065-.244l-.337-.09.422-.244a.156.156 0 00.058-.214.157.157 0 00-.215-.058l-.422.244.09-.337a.126.126 0 00-.09-.154.126.126 0 00-.153.088l-.156.581-.46.266v-.534l.423-.423a.126.126 0 00-.088-.215.126.126 0 00-.089.036l-.246.247v-.487a.157.157 0 00-.157-.158z"/>
-    </g>
-    <g class="snowflake" >
-      <path fill="#64b5f6" d="M6.778 14a.355.355 0 00-.351.351v.07c-.046-.025-.09-.06-.141-.06a.322.322 0 00-.227.094c-.048.047-.06.112-.071.175-.06-.022-.123-.043-.189-.025a.325.325 0 00-.194.148.194.194 0 00-.001 0c-.025.045-.018.1-.02.153l-.06-.034a.353.353 0 00-.478.13.354.354 0 00.129.477l.06.035c-.044.028-.097.048-.123.093a.318.318 0 00-.03.242c.016.066.066.11.116.15-.05.04-.1.085-.118.15a.315.315 0 00.032.244c.027.046.079.066.123.094l-.059.034a.353.353 0 00-.13.478.353.353 0 00.478.128l.06-.034c.002.054-.004.109.022.153a.321.321 0 00.194.149c.065.017.127-.003.188-.026.01.063.023.129.07.176a.323.323 0 00.228.094c.05 0 .094-.034.141-.058v.068a.355.355 0 00.351.35.355.355 0 00.352-.35v-.069c.046.025.09.058.141.058a.322.322 0 00.227-.093c.047-.048.06-.113.07-.176.06.022.122.044.188.026a.32.32 0 00.194-.149.194.194 0 00.001-.001c.025-.043.018-.1.02-.152l.06.034A.354.354 0 008.508 17a.353.353 0 00-.129-.478l-.06-.034c.045-.028.097-.05.122-.094a.194.194 0 00.002-.001.32.32 0 00.031-.243c-.017-.065-.066-.11-.116-.151.049-.04.099-.084.116-.149a.315.315 0 00-.033-.243c-.026-.045-.077-.066-.121-.094l.059-.033A.353.353 0 008.51 15a.353.353 0 00-.48-.129l-.059.035c-.002-.054.004-.11-.022-.154a.321.321 0 00-.193-.148c-.066-.018-.128.003-.189.025-.01-.063-.022-.128-.07-.175a.324.324 0 00-.225-.095c-.05 0-.096.035-.142.058v-.067a.355.355 0 00-.352-.35zm-.511 1.116l.16.16v.118l-.102-.06zm1.02 0l-.057.218-.1.058v-.117zm-1.312.825l.101.058-.102.058L5.757 16zm1.607 0l.216.058-.218.058-.1-.058zm-1.155.666v.116l-.16.16.058-.216zm.703 0l.1.058.058.218-.158-.158z"/>
-      <path fill="url(#e-snow-flake)" d="M6.778 14.194a.157.157 0 00-.157.158v.487l-.248-.247a.126.126 0 10-.177.178l.425.426v.532l-.462-.266-.155-.58a.126.126 0 10-.244.065l.09.337-.421-.244a.157.157 0 00-.216.058.156.156 0 00.058.214l.422.244-.337.09a.125.125 0 00-.076.058.127.127 0 00-.011.097.124.124 0 00.153.088l.58-.155.462.266-.462.267-.58-.156a.126.126 0 10-.066.243l.339.091-.422.244a.158.158 0 00-.06.215c.044.075.14.1.216.057l.422-.244-.09.337a.126.126 0 00.09.154.126.126 0 00.153-.089l.156-.579.461-.268v.533l-.425.425a.126.126 0 10.179.178l.246-.248v.49a.158.158 0 00.315-.001v-.487l.246.246a.126.126 0 10.178-.178l-.424-.424v-.534l.461.267.155.58a.126.126 0 10.244-.065l-.091-.337.422.244a.157.157 0 10.157-.272l-.422-.244.337-.09a.125.125 0 00.09-.155.126.126 0 00-.155-.09l-.58.157L7.093 16l.462-.266.579.156a.126.126 0 10.065-.244l-.337-.09.422-.244a.156.156 0 00.058-.214.157.157 0 00-.215-.058l-.422.244.09-.337a.126.126 0 00-.09-.154.126.126 0 00-.153.088l-.156.581-.46.266v-.534l.423-.423a.126.126 0 00-.088-.215.126.126 0 00-.089.036l-.246.247v-.487a.157.157 0 00-.157-.158z"/>
-    </g>
-    <path fill="url(#f-snow-cloud)" d="M12.482 4.001a2.5 2.5 0 00-2.437 2.968 2.5 2.5 0 002.629 4.238 2.5 2.5 0 004.123-.724 2.5 2.5 0 00.245-4.923 2.5 2.5 0 00-2.871-.918A2.5 2.5 0 0012.482 4z" class="cloud"/>
-    <path fill="url(#g-snow-cloud)" d="M8.982 5a2.5 2.5 0 00-2.463 2.201A2.5 2.5 0 007.5 12a2.5 2.5 0 003.826.207 2.5 2.5 0 003.132-3.76 2.5 2.5 0 00-3.106-2.862 2.5 2.5 0 00-.526.208A2.5 2.5 0 008.982 5z" class="cloud"/>
-    <path fill="url(#h-snow-cloud)" d="M12.982 6a2.5 2.5 0 00-2.463 2.201A2.5 2.5 0 0011.5 13a2.5 2.5 0 003.826.207 2.5 2.5 0 003.132-3.76 2.5 2.5 0 00-3.106-2.862 2.5 2.5 0 00-.526.208A2.5 2.5 0 0012.982 6z" class="cloud"/>
-    <path fill="url(#i-snow-cloud)" d="M16.49 8a2.504 2.504 0 00-1.81.793 2.506 2.506 0 00-1.824-.208 2.5 2.5 0 00-1.213 4.086 2.504 2.504 0 004.19 2.536 2.506 2.506 0 003.221-.768c1.68-.398 2.144-2.019 1.875-3.086-.25-.99-1.104-1.712-2.12-1.834A2.503 2.503 0 0016.49 8z" class="cloud"/>
-    <path fill="url(#j-snow-cloud)" d="M7.483 8a2.5 2.5 0 00-1.982 1 2.5 2.5 0 00-2.415 3.147c.152.566.543 1.002.975 1.396.515 1.783 2.017 2.13 3.087 1.872a2.24 2.24 0 00.526-.208A2.5 2.5 0 0012 13.5a2.5 2.5 0 00-2.388-4.337A2.5 2.5 0 007.482 8z" class="cloud" />
-  </g>`
+    innerHtml: `<defs>
+      <linearGradient id="gr-cloud">
+        <stop id="stop1823" offset="0" stop-color="#90a4ae"/>
+        <stop id="stop1825" offset="1" stop-color="#eceff1"/>
+      </linearGradient>
+      <linearGradient id="gr-snowflake">
+        <stop id="stop2832" offset="0" stop-color="#fff"/>
+        <stop id="stop2834" offset="1" stop-color="#c5ddf1"/>
+      </linearGradient>
+      <linearGradient href="#gr-cloud" id="linearGradient782" x1="15" x2="11" y1="14" y2="6.299" gradientTransform="matrix(1.00034 0 0 1 .122 1.623)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="linearGradient784" x1="13" x2="9" y1="12" y2="4" gradientTransform="matrix(1.00038 0 0 .99978 -.002 2.003)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="linearGradient786" x1="10" x2="6" y1="15.588" y2="7.636" gradientTransform="matrix(1.00058 0 0 1.00023 -.001 1.928)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="linearGradient788" x1="18" x2="14" y1="14" y2="6" gradientTransform="matrix(1.00026 0 0 1 -.004 2)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="linearGradient790" x1="15" x2="11" y1="16" y2="8" gradientTransform="matrix(1.00018 0 0 1 -.002 2)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-snowflake" id="linearGradient996" x1="17.196" x2="18.409" y1="16.77" y2="19.316" gradientTransform="translate(0 -1)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-snowflake" id="linearGradient998" x1="10.196" x2="11.568" y1="18.77" y2="21.369" gradientTransform="translate(1)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-snowflake" id="linearGradient1000" x1="6.196" x2="7.438" y1="14.77" y2="17.287" gradientTransform="translate(0 2)" gradientUnits="userSpaceOnUse"/>
+    </defs>
+    <g>
+      <g class="flake">
+        <path fill="#64cff6" d="M11.777 18a.355.355 0 0 0-.35.351v.07c-.047-.025-.09-.06-.142-.06a.322.322 0 0 0-.227.094c-.048.047-.06.112-.07.175-.06-.022-.124-.043-.19-.025a.325.325 0 0 0-.194.148c-.026.045-.019.1-.02.153l-.06-.034a.353.353 0 0 0-.479.13.354.354 0 0 0 .13.477l.06.035c-.045.028-.098.048-.124.093a.318.318 0 0 0-.03.242c.016.066.066.11.116.15-.05.04-.1.085-.118.15a.315.315 0 0 0 .032.244c.027.046.08.066.123.094l-.059.034a.353.353 0 0 0-.13.478.353.353 0 0 0 .478.128l.06-.034c.002.054-.004.11.022.153a.321.321 0 0 0 .194.15c.065.016.127-.004.188-.027.01.063.023.13.07.176a.323.323 0 0 0 .228.094c.05 0 .094-.034.141-.058v.068a.355.355 0 0 0 .351.35.355.355 0 0 0 .352-.35v-.069c.046.025.09.058.141.058a.322.322 0 0 0 .227-.093c.047-.048.06-.113.07-.176.06.022.122.044.188.026a.32.32 0 0 0 .194-.149.194.194 0 0 0 .001 0c.025-.044.018-.1.02-.153l.06.034a.354.354 0 0 0 .478-.128.353.353 0 0 0-.129-.478l-.06-.034c.046-.028.097-.05.122-.094a.194.194 0 0 0 .002 0 .32.32 0 0 0 .031-.244c-.017-.065-.066-.11-.116-.15.05-.04.1-.085.116-.15a.315.315 0 0 0-.033-.243c-.026-.045-.076-.066-.12-.094l.06-.033a.353.353 0 0 0 .127-.478.353.353 0 0 0-.478-.129l-.06.034c-.002-.053.004-.108-.022-.153a.321.321 0 0 0-.193-.148c-.066-.018-.128.003-.189.025-.01-.063-.022-.128-.07-.175a.324.324 0 0 0-.225-.095c-.05 0-.096.035-.142.058v-.067a.355.355 0 0 0-.352-.35zm-.51 1.116.16.16v.118l-.103-.06zm1.02 0-.058.218-.1.058v-.117zm-1.313.825.101.058-.1.058-.219-.057zm1.607 0 .216.058-.218.058-.1-.058zm-1.155.666v.116l-.16.16.06-.216zm.703 0 .1.058.058.218-.158-.158z"/>
+        <path fill="url(#linearGradient998)" d="M11.777 18.194a.157.157 0 0 0-.157.158v.487l-.248-.247a.126.126 0 1 0-.177.178l.425.426v.532l-.462-.266-.155-.58a.126.126 0 1 0-.244.065l.09.337-.42-.244a.157.157 0 0 0-.217.058.156.156 0 0 0 .058.214l.422.244-.337.09a.125.125 0 0 0-.076.058.127.127 0 0 0-.01.097.124.124 0 0 0 .152.088l.58-.155.462.266-.462.267-.58-.156a.126.126 0 1 0-.066.243l.34.091-.423.244a.158.158 0 0 0-.06.215c.044.075.14.1.216.057l.422-.244-.09.337a.126.126 0 0 0 .09.154.126.126 0 0 0 .153-.089l.156-.579.461-.268v.533l-.425.425a.126.126 0 1 0 .18.178l.245-.248v.49a.158.158 0 0 0 .315 0v-.488l.246.246a.126.126 0 1 0 .178-.178l-.424-.424v-.534l.461.267.155.58a.126.126 0 1 0 .244-.065l-.09-.337.421.244a.157.157 0 1 0 .157-.272l-.422-.244.337-.09a.125.125 0 0 0 .09-.155.126.126 0 0 0-.155-.09l-.58.157-.46-.267.461-.266.58.156a.126.126 0 1 0 .064-.244l-.337-.09.422-.244a.156.156 0 0 0 .058-.214.157.157 0 0 0-.215-.058l-.422.244.09-.337a.126.126 0 0 0-.09-.154.126.126 0 0 0-.153.088l-.156.581-.46.266v-.534l.423-.423a.126.126 0 0 0-.088-.215.126.126 0 0 0-.089.036l-.246.247v-.487a.157.157 0 0 0-.157-.158z"/>
+      </g>
+      <path fill="url(#linearGradient782)" d="M12.108 7.623a2.5 2.5 0 0 0-2.463 2.201 2.5 2.5 0 0 0 .98 4.8 2.5 2.5 0 0 0 3.828.206 2.5 2.5 0 0 0 3.133-3.76 2.5 2.5 0 0 0-3.107-2.862 2.5 2.5 0 0 0-.526.208 2.5 2.5 0 0 0-1.845-.793z" display="inline"/>
+      <path fill="url(#linearGradient784)" d="M10.512 14a2.505 2.503 0 0 0 1.81-.793 2.51 2.51 0 0 0 1.825.208 2.501 2.5 0 0 0 1.213-4.084 2.49 2.49 0 0 0 .057-1.477 2.504 2.502 0 0 0-4.248-1.06 2.507 2.505 0 0 0-3.221.768c-1.682.4-2.145 2.02-1.876 3.087.25.99 1.104 1.711 2.12 1.833A2.505 2.503 0 0 0 10.512 14z" class="cloud"/>
+      <g class="flake">
+        <path fill="#64cff6" d="M6.777 16a.355.355 0 0 0-.35.351v.07c-.047-.025-.09-.06-.142-.06a.322.322 0 0 0-.227.094c-.048.047-.06.112-.07.175-.06-.022-.124-.043-.19-.025a.325.325 0 0 0-.194.148c-.026.045-.019.1-.02.153l-.06-.034a.353.353 0 0 0-.479.13.354.354 0 0 0 .13.477l.06.035c-.045.028-.098.048-.124.093a.318.318 0 0 0-.03.242c.016.066.066.11.116.15-.05.04-.1.085-.118.15a.315.315 0 0 0 .032.244c.027.046.08.066.123.094l-.059.034a.353.353 0 0 0-.13.478.353.353 0 0 0 .478.128l.06-.034c.002.054-.004.109.022.153a.321.321 0 0 0 .194.149c.065.017.127-.003.188-.026.01.063.023.129.07.176a.323.323 0 0 0 .228.094c.05 0 .094-.034.141-.058v.068a.355.355 0 0 0 .351.35.355.355 0 0 0 .352-.35v-.069c.046.025.09.058.141.058a.322.322 0 0 0 .227-.093c.047-.048.06-.113.07-.176.06.022.122.044.188.026a.32.32 0 0 0 .194-.149.194.194 0 0 0 .001-.001c.025-.043.018-.1.02-.152l.06.034A.354.354 0 0 0 8.507 19a.353.353 0 0 0-.129-.478l-.06-.034c.045-.028.097-.05.122-.094a.194.194 0 0 0 .002-.001.32.32 0 0 0 .031-.243c-.017-.065-.066-.11-.116-.151.05-.04.1-.084.116-.149a.315.315 0 0 0-.033-.243c-.026-.045-.077-.066-.12-.094l.058-.033A.353.353 0 0 0 8.51 17a.353.353 0 0 0-.48-.129l-.059.035c-.002-.054.004-.11-.022-.154a.321.321 0 0 0-.193-.148c-.066-.018-.128.003-.189.025-.01-.063-.022-.128-.07-.175a.324.324 0 0 0-.225-.095c-.05 0-.096.035-.142.058v-.067a.355.355 0 0 0-.352-.35Zm-.51 1.116.16.16v.118l-.103-.06zm1.02 0-.058.218-.1.058v-.117zm-1.313.825.101.058-.102.058L5.756 18zm1.607 0 .216.058-.218.058-.1-.058zm-1.155.666v.116l-.16.16.058-.216zm.703 0 .1.058.058.218-.158-.158z"/>
+        <path fill="url(#linearGradient1000)" d="M6.777 16.194a.157.157 0 0 0-.157.158v.487l-.248-.247a.126.126 0 1 0-.177.178l.425.426v.532l-.462-.266-.155-.58a.126.126 0 1 0-.244.065l.09.337-.42-.244a.157.157 0 0 0-.217.058.156.156 0 0 0 .058.214l.422.244-.337.09a.125.125 0 0 0-.076.058.127.127 0 0 0-.01.097.124.124 0 0 0 .152.088l.58-.155.462.266-.462.267-.58-.156a.126.126 0 1 0-.066.243l.34.091-.423.244a.158.158 0 0 0-.06.215c.044.075.14.1.216.057l.422-.244-.09.337a.126.126 0 0 0 .09.154.126.126 0 0 0 .153-.089l.156-.579.461-.268v.533l-.425.425a.126.126 0 1 0 .18.178l.245-.248v.49a.158.158 0 0 0 .315-.001v-.487l.246.246a.126.126 0 1 0 .178-.178l-.424-.424v-.534l.461.267.155.58a.126.126 0 1 0 .244-.065l-.09-.337.421.244a.157.157 0 1 0 .157-.272l-.422-.244.337-.09a.125.125 0 0 0 .09-.155.126.126 0 0 0-.155-.09l-.58.157-.46-.267.461-.266.58.156a.126.126 0 1 0 .064-.244l-.337-.09.422-.244a.156.156 0 0 0 .058-.214.157.157 0 0 0-.215-.058l-.422.244.09-.337a.126.126 0 0 0-.09-.154.126.126 0 0 0-.153.088l-.156.581-.46.266v-.534l.423-.423a.126.126 0 0 0-.088-.215.126.126 0 0 0-.089.036l-.246.247v-.487a.157.157 0 0 0-.157-.158z"/>
+      </g>
+      <path fill="url(#linearGradient786)" d="M9.522 9.5a2.501 2.5 0 0 1 2.439 2.969 2.501 2.5 0 0 1-2.63 4.24 2.501 2.5 0 0 1-4.126-.725 2.501 2.5 0 0 1-.245-4.925 2.501 2.5 0 0 1 2.872-.918 2.501 2.5 0 0 1 1.69-.64Z" class="cloud"/>
+      <path fill="url(#linearGradient788)" d="M17.019 16a2.5 2.5 0 0 0 2.463-2.201A2.5 2.5 0 0 0 18.502 9a2.5 2.5 0 0 0-3.827-.207 2.5 2.5 0 0 0-3.134 3.76 2.5 2.5 0 0 0 3.107 2.862 2.5 2.5 0 0 0 .527-.208A2.5 2.5 0 0 0 17.02 16Z" class="cloud"/>
+      <g class="flake">
+        <path fill="#64cff6" d="M17.777 15a.355.355 0 0 0-.35.351v.07c-.047-.025-.09-.06-.142-.06a.322.322 0 0 0-.227.094c-.048.047-.06.112-.07.175-.06-.022-.124-.043-.19-.025a.325.325 0 0 0-.194.148c-.027.045-.019.1-.02.153l-.06-.034a.353.353 0 0 0-.479.13.354.354 0 0 0 .13.477l.06.035c-.046.028-.098.048-.124.093a.318.318 0 0 0-.03.242c.016.066.066.11.116.15-.05.04-.1.085-.118.15a.315.315 0 0 0 .032.244c.027.046.078.066.123.094l-.059.034a.353.353 0 0 0-.13.478.353.353 0 0 0 .478.128l.06-.034c.002.054-.004.11.022.153a.321.321 0 0 0 .194.15c.065.016.127-.004.188-.027.01.063.023.13.07.176a.323.323 0 0 0 .228.094c.05 0 .094-.034.14-.058v.068a.355.355 0 0 0 .352.35.355.355 0 0 0 .352-.35v-.069c.046.025.09.058.141.058a.322.322 0 0 0 .227-.093c.047-.048.06-.113.07-.176.06.022.122.044.188.026a.32.32 0 0 0 .194-.149.194.194 0 0 0 .001 0c.025-.044.018-.1.02-.153l.06.034a.354.354 0 0 0 .478-.128.353.353 0 0 0-.13-.478l-.059-.034c.045-.028.097-.05.122-.094a.194.194 0 0 0 .002 0 .32.32 0 0 0 .03-.244c-.017-.065-.065-.11-.115-.15.048-.04.098-.085.116-.15a.315.315 0 0 0-.033-.243c-.026-.045-.077-.066-.122-.094l.06-.033a.353.353 0 0 0 .13-.478.353.353 0 0 0-.48-.129l-.06.034c0-.053.005-.108-.02-.153a.321.321 0 0 0-.194-.148c-.066-.018-.128.003-.189.025-.01-.063-.022-.128-.07-.175a.324.324 0 0 0-.225-.095c-.05 0-.096.035-.142.058v-.067a.355.355 0 0 0-.352-.35zm-.51 1.116.16.16v.118l-.103-.06zm1.02 0-.058.218-.1.058v-.117zm-1.313.825.101.058-.102.058-.217-.058zm1.607 0 .216.058-.218.058-.1-.058zm-1.155.666v.116l-.16.16.06-.216zm.703 0 .1.058.058.218-.158-.158z"/>
+        <path fill="url(#linearGradient996)" d="M17.778 15.194a.157.157 0 0 0-.157.158v.487l-.248-.247a.126.126 0 1 0-.177.178l.425.426v.532l-.462-.266-.155-.58a.126.126 0 1 0-.244.065l.09.337-.421-.244a.157.157 0 0 0-.216.058.156.156 0 0 0 .058.214l.422.244-.337.09a.125.125 0 0 0-.076.058.127.127 0 0 0-.011.097.124.124 0 0 0 .153.088l.58-.155.462.266-.462.267-.58-.156a.126.126 0 1 0-.066.243l.339.091-.422.244a.158.158 0 0 0-.06.215c.044.075.14.1.216.057l.422-.244-.09.337a.126.126 0 0 0 .09.154.126.126 0 0 0 .153-.089l.156-.579.461-.268v.533l-.425.425a.126.126 0 1 0 .179.178l.246-.248v.49a.158.158 0 0 0 .315 0v-.488l.246.246a.126.126 0 1 0 .178-.178l-.424-.424v-.534l.461.267.155.58a.126.126 0 1 0 .244-.065l-.091-.337.422.244a.157.157 0 1 0 .157-.272l-.422-.244.337-.09a.125.125 0 0 0 .09-.155.126.126 0 0 0-.155-.09l-.58.157-.461-.267.462-.266.579.156a.126.126 0 1 0 .065-.244l-.337-.09.422-.244a.156.156 0 0 0 .058-.214.157.157 0 0 0-.215-.058l-.422.244.09-.337a.126.126 0 0 0-.09-.154.126.126 0 0 0-.153.088l-.156.581-.46.266v-.534l.423-.423a.126.126 0 0 0-.088-.215.126.126 0 0 0-.089.036l-.246.247v-.487a.157.157 0 0 0-.157-.158z"/>
+      </g>
+      <path fill="url(#linearGradient790)" d="M12.483 10a2.5 2.5 0 0 0-1.982 1 2.5 2.5 0 0 0-2.415 3.147c.152.565.544 1.001.976 1.396.514 1.783 2.016 2.13 3.086 1.872a2.24 2.24 0 0 0 .526-.208 2.5 2.5 0 0 0 4.327-1.707 2.5 2.5 0 0 0-2.387-4.337A2.5 2.5 0 0 0 12.484 10Z" class="cloud"/>
+    </g>`
   },
   {
-    name: "flurries",
-    tag: "",
-    defs: `<linearGradient id="gr-cloud">
-    <stop offset="0" stop-color="#90a4ae"/>
-    <stop offset="1" stop-color="#eceff1"/>
-  </linearGradient>
-  <linearGradient id="gr-snowflake">
-    <stop offset="0" stop-color="#fff"/>
-    <stop offset="1" stop-color="#c5ddf1"/>
-  </linearGradient>
-  <linearGradient id="c-flurriescloud" x1="16" x2="12" y1="12" y2="4" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="d-flurriescloud" x1="12" x2="8" y1="13" y2="5" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="e-flurriescloud" x1="16" x2="12" y1="14" y2="6" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="g-flurriescloud" x1="18" x2="14" y1="16" y2="8" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="h-flurriescloud" x1="10" x2="6" y1="16" y2="8" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="i-flurryflake" x1="8.988" x2="10.568" y1="17.63" y2="20.369" gradientUnits="userSpaceOnUse" xlink:href="#gr-snowflake"/>
-  <linearGradient id="f-flurryflake" x1="17.196" x2="18.568" y1="13.77" y2="16.369" gradientUnits="userSpaceOnUse" xlink:href="#gr-snowflake"/>`,
-    path: `<g class="flurries">
-    <g class="snowflake" >
-      <path fill="#64b5f6" d="M17.778 13a.355.355 0 00-.351.351v.07c-.046-.025-.09-.06-.141-.06a.322.322 0 00-.227.094c-.048.047-.06.112-.071.175-.06-.022-.123-.043-.189-.025a.325.325 0 00-.194.148.194.194 0 00-.001 0c-.026.045-.018.1-.02.153l-.06-.034a.353.353 0 00-.478.13.354.354 0 00.129.477l.06.035c-.045.028-.097.048-.123.093a.318.318 0 00-.03.242c.016.066.066.11.116.15-.05.04-.1.085-.118.15a.315.315 0 00.032.244c.027.046.078.066.123.094l-.059.034a.353.353 0 00-.13.478.353.353 0 00.478.128l.06-.034c.002.054-.004.109.022.153a.321.321 0 00.194.149c.065.017.127-.003.188-.026.01.063.023.129.07.176a.323.323 0 00.228.094c.05 0 .094-.034.14-.058v.068a.355.355 0 00.352.35.355.355 0 00.352-.35v-.069c.046.025.09.058.141.058a.322.322 0 00.227-.093c.047-.048.06-.113.07-.176.06.022.122.044.188.026a.32.32 0 00.194-.149.194.194 0 00.001-.001c.025-.043.018-.1.02-.152l.06.034a.354.354 0 00.478-.128.353.353 0 00-.13-.478l-.059-.034c.045-.028.097-.05.122-.094a.194.194 0 00.002-.001.32.32 0 00.03-.243c-.017-.065-.065-.11-.115-.151.048-.04.098-.084.116-.149a.315.315 0 00-.033-.243c-.026-.045-.077-.066-.122-.094l.06-.033a.353.353 0 00.129-.478.353.353 0 00-.479-.129l-.06.034c-.001-.053.005-.108-.02-.153a.321.321 0 00-.194-.148c-.066-.018-.128.003-.189.025-.01-.063-.022-.128-.07-.175a.324.324 0 00-.225-.095c-.05 0-.096.035-.142.058v-.067a.355.355 0 00-.352-.351zm-.511 1.116l.16.16v.118l-.102-.06zm1.02 0l-.057.218-.1.058v-.117zm-1.312.825l.101.058-.102.058-.217-.058zm1.607 0l.216.058-.218.058-.1-.058zm-1.155.666v.116l-.16.16.059-.216zm.703 0l.1.058.058.218-.158-.158z"/>
-      <path fill="url(#f-flurryflake)" d="M17.778 13.194a.157.157 0 00-.157.158v.487l-.248-.247a.126.126 0 10-.177.178l.425.426v.532l-.462-.266-.155-.58a.126.126 0 10-.244.065l.09.337-.421-.244a.157.157 0 00-.216.058.156.156 0 00.058.214l.422.244-.337.09a.125.125 0 00-.076.058.127.127 0 00-.011.097.124.124 0 00.153.088l.58-.155.462.266-.462.267-.58-.156a.126.126 0 10-.066.243l.339.091-.422.244a.158.158 0 00-.06.215c.044.075.14.1.216.057l.422-.244-.09.337a.126.126 0 00.09.154.126.126 0 00.153-.089l.156-.579.461-.268v.533l-.425.425a.126.126 0 10.179.178l.246-.248v.49a.157.157 0 00.315-.001v-.487l.246.246a.126.126 0 10.178-.178l-.424-.424v-.534l.461.267.155.58a.126.126 0 10.244-.065l-.091-.337.422.244a.157.157 0 10.157-.272l-.422-.244.337-.09a.125.125 0 00.09-.155.126.126 0 00-.155-.09l-.58.157-.461-.267.462-.266.579.156a.126.126 0 10.065-.244l-.337-.09.422-.244a.156.156 0 00.058-.214.157.157 0 00-.215-.058l-.422.244.09-.337a.126.126 0 00-.09-.154.126.126 0 00-.153.088l-.156.581-.46.266v-.534l.423-.423a.126.126 0 00-.088-.215.126.126 0 00-.089.036l-.246.247v-.487a.157.157 0 00-.157-.158z"/>
-    </g>		
-    <g class="snowflake">
-      <path fill="#64b5f6" d="M9.778 17a.355.355 0 00-.351.351v.07c-.046-.025-.09-.06-.141-.06a.322.322 0 00-.227.094c-.048.047-.06.112-.071.175-.06-.022-.123-.043-.189-.025a.325.325 0 00-.194.148.194.194 0 00-.001 0c-.025.045-.018.1-.02.153l-.06-.034a.353.353 0 00-.478.13.354.354 0 00.129.477l.06.035c-.044.028-.097.048-.123.093a.318.318 0 00-.03.242c.016.066.066.11.116.15-.05.04-.1.085-.118.15a.315.315 0 00.032.244c.027.046.079.066.123.094l-.059.034a.353.353 0 00-.13.478.353.353 0 00.478.128l.06-.034c.002.054-.004.109.022.153a.321.321 0 00.194.149c.065.017.127-.003.188-.026.01.063.023.129.07.176a.323.323 0 00.228.094c.05 0 .094-.034.141-.058v.068a.355.355 0 00.351.35.355.355 0 00.352-.35v-.069c.046.025.09.058.141.058a.322.322 0 00.227-.093c.047-.048.06-.113.07-.176.06.022.122.044.188.026a.32.32 0 00.194-.149.194.194 0 00.001-.001c.025-.043.018-.1.02-.152l.06.034a.354.354 0 00.478-.128.353.353 0 00-.129-.478l-.06-.034c.046-.028.097-.05.122-.094a.194.194 0 00.002-.001.32.32 0 00.031-.243c-.017-.065-.066-.11-.116-.151.049-.04.099-.084.116-.149a.315.315 0 00-.033-.243c-.026-.045-.076-.066-.121-.094l.06-.033a.353.353 0 00.128-.478.353.353 0 00-.478-.129l-.06.034c-.002-.053.004-.108-.022-.153a.321.321 0 00-.193-.148c-.066-.018-.128.003-.189.025-.01-.063-.022-.128-.07-.175a.324.324 0 00-.225-.095c-.05 0-.096.035-.142.058v-.067A.355.355 0 009.778 17zm-.511 1.116l.16.16v.118l-.102-.06zm1.02 0l-.057.218-.1.058v-.117zm-1.312.825l.101.058-.101.058L8.757 19zm1.607 0l.216.058-.218.058-.1-.058zm-1.155.666v.116l-.16.16.058-.216zm.703 0l.1.058.058.218-.158-.158z"/>
-      <path fill="url(#i-flurryflake)" d="M9.778 17.194a.157.157 0 00-.157.158v.487l-.248-.247a.126.126 0 10-.177.178l.425.426v.532l-.462-.266-.155-.58a.126.126 0 10-.244.065l.09.337-.421-.244a.157.157 0 00-.216.058.156.156 0 00.058.214l.422.244-.337.09a.125.125 0 00-.076.058.127.127 0 00-.011.097.124.124 0 00.153.088l.58-.155.462.266-.462.267-.58-.156a.126.126 0 10-.066.243l.339.091-.422.244a.158.158 0 00-.06.215c.044.075.14.1.216.057l.422-.244-.09.337a.126.126 0 00.09.154.126.126 0 00.153-.089l.156-.579.461-.268v.533l-.425.425a.126.126 0 10.179.178l.246-.248v.49a.157.157 0 00.315-.001v-.487l.246.246a.126.126 0 10.178-.178l-.424-.424v-.534l.461.267.155.58a.126.126 0 10.244-.065l-.091-.337.422.244a.157.157 0 10.157-.272l-.422-.244.337-.09a.125.125 0 00.09-.155.126.126 0 00-.155-.09l-.58.157-.461-.267.462-.266.579.156a.126.126 0 10.065-.244l-.337-.09.422-.244a.156.156 0 00.058-.214.157.157 0 00-.215-.058l-.422.244.09-.337a.126.126 0 00-.09-.154.126.126 0 00-.153.088l-.156.581-.46.266v-.534l.423-.423a.126.126 0 00-.088-.215.126.126 0 00-.089.036l-.246.247v-.487a.157.157 0 00-.157-.158z"/>
-    </g>		
-		<path fill="url(#c-flurriescloud)" d="M12.482 4.001a2.5 2.5 0 00-2.437 2.968 2.5 2.5 0 002.629 4.238 2.5 2.5 0 004.123-.724 2.5 2.5 0 00.245-4.923 2.5 2.5 0 00-2.871-.918A2.5 2.5 0 0012.482 4z" class="cloud" />		
-      <path fill="url(#d-flurriescloud)" d="M8.982 5a2.5 2.5 0 00-2.463 2.201A2.5 2.5 0 007.5 12a2.5 2.5 0 003.826.207 2.5 2.5 0 003.132-3.76 2.5 2.5 0 00-3.106-2.862 2.5 2.5 0 00-.526.208A2.5 2.5 0 008.982 5z" class="cloud" />			
-      <path fill="url(#e-flurriescloud)" d="M12.982 6a2.5 2.5 0 00-2.463 2.201A2.5 2.5 0 0011.5 13a2.5 2.5 0 003.826.207 2.5 2.5 0 003.132-3.76 2.5 2.5 0 00-3.106-2.862 2.5 2.5 0 00-.526.208A2.5 2.5 0 0012.982 6z" class="cloud" />			
-    <path fill="url(#g-flurriescloud)" d="M16.49 8a2.504 2.504 0 00-1.81.793 2.506 2.506 0 00-1.824-.208 2.5 2.5 0 00-1.213 4.086 2.504 2.504 0 004.19 2.536 2.506 2.506 0 003.221-.768c1.68-.398 2.144-2.019 1.875-3.086-.25-.99-1.104-1.712-2.12-1.834A2.503 2.503 0 0016.49 8z" class="cloud" />		
-    <path fill="url(#h-flurriescloud)" d="M7.483 8a2.5 2.5 0 00-1.982 1 2.5 2.5 0 00-2.415 3.147c.152.566.543 1.002.975 1.396.515 1.783 2.017 2.13 3.087 1.872a2.24 2.24 0 00.526-.208A2.5 2.5 0 0012 13.5a2.5 2.5 0 00-2.388-4.337A2.5 2.5 0 007.482 8z" class="cloud" />			
-  </g>`
+    name: "snow-light",
+    innerHtml: `<defs>
+      <linearGradient id="gr-cloud">
+        <stop id="stop1823" offset="0" stop-color="#90a4ae"/>
+        <stop id="stop1825" offset="1" stop-color="#eceff1"/>
+      </linearGradient>
+      <linearGradient id="gr-snowflake">
+        <stop id="stop2832" offset="0" stop-color="#fff"/>
+        <stop id="stop2834" offset="1" stop-color="#c5ddf1"/>
+      </linearGradient>
+      <linearGradient href="#gr-cloud" id="linearGradient1196" x1="15" x2="11" y1="14" y2="6.299" gradientTransform="matrix(1.00031 0 0 1 .122 1.623)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="linearGradient1198" x1="13" x2="9" y1="12" y2="4" gradientTransform="matrix(1.00036 0 0 .99978 -.002 2.003)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-snowflake" id="linearGradient1200" x1="6.196" x2="7.438" y1="14.77" y2="17.287" gradientTransform="matrix(.99997 0 0 1 2 4)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="linearGradient1202" x1="10" x2="6" y1="15.588" y2="7.636" gradientTransform="matrix(1.00055 0 0 1.00023 -.001 1.928)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="linearGradient1204" x1="18" x2="14" y1="14" y2="6" gradientTransform="matrix(1.00024 0 0 1 -.004 2)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-snowflake" id="linearGradient1206" x1="17.196" x2="18.409" y1="16.77" y2="19.316" gradientTransform="matrix(.99997 0 0 1 0 -1)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="linearGradient1208" x1="15" x2="11" y1="16" y2="8" gradientTransform="matrix(1.00015 0 0 1 -.002 2)" gradientUnits="userSpaceOnUse"/>
+    </defs>
+    <g>
+      <path fill="url(#linearGradient1196)" d="M12.108 7.623a2.5 2.5 0 0 0-2.464 2.201 2.5 2.5 0 0 0 .982 4.8 2.5 2.5 0 0 0 3.827.206 2.5 2.5 0 0 0 3.133-3.76 2.5 2.5 0 0 0-3.107-2.862 2.5 2.5 0 0 0-.526.208 2.5 2.5 0 0 0-1.845-.793Z"/>
+      <path fill="url(#linearGradient1198)" d="M10.511 14a2.505 2.503 0 0 0 1.811-.793 2.51 2.51 0 0 0 1.825.208 2.5 2.5 0 0 0 1.213-4.084c.167-.476.187-.99.057-1.477a2.504 2.502 0 0 0-4.248-1.06 2.507 2.505 0 0 0-3.222.768c-1.681.4-2.144 2.02-1.875 3.087.25.99 1.104 1.711 2.12 1.833A2.505 2.503 0 0 0 10.512 14z" class="cloud"/>
+      <g class="flake" transform="translate(-1,0)">
+        <path fill="#64cff6" d="M8.777 18a.355.355 0 0 0-.35.351v.07c-.047-.025-.09-.06-.142-.06a.322.322 0 0 0-.227.094c-.048.047-.06.112-.07.175-.06-.022-.124-.043-.19-.025a.325.325 0 0 0-.194.148c-.026.045-.019.1-.02.153l-.06-.034a.353.353 0 0 0-.479.13.354.354 0 0 0 .13.477l.06.035c-.045.028-.098.048-.124.093a.318.318 0 0 0-.03.242c.016.066.066.11.116.15-.05.04-.1.085-.118.15a.315.315 0 0 0 .032.244c.027.046.08.066.123.094l-.059.034a.353.353 0 0 0-.13.478.353.353 0 0 0 .478.128l.06-.034c.002.054-.004.109.022.153a.321.321 0 0 0 .194.149c.065.017.127-.003.188-.026.01.063.023.129.07.176a.323.323 0 0 0 .228.094c.05 0 .094-.034.141-.058v.068a.355.355 0 0 0 .351.35.355.355 0 0 0 .352-.35v-.069c.046.025.09.058.141.058a.322.322 0 0 0 .227-.093c.047-.048.06-.113.07-.176.06.022.122.044.188.026a.32.32 0 0 0 .194-.149.194.194 0 0 0 .001-.001c.025-.043.018-.1.02-.152l.06.034a.354.354 0 0 0 .477-.127.353.353 0 0 0-.129-.478l-.06-.034c.045-.028.097-.05.122-.094a.194.194 0 0 0 .002-.001.32.32 0 0 0 .031-.243c-.017-.065-.066-.11-.116-.151.05-.04.1-.084.116-.149a.315.315 0 0 0-.033-.243c-.026-.045-.077-.066-.12-.094l.058-.033a.353.353 0 0 0 .131-.48.353.353 0 0 0-.48-.129l-.059.035c-.002-.054.004-.11-.022-.154a.321.321 0 0 0-.193-.148c-.066-.018-.128.003-.189.025-.01-.063-.022-.128-.07-.175a.324.324 0 0 0-.225-.095c-.05 0-.096.035-.142.058v-.067a.355.355 0 0 0-.352-.35Zm-.51 1.116.16.16v.118l-.103-.06zm1.02 0-.058.218-.1.058v-.117Zm-1.313.825.101.058-.102.058L7.756 20Zm1.607 0 .216.058-.218.058-.1-.058zm-1.155.666v.116l-.16.16.058-.216zm.703 0 .1.058.058.218-.158-.158z"/>
+        <path fill="url(#linearGradient1200)" d="M8.777 18.194a.157.157 0 0 0-.157.158v.487l-.248-.247a.126.126 0 1 0-.177.178l.425.426v.532l-.462-.266-.155-.58a.126.126 0 1 0-.244.065l.09.337-.421-.244a.157.157 0 0 0-.216.058.156.156 0 0 0 .058.214l.422.244-.337.09a.125.125 0 0 0-.076.058.127.127 0 0 0-.011.097.124.124 0 0 0 .153.088l.58-.155.462.266-.462.267-.58-.156a.126.126 0 1 0-.066.243l.339.091-.422.244a.158.158 0 0 0-.06.215c.044.075.14.1.216.057l.422-.244-.09.337a.126.126 0 0 0 .09.154.126.126 0 0 0 .153-.089l.156-.579.46-.268v.533l-.424.425a.126.126 0 1 0 .179.178l.246-.248v.49a.158.158 0 0 0 .315-.001v-.487l.246.246a.126.126 0 1 0 .178-.178l-.424-.424v-.534l.46.267.156.58a.126.126 0 1 0 .244-.065l-.091-.337.422.244a.157.157 0 1 0 .157-.272l-.422-.244.337-.09a.125.125 0 0 0 .09-.155.126.126 0 0 0-.155-.09l-.58.157L9.092 20l.462-.266.579.156a.126.126 0 1 0 .065-.244l-.337-.09.422-.244a.156.156 0 0 0 .058-.214.157.157 0 0 0-.215-.058l-.422.244.09-.337a.126.126 0 0 0-.09-.154.126.126 0 0 0-.153.088l-.156.581-.46.266v-.534l.423-.423a.126.126 0 0 0-.088-.215.126.126 0 0 0-.09.036l-.245.247v-.487a.157.157 0 0 0-.157-.158Z"/>
+      </g>
+      <path fill="url(#linearGradient1202)" d="M9.522 9.5a2.501 2.5 0 0 1 2.438 2.969 2.501 2.5 0 0 1-2.63 4.24 2.501 2.5 0 0 1-4.125-.725 2.501 2.5 0 0 1-.245-4.925 2.501 2.5 0 0 1 2.872-.918 2.501 2.5 0 0 1 1.69-.64Z" class="cloud"/>
+      <path fill="url(#linearGradient1204)" d="M17.018 16a2.5 2.5 0 0 0 2.464-2.201A2.5 2.5 0 0 0 18.502 9a2.5 2.5 0 0 0-3.827-.207 2.5 2.5 0 0 0-3.134 3.76 2.5 2.5 0 0 0 3.107 2.862 2.5 2.5 0 0 0 .527-.208 2.5 2.5 0 0 0 1.843.793Z" class="cloud"/>
+      <g class="flake">
+        <path fill="#64cff6" d="M17.777 15a.355.355 0 0 0-.351.351v.07c-.046-.025-.09-.06-.141-.06a.322.322 0 0 0-.227.094c-.048.047-.06.112-.071.175-.06-.022-.123-.043-.19-.025a.325.325 0 0 0-.193.148.194.194 0 0 0-.001 0c-.026.045-.018.1-.02.153l-.06-.034a.353.353 0 0 0-.478.13.354.354 0 0 0 .129.477l.06.035c-.045.028-.097.048-.123.093a.318.318 0 0 0-.03.242c.016.066.066.11.116.15-.05.04-.1.085-.118.15a.315.315 0 0 0 .032.244c.027.046.078.066.123.094l-.06.034a.353.353 0 0 0-.13.478.353.353 0 0 0 .479.128l.06-.034c.002.054-.004.11.022.153a.321.321 0 0 0 .194.15c.065.016.127-.004.188-.027.01.063.023.13.07.176a.323.323 0 0 0 .228.094c.05 0 .094-.034.14-.058v.068a.355.355 0 0 0 .352.35.355.355 0 0 0 .352-.35v-.069c.046.025.09.058.14.058a.322.322 0 0 0 .228-.093c.047-.048.06-.113.07-.176.06.022.122.044.188.026a.32.32 0 0 0 .194-.149c.026-.044.019-.1.02-.153l.06.034a.354.354 0 0 0 .479-.128.353.353 0 0 0-.13-.478l-.06-.034c.046-.028.098-.05.123-.094a.194.194 0 0 0 .002 0 .32.32 0 0 0 .03-.244c-.017-.065-.065-.11-.115-.15.048-.04.098-.085.116-.15a.315.315 0 0 0-.033-.243c-.026-.045-.077-.066-.122-.094l.06-.033a.353.353 0 0 0 .129-.478.353.353 0 0 0-.48-.129l-.06.034c0-.053.006-.108-.02-.153a.321.321 0 0 0-.193-.148c-.066-.018-.128.003-.19.025-.01-.063-.021-.128-.07-.175a.324.324 0 0 0-.224-.095c-.05 0-.096.035-.142.058v-.067a.355.355 0 0 0-.352-.35zm-.511 1.116.16.16v.118l-.102-.06zm1.02 0-.057.218-.1.058v-.117zm-1.312.825.1.058-.101.058-.217-.058zm1.607 0 .216.058-.218.058-.1-.058zm-1.155.666v.116l-.16.16.059-.216zm.703 0 .1.058.058.218-.158-.158z"/>
+        <path fill="url(#linearGradient1206)" d="M17.778 15.194a.157.157 0 0 0-.157.158v.487l-.248-.247a.126.126 0 1 0-.177.178l.425.426v.532l-.462-.266-.155-.58a.126.126 0 1 0-.244.065l.09.337-.421-.244a.157.157 0 0 0-.216.058.156.156 0 0 0 .058.214l.422.244-.337.09a.125.125 0 0 0-.076.058.127.127 0 0 0-.011.097.124.124 0 0 0 .153.088l.58-.155.462.266-.462.267-.58-.156a.126.126 0 1 0-.066.243l.339.091-.422.244a.158.158 0 0 0-.06.215c.044.075.14.1.216.057l.422-.244-.09.337a.126.126 0 0 0 .09.154.126.126 0 0 0 .153-.089l.156-.579.46-.268v.533l-.424.425a.126.126 0 1 0 .179.178l.246-.248v.49a.158.158 0 0 0 .315 0v-.488l.246.246a.126.126 0 1 0 .178-.178l-.424-.424v-.534l.46.267.156.58a.126.126 0 1 0 .244-.065l-.091-.337.422.244a.157.157 0 1 0 .157-.272l-.422-.244.337-.09a.125.125 0 0 0 .09-.155.126.126 0 0 0-.155-.09l-.58.157-.461-.267.462-.266.579.156a.126.126 0 1 0 .065-.244l-.337-.09.422-.244a.156.156 0 0 0 .058-.214.157.157 0 0 0-.215-.058l-.422.244.09-.337a.126.126 0 0 0-.09-.154.126.126 0 0 0-.153.088l-.156.581-.46.266v-.534l.423-.423a.126.126 0 0 0-.088-.215.126.126 0 0 0-.09.036l-.245.247v-.487a.157.157 0 0 0-.157-.158z"/>
+      </g>
+      <path fill="url(#linearGradient1208)" d="M12.483 10a2.5 2.5 0 0 0-1.982 1 2.5 2.5 0 0 0-2.415 3.147c.152.565.544 1.001.976 1.396.514 1.783 2.016 2.13 3.086 1.872a2.24 2.24 0 0 0 .526-.208 2.5 2.5 0 0 0 4.327-1.707 2.5 2.5 0 0 0-2.387-4.337A2.5 2.5 0 0 0 12.484 10Z" class="cloud"/>
+    </g>`
   },
   {
     name: "sleet",
-    weatherCode: [],
-    tag: "",
-    defs: `<linearGradient id="gr-cloud">
-    <stop offset="0" stop-color="#90a4ae"/>
-    <stop offset="1" stop-color="#eceff1"/>
-  </linearGradient>
-  <linearGradient id="gr-ice">
-    <stop offset="0" stop-color="#e3f1fc"/>
-    <stop offset=".339" stop-color="#badefa"/>
-    <stop offset="1" stop-color="#64b6f6"/>
-  </linearGradient>
-  <linearGradient id="c-pellet-shell" x2="3" y2="3" gradientTransform="translate(6 16)" gradientUnits="userSpaceOnUse" xlink:href="#gr-ice"/>
-  <linearGradient id="i" x1="18" x2="14" y1="16" y2="8" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="e" x1="17" x2="13" y1="12" y2="4" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="f" x1="12" x2="8" y1="13" y2="5" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="g" x1="10" x2="6" y1="16" y2="8" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="h" x1="15" x2="11" y1="14" y2="6.299" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="d-pellet-core" x2="3" y2="3" gradientTransform="translate(-8.65 -18.65) scale(.76667)" gradientUnits="userSpaceOnUse" xlink:href="#gr-ice"/>`,
-    path: `<g  class="pellet" transform="translate(5 2)">
-    <circle cx="7.5" cy="17.5" r="1.5" fill="url(#c-pellet-shell)"/>
-    <circle cx="-7.5" cy="-17.5" r="1.15" fill="url(#d-pellet-core)" transform="scale(-1)"/>
-  </g>
-  <g  class="pellet" transform="translate(10 -1)">
-    <circle cx="7.5" cy="17.5" r="1.5" fill="url(#c-pellet-shell)"/>
-    <circle cx="-7.5" cy="-17.5" r="1.15" fill="url(#d-pellet-core)" transform="scale(-1)"/>
-  </g>
-  <g  class="pellet" >
-    <circle cx="7.5" cy="17.5" r="1.5" fill="url(#c-pellet-shell)"/>
-    <circle cx="-7.5" cy="-17.5" r="1.15" fill="url(#d-pellet-core)" transform="scale(-1)"/>
-  </g>
-    <path fill="url(#e)" d="M14.483 4a2.5 2.5 0 00-1.982 1 2.5 2.5 0 00-2.415 3.147c.152.566.543 1.002.975 1.396.515 1.783 2.017 2.13 3.087 1.872a2.24 2.24 0 00.526-.208A2.5 2.5 0 0019 9.5a2.5 2.5 0 00-2.388-4.337A2.5 2.5 0 0014.482 4z"/>
-    <path fill="url(#f)" d="M8.482 5.001a2.5 2.5 0 00-2.437 2.968 2.5 2.5 0 002.629 4.238 2.5 2.5 0 004.123-.724 2.5 2.5 0 00.245-4.923 2.5 2.5 0 00-2.871-.918A2.5 2.5 0 008.482 5z"/>
-    <path fill="url(#g)" d="M6.982 8a2.5 2.5 0 00-2.463 2.201A2.5 2.5 0 005.5 15a2.5 2.5 0 003.826.207 2.5 2.5 0 003.132-3.76 2.5 2.5 0 00-3.106-2.862 2.5 2.5 0 00-.526.208A2.5 2.5 0 006.982 8z"/>
-    <path fill="url(#h)" d="M11.982 6a2.5 2.5 0 00-2.463 2.201A2.5 2.5 0 0010.5 13a2.5 2.5 0 003.826.207 2.5 2.5 0 003.132-3.76 2.5 2.5 0 00-3.106-2.862 2.5 2.5 0 00-.526.208A2.5 2.5 0 0011.982 6z"/>
-    <path fill="url(#i)" d="M16.49 8a2.504 2.504 0 00-1.81.793 2.506 2.506 0 00-1.824-.208 2.5 2.5 0 00-1.213 4.086 2.504 2.504 0 004.19 2.536 2.506 2.506 0 003.221-.768c1.68-.398 2.144-2.019 1.875-3.086-.25-.99-1.104-1.712-2.12-1.834A2.503 2.503 0 0016.49 8z"/>`
+    innerHtml: `<defs>
+      <linearGradient id="gr-ice">
+        <stop id="stop8401" offset="0" stop-color="#e3f4fc" stop-opacity="1"/>
+        <stop id="stop8403" offset=".339" stop-color="#b8e4fa" stop-opacity="1"/>
+        <stop id="stop8405" offset="1" stop-color="#65c6f6" stop-opacity="1"/>
+      </linearGradient>
+      <linearGradient id="gr-cloud">
+        <stop id="stop1823" offset="0" stop-color="#90a4ae"/>
+        <stop id="stop1825" offset="1" stop-color="#eceff1"/>
+      </linearGradient>
+      <linearGradient href="#gr-cloud" id="j-snow-cloud" x1="10" x2="6" y1="16" y2="8" gradientTransform="matrix(1.00034 0 0 1 -.002 2)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="i-snow-cloud" x1="18" x2="14" y1="16" y2="8" gradientTransform="matrix(1.00022 0 0 1.0005 -.005 1.996)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="g-snow-cloud" x1="12" x2="8" y1="13" y2="5" gradientTransform="matrix(1.00108 0 0 1.00019 -.017 2)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-ice" id="c-pellet-shell" x2="3" y2="3" gradientTransform="translate(6 17)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="e" x1="17" x2="13" y1="12" y2="4" gradientTransform="matrix(1.00008 0 0 1 -.002 2)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="h" x1="15" x2="11" y1="14" y2="6.299" gradientTransform="matrix(1.00034 0 0 1 -.004 2)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-ice" id="d-pellet-core" x2="3" y2="3" gradientTransform="translate(-8.65 -19.65) scale(.76667)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-ice" id="linearGradient4069" x2="3" y2="3" gradientTransform="translate(10 19)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-ice" id="linearGradient4071" x2="3" y2="3" gradientTransform="translate(-12.65 -21.65) scale(.76667)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-ice" id="linearGradient4073" x2="3" y2="3" gradientTransform="translate(16 16)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-ice" id="linearGradient4075" x2="3" y2="3" gradientTransform="translate(-18.65 -18.65) scale(.76667)" gradientUnits="userSpaceOnUse"/>
+    </defs>
+    <g>
+      <g>
+        <circle cx="11.5" cy="20.5" r="1.5" fill="url(#linearGradient4069)"/>
+        <circle cx="-11.5" cy="-20.5" r="1.15" fill="url(#linearGradient4071)" transform="scale(-1)"/>
+      </g>
+      <g>
+        <circle cx="17.5" cy="17.5" r="1.5" fill="url(#linearGradient4073)"/>
+        <circle cx="-17.5" cy="-17.5" r="1.15" fill="url(#linearGradient4075)" transform="scale(-1)"/>
+      </g>
+      <g>
+        <circle cx="7.5" cy="18.5" r="1.5" fill="url(#c-pellet-shell)"/>
+        <circle cx="-7.5" cy="-18.5" r="1.15" fill="url(#d-pellet-core)" transform="scale(-1)"/>
+      </g>
+      <path fill="url(#e)" d="M14.483 6A2.5 2.5 0 0 0 12.5 7a2.5 2.5 0 0 0-2.415 3.147c.152.566.543 1.002.975 1.396.515 1.783 2.017 2.13 3.087 1.872a2.24 2.24 0 0 0 .527-.208A2.5 2.5 0 0 0 19 11.5a2.5 2.5 0 0 0-2.388-4.337A2.5 2.5 0 0 0 14.482 6z"/>
+      <path fill="url(#g-snow-cloud)" d="M8.474 7.001a2.503 2.5 0 0 0-2.44 2.969 2.503 2.5 0 0 0 2.633 4.238 2.503 2.5 0 0 0 4.127-.724 2.503 2.5 0 0 0 .245-4.924 2.503 2.5 0 0 0-2.874-.918A2.503 2.5 0 0 0 8.475 7z"/>
+      <path fill="url(#j-snow-cloud)" d="M6.982 10a2.5 2.5 0 0 0-2.464 2.201 2.5 2.5 0 0 0 .982 4.8 2.5 2.5 0 0 0 3.827.206 2.5 2.5 0 0 0 3.133-3.76 2.5 2.5 0 0 0-3.107-2.862 2.5 2.5 0 0 0-.526.208A2.5 2.5 0 0 0 6.982 10z"/>
+      <path fill="url(#linearGradient3973)" d="M 11.982422 8 A 2.5008408 2.5 0 0 0 9.5175781 10.201172 A 2.5008408 2.5 0 0 0 10.5 15 A 2.5008408 2.5 0 0 0 13.498047 15.787109 C 14.342675 16.155607 15.356714 16.043431 16.101562 15.419922 A 2.5008408 2.5 0 0 0 16.498047 15.289062 C 18.831863 16.335405 21.101335 13.518945 19.460938 11.447266 C 19.788962 9.6427644 18.125822 8.1118102 16.353516 8.5859375 C 16.232182 8.6186194 16.112939 8.6605041 15.998047 8.7109375 A 2.5008408 2.5 0 0 0 14.353516 8.5859375 A 2.5008408 2.5 0 0 0 13.826172 8.7929688 A 2.5008408 2.5 0 0 0 11.982422 8 z" class="cloud"/>
+      <path fill="url(#i-snow-cloud)" d="M16.489 10a2.505 2.505 0 0 0-1.81.793 2.507 2.507 0 0 0-1.825-.208 2.5 2.501 0 0 0-1.213 4.088 2.505 2.505 0 0 0 4.19 2.538 2.507 2.507 0 0 0 3.222-.769c1.68-.398 2.145-2.02 1.876-3.087-.25-.99-1.105-1.713-2.12-1.835a2.504 2.504 0 0 0-2.32-1.52z"/>
+    </g>`
   },
   {
     name: "thunderstorm",
-    weatherCode: [],
-    tag: ["11d","11n"],
-    defs: `<linearGradient id="gr-stormcloud">
-    <stop offset="0" stop-color="#546e7a"/>
-    <stop offset="1" stop-color="#cfd8dc"/>
-  </linearGradient>
-  <linearGradient id="c-stormcloud" x1="10" x2="6" y1="15.582" y2="7.63" gradientUnits="userSpaceOnUse" xlink:href="#gr-stormcloud"/>
-  <linearGradient id="f-stormcloud" x1="13" x2="9" y1="13" y2="5" gradientUnits="userSpaceOnUse" xlink:href="#gr-stormcloud"/>
-  <linearGradient id="e-stormcloud" x1="18" x2="14" y1="14.4" y2="6" gradientUnits="userSpaceOnUse" xlink:href="#gr-stormcloud"/>
-  <linearGradient id="g-stormcloud" x1="15" x2="11" y1="16" y2="8" gradientUnits="userSpaceOnUse" xlink:href="#gr-stormcloud"/>
-  <linearGradient id="d-stormcloud" x1="14" x2="10" y1="13" y2="5" gradientUnits="userSpaceOnUse" xlink:href="#gr-stormcloud"/>
-  <linearGradient id="gr-lightning" x1="11" x2="10" y1="15" y2="19" gradientUnits="userSpaceOnUse">
-    <stop offset="0" stop-color="#e65100"/>
-    <stop offset="1" stop-color="#ffc107"/>
-  </linearGradient>`,
-    path: `<g class="thunderstorm">
-    <path fill="#78909c" d="M9.952 12A2 2 0 008 14a2 2 0 002 2 2 2 0 001.5-.68A2 2 0 0013 16a2 2 0 002-2 2 2 0 00-2-2 2 2 0 00-1.5.68A2 2 0 0010 12a2 2 0 00-.048 0z" class="notcloud" />
-    <path fill="url(#gr-lightning)" d="M12.756 13L8 17h1.25l-1.005 4L13 17h-1.25z" class="bolt" />
-    <path fill="url(#c-stormcloud)" d="M9.518 7.563a2.5 2.5 0 012.437 2.968 2.5 2.5 0 01-2.628 4.239 2.5 2.5 0 01-4.124-.725 2.5 2.5 0 01-.245-4.923h.001a2.5 2.5 0 012.871-.918 2.5 2.5 0 011.688-.641z" class="stormcloud" />
-    <path fill="url(#d-stormcloud)" d="M11.51 13a2.504 2.504 0 001.81-.793c.56.298 1.212.372 1.825.208a2.5 2.5 0 001.212-4.085c.167-.475.187-.99.057-1.476a2.504 2.504 0 00-4.247-1.06 2.506 2.506 0 00-3.22.768c-1.681.398-2.144 2.019-1.875 3.086.25.99 1.104 1.712 2.119 1.834A2.503 2.503 0 0011.511 13z" class="stormcloud" />
-    <path fill="url(#e-stormcloud)" d="M16.597 6.002a2.502 2.502 0 00-1.922.791 2.5 2.5 0 00-3.133 3.76 2.5 2.5 0 003.633 2.654c.093.1.2.185.306.268a2.5 2.5 0 002.02 1.025 2.5 2.5 0 002.5-2.5 2.5 2.5 0 00-.047-.474A2.494 2.494 0 0018.501 7a2.501 2.501 0 00-1.904-.998z" class="stormcloud" />
-    <path fill="url(#f-stormcloud)" d="M9.983 5A2.5 2.5 0 007.52 7.201 2.5 2.5 0 008.5 12a2.5 2.5 0 003.826.207 2.5 2.5 0 003.133-3.76 2.5 2.5 0 00-3.106-2.862 2.5 2.5 0 00-.527.208A2.5 2.5 0 009.983 5z" class="stormcloud" />
-    <path fill="url(#g-stormcloud)" d="M12.483 8a2.5 2.5 0 00-1.982 1 2.5 2.5 0 00-2.415 3.147c.152.566.544 1.002.976 1.396.514 1.783 2.016 2.13 3.086 1.872a2.24 2.24 0 00.527-.208A2.5 2.5 0 0017 13.5a2.5 2.5 0 00-2.387-4.337A2.5 2.5 0 0012.483 8z" class="stormcloud" />
-  </g>`
+    innerHtml: `<defs>
+      <linearGradient id="gr-stormcloud">
+        <stop id="stop3193" offset="0" stop-color="#546e7a"/>
+        <stop id="stop3195" offset="1" stop-color="#cfd8dc"/>
+      </linearGradient>
+      <linearGradient id="gr-lightning" x1="11" x2="10" y1="15" y2="19" gradientTransform="matrix(.9999 0 0 1 .002 1)" gradientUnits="userSpaceOnUse">
+        <stop id="stop3203" offset="0" stop-color="#e65100"/>
+        <stop id="stop3205" offset="1" stop-color="#ffc107"/>
+      </linearGradient>
+      <linearGradient href="#gr-stormcloud" id="linearGradient2289" x1="10" x2="6" y1="15.582" y2="7.63" gradientTransform="matrix(1.00075 0 0 1.00014 -.002 .999)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-stormcloud" id="linearGradient2291" x1="14" x2="10" y1="13" y2="5" gradientTransform="matrix(1.00027 0 0 1 -.002 1)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-stormcloud" id="linearGradient2293" x1="18" x2="14" y1="14.4" y2="6" gradientTransform="matrix(.9999 0 0 1 0 1)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-stormcloud" id="linearGradient2295" x1="13" x2="9" y1="13" y2="5" gradientTransform="matrix(1.00017 0 0 1 -.002 1)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-stormcloud" id="linearGradient2297" x1="15" x2="11" y1="16" y2="8" gradientTransform="matrix(1.00008 0 0 1.0002 0 .998)" gradientUnits="userSpaceOnUse"/>
+    </defs>
+    <g>
+      <path fill="#78909c" d="M9.952 13A2 2 0 0 0 8 15a2 2 0 0 0 2 2 2 2 0 0 0 1.5-.68A2 2 0 0 0 13 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-1.5.68A2 2 0 0 0 10 13a2 2 0 0 0-.048 0z" class="notcloud"/>
+      <path fill="url(#gr-lightning)" d="m12.756 14-4.755 4h1.25l-1.005 4L13 18h-1.25z" class="bolt"/>
+      <path fill="url(#linearGradient2289)" d="M9.523 8.563a2.502 2.5 0 0 1 2.44 2.968 2.502 2.5 0 0 1-2.63 4.24 2.502 2.5 0 0 1-4.128-.725 2.502 2.5 0 0 1-.245-4.924h.001a2.502 2.5 0 0 1 2.873-.918 2.502 2.5 0 0 1 1.69-.64z" class="stormcloud"/>
+      <path fill="url(#linearGradient2291)" d="M11.511 14a2.505 2.504 0 0 0 1.81-.793c.56.298 1.213.372 1.826.208A2.5 2.5 0 0 0 16.36 9.33c.167-.475.187-.99.057-1.476a2.505 2.504 0 0 0-4.249-1.06 2.507 2.506 0 0 0-3.22.768c-1.682.398-2.145 2.02-1.876 3.086.25.99 1.104 1.712 2.12 1.834A2.504 2.503 0 0 0 11.512 14z" class="stormcloud"/>
+      <path fill="url(#linearGradient2293)" d="M16.595 7.002a2.502 2.502 0 0 0-1.921.791 2.5 2.5 0 0 0-3.133 3.76 2.5 2.5 0 0 0 3.633 2.654c.093.1.2.185.306.268A2.5 2.5 0 0 0 17.5 15.5 2.5 2.5 0 0 0 20 13a2.5 2.5 0 0 0-.048-.474A2.494 2.494 0 0 0 18.5 8a2.5 2.501 0 0 0-1.904-.998z" class="stormcloud"/>
+      <path fill="url(#linearGradient2295)" d="M9.982 6A2.5 2.5 0 0 0 7.52 8.201a2.5 2.5 0 0 0 .98 4.8 2.5 2.5 0 0 0 3.827.206 2.5 2.5 0 0 0 3.133-3.76 2.5 2.5 0 0 0-3.106-2.862 2.5 2.5 0 0 0-.527.208A2.5 2.5 0 0 0 9.982 6z" class="stormcloud"/>
+      <path fill="url(#linearGradient2297)" d="M12.483 9a2.5 2.5 0 0 0-1.982 1 2.5 2.5 0 0 0-2.415 3.148c.152.566.544 1.002.976 1.396.514 1.783 2.016 2.13 3.086 1.872a2.24 2.24 0 0 0 .527-.208 2.5 2.5 0 0 0 4.326-1.707 2.5 2.5 0 0 0-2.387-4.338A2.5 2.5 0 0 0 12.484 9z" class="stormcloud"/>
+    </g>`
   },
   {
-    name: "wind",
-    weatherCode: [],
-    tag: "",
-    defs: `<linearGradient id="gr-metal">
-    <stop offset="0" stop-color="#cfd8dc"/>
-    <stop offset="1" stop-color="#607d8b"/>
-  </linearGradient>
-  <linearGradient id="b-windmill" x1="10" x2="13" y1="17" y2="17" gradientUnits="userSpaceOnUse" xlink:href="#gr-metal"/>
-  <linearGradient id="c-windmill" x1="9" x2="12" y1="8" y2="8" gradientUnits="userSpaceOnUse" xlink:href="#gr-metal"/>
-  <linearGradient id="d-windmill" x1="9" x2="12" y1="8" y2="8" gradientTransform="rotate(240 12 12)" gradientUnits="userSpaceOnUse" xlink:href="#gr-metal"/>
-  <linearGradient id="e-windmill" x1="9" x2="12" y1="8" y2="8" gradientTransform="rotate(120 12 12)" gradientUnits="userSpaceOnUse" xlink:href="#gr-metal"/>`,
-    path: `<g class="wind">
-    <path fill="url(#b-windmill)" d="M12 11a1 1 0 00-1 1 1 1 0 00.525.879C11.19 15.594 11 20.43 11 21.5c0 .277.223.5.5.5h1c.277 0 .5-.223.5-.5 0-1.069-.19-5.906-.525-8.621A1 1 0 0013 12a1 1 0 00-1-1z" class="tower" />
-    
-    <g class="rotor">
-      <path fill="url(#c-windmill)" d="M11.558 2h-.009a.728.728 0 00-.7.528L9.277 8.03c-.165.578.134 1.172.47 1.6C10.09 10.07 11 11 12 11V2.442A.442.442 0 0011.558 2z" class="blade" />
-      <path fill="url(#d-windmill)" d="M3.56 17.383l.005.008a.728.728 0 00.807.342l5.551-1.39c.583-.146.948-.702 1.151-1.207.21-.517.56-1.77.06-2.636l-7.411 4.28a.442.442 0 00-.162.603z" class="blade" />
-      <path fill="url(#e-windmill)" d="M20.881 16.617l.004-.008a.728.728 0 00-.107-.87L16.8 11.627c-.418-.432-1.082-.47-1.62-.393-.553.077-1.813.4-2.313 1.266l7.411 4.279a.442.442 0 00.604-.162z" class="blade" />
-      <animateTransform attributeType="xml" 
-				attributeName="transform" type="rotate" 
-				from="0 12 12" to="360 12 12" 
-				dur="12s" repeatCount="indefinite"/>
-    </g>
-  </g>`
+    name: "tornado",
+    innerHtml: `<defs>
+	    <linearGradient id="linearGradient2660">
+	      <stop id="stop2656" offset="0" stop-color="#aebbc1" stop-opacity="1"/>
+	      <stop id="stop2664" offset=".256" stop-color="#546e7a" stop-opacity="1"/>
+	      <stop id="stop2658" offset="1" stop-color="#cfd8dc"/>
+	    </linearGradient>
+	    <linearGradient id="gr-stormcloud">
+	      <stop id="stop3193" offset="0" stop-color="#546e7a"/>
+	      <stop id="stop3195" offset="1" stop-color="#cfd8dc"/>
+	    </linearGradient>
+	    <linearGradient href="#gr-stormcloud" id="linearGradient2250" x1="15" x2="11" y1="16" y2="8" gradientTransform="matrix(1.00018 0 0 1.0002 -.002 -1.002)" gradientUnits="userSpaceOnUse"/>
+	    <linearGradient href="#gr-stormcloud" id="linearGradient2252" x1="13" x2="9" y1="13" y2="5" gradientTransform="matrix(1.00026 0 0 1 -.004 1)" gradientUnits="userSpaceOnUse"/>
+	    <linearGradient href="#gr-stormcloud" id="linearGradient2254" x1="18" x2="14" y1="14.4" y2="6" gradientTransform="translate(-.001 1)" gradientUnits="userSpaceOnUse"/>
+	    <linearGradient href="#gr-stormcloud" id="linearGradient2256" x1="14" x2="10" y1="13" y2="5" gradientTransform="matrix(1.00036 0 0 1 -.003 1)" gradientUnits="userSpaceOnUse"/>
+	    <linearGradient href="#gr-stormcloud" id="linearGradient2258" x1="10" x2="6" y1="15.582" y2="7.63" gradientTransform="matrix(1.00085 0 0 1.00014 -.002 -.064)" gradientUnits="userSpaceOnUse"/>
+	    <linearGradient href="#linearGradient2660" id="linearGradient2522" x1="72" x2="80" y1="116" y2="116" gradientTransform="matrix(.16541 0 .25468 .9582 -27.883 -90.192)" gradientUnits="userSpaceOnUse"/>
+	    <linearGradient href="#linearGradient2660" id="linearGradient2668" x1="72" x2="80" y1="116" y2="116" gradientTransform="matrix(.95372 0 .63931 .9582 -134.268 -96.192)" gradientUnits="userSpaceOnUse"/>
+	    <linearGradient href="#linearGradient2660" id="linearGradient2672" x1="72" x2="80" y1="116" y2="116" gradientTransform="matrix(.97703 0 .52062 .9582 -122.88 -97.442)" gradientUnits="userSpaceOnUse"/>
+	    <linearGradient href="#linearGradient2660" id="linearGradient2676" x1="72" x2="80" y1="116" y2="116" gradientTransform="matrix(.77025 0 .3211 .9582 -83.194 -94.999)" gradientUnits="userSpaceOnUse"/>
+	    <linearGradient href="#linearGradient2660" id="linearGradient2680" x1="72" x2="80" y1="116" y2="116" gradientTransform="matrix(.6176 0 .04516 .9582 -39.673 -94.03)" gradientUnits="userSpaceOnUse"/>
+	    <linearGradient href="#linearGradient2660" id="linearGradient2684" x1="72" x2="80" y1="116" y2="116" gradientTransform="matrix(.49346 0 .322 .93574 -62.392 -90.416)" gradientUnits="userSpaceOnUse"/>
+	    <linearGradient href="#linearGradient2660" id="linearGradient2688" x1="72" x2="80" y1="116" y2="116" gradientTransform="matrix(.3799 0 .65965 .724 -92.596 -64.797)" gradientUnits="userSpaceOnUse"/>
+	    <linearGradient href="#linearGradient2660" id="linearGradient2692" x1="72" x2="80" y1="116" y2="116" gradientTransform="matrix(.3129 0 .79554 .724 -102.597 -64.1)" gradientUnits="userSpaceOnUse"/>
+	    <linearGradient href="#linearGradient2660" id="linearGradient2696" x1="72" x2="80" y1="116" y2="116" gradientTransform="matrix(.22284 0 .42262 .51066 -51.837 -38.556)" gradientUnits="userSpaceOnUse"/>
+	    <filter id="filter2810" width="1.317" height="2.382" x="-.158" y="-.691" color-interpolation-filters="sRGB">
+	      <feGaussianBlur id="feGaussianBlur2812" stdDeviation=".576"/>
+	    </filter>
+	    <filter id="filter2814" width="1.093" height="1.393" x="-.046" y="-.197" color-interpolation-filters="sRGB">
+	      <feGaussianBlur id="feGaussianBlur2816" stdDeviation=".164"/>
+	    </filter>
+	    <filter id="filter2818" width="1.173" height="1.133" x="-.086" y="-.066" color-interpolation-filters="sRGB">
+	      <feGaussianBlur id="feGaussianBlur2820" stdDeviation=".057"/>
+	    </filter>
+	    <filter id="filter2822" width="1.112" height="1.227" x="-.056" y="-.114" color-interpolation-filters="sRGB">
+	      <feGaussianBlur id="feGaussianBlur2824" stdDeviation=".048"/>
+	    </filter>
+	    <filter id="filter2826" width="1.109" height="1.242" x="-.054" y="-.121" color-interpolation-filters="sRGB">
+	      <feGaussianBlur id="feGaussianBlur2828" stdDeviation=".077"/>
+	    </filter>
+	    <filter id="filter2830" width="1.108" height="1.247" x="-.054" y="-.123" color-interpolation-filters="sRGB">
+	      <feGaussianBlur id="feGaussianBlur2832" stdDeviation=".082"/>
+	    </filter>
+	    <filter id="filter2834" width="1.108" height="1.244" x="-.054" y="-.122" color-interpolation-filters="sRGB">
+	      <feGaussianBlur id="feGaussianBlur2836" stdDeviation=".099"/>
+	    </filter>
+	    <filter id="filter2838" width="1.102" height="1.286" x="-.051" y="-.143" color-interpolation-filters="sRGB">
+	      <feGaussianBlur id="feGaussianBlur2840" stdDeviation=".119"/>
+	    </filter>
+	    <filter id="filter2842" width="1.097" height="1.334" x="-.048" y="-.167" color-interpolation-filters="sRGB">
+	      <feGaussianBlur id="feGaussianBlur2844" stdDeviation=".139"/>
+	    </filter>
+	    <filter id="filter2858" width="1.242" height="1.996" x="-.121" y="-.498" color-interpolation-filters="sRGB">
+	      <feGaussianBlur id="feGaussianBlur2856" stdDeviation=".576"/>
+	    </filter>
+	  </defs>
+		
+		<g >
+			<path fill="url(#linearGradient2258)" d="M9.524 7.5a2.502 2.5 0 0 1 2.44 2.969 2.502 2.5 0 0 1-2.631 4.24 2.502 2.5 0 0 1-4.128-.726 2.502 2.5 0 0 1-.245-4.924h.001a2.502 2.5 0 0 1 2.874-.918 2.502 2.5 0 0 1 1.689-.64z" class="stormcloud"/>
+			<path fill="url(#linearGradient2256)" d="M11.51 14a2.505 2.504 0 0 0 1.812-.793c.56.298 1.212.372 1.825.208A2.5 2.5 0 0 0 16.36 9.33c.167-.475.187-.99.057-1.476a2.505 2.504 0 0 0-4.249-1.06 2.507 2.506 0 0 0-3.221.768c-1.682.398-2.145 2.02-1.876 3.086.25.99 1.105 1.712 2.12 1.834A2.504 2.503 0 0 0 11.511 14z" class="stormcloud"/>
+			<path fill="url(#linearGradient2254)" d="M16.596 7.002a2.502 2.502 0 0 0-1.922.791 2.5 2.5 0 0 0-3.133 3.76 2.5 2.5 0 0 0 3.633 2.654c.093.1.2.185.306.268A2.5 2.5 0 0 0 17.5 15.5 2.5 2.5 0 0 0 20 13a2.5 2.5 0 0 0-.047-.474A2.494 2.494 0 0 0 18.5 8a2.501 2.501 0 0 0-1.904-.998z" class="stormcloud"/>
+			<path fill="url(#linearGradient2522)" d="M13.446 20s1.123-.387 1.357 0c.144.238.254 1.108.078 1.406-.347.591-.593.58-1.006.207-.094-.084-.209-.287-.304-.645l-.085-.323c-.095-.357-.113-.645-.04-.645z" class="cone" filter="url(#filter2818)"/>
+			<path fill="url(#linearGradient2696)" d="M12.987 20.17h1.827c.158 0 .274.577.143.765-.255.367-.671.293-1.259.094a1.084 1.084 0 0 1-.462-.344l-.143-.172c-.157-.19-.205-.344-.106-.344z" class="cone" filter="url(#filter2822)"/>
+			<path fill="url(#linearGradient2692)" d="M11.67 19.16h2.565c.22 0 .846.949.776 1.219-.139.536-1.1.281-2.002 0-.206-.064-.49-.218-.787-.488l-.267-.244c-.297-.27-.425-.487-.286-.487z" class="cone" filter="url(#filter2826)"/>
+			<path fill="url(#linearGradient2688)" d="M10.92 18.464h3.116c.268 0 .527.874.427 1.219-.201.69-1.454.281-2.432 0a1.677 1.677 0 0 1-.748-.488l-.222-.244c-.246-.27-.309-.487-.14-.487z" class="cone" filter="url(#filter2830)"/>
+			<path fill="url(#linearGradient2684)" d="M10.563 17.194h4.047c.348 0-.21 1.494-.347 1.575-1.047.626-2.096.364-3.158 0a.988.988 0 0 1-.611-.63l-.109-.315c-.12-.35-.04-.63.178-.63z" class="cone" filter="url(#filter2834)"/>
+			<path fill="url(#linearGradient2680)" d="M10.482 16.162h5.065c.436 0-.835 1.53-1.036 1.614-1.55.64-2.763.373-3.953 0-.27-.085-.507-.288-.524-.646l-.015-.322c-.017-.358.19-.646.463-.646z" class="cone" filter="url(#filter2838)"/>
+			<path fill="url(#linearGradient2676)" d="M9.806 15.194h6.316c.544 0-.618 1.53-.846 1.613-1.756.64-3.343.373-4.93 0-.36-.085-.712-.288-.832-.646l-.108-.322c-.12-.358.058-.645.4-.645z" class="cone" filter="url(#filter2842)"/>
+			<path fill="url(#linearGradient2668)" d="M8.684 14h7.82c.674 0-.379 1.53-.64 1.613-2.012.641-4.045.373-6.104 0-.467-.084-.955-.287-1.193-.645l-.215-.323c-.239-.357-.09-.645.332-.645z" class="cone" filter="url(#filter2814)"/>
+			<path fill="url(#linearGradient2672)" d="M8.118 12.75h8.012c.69 0-.603 1.53-.882 1.613-2.152.641-4.197.373-6.253 0-.467-.084-.938-.287-1.132-.645l-.176-.323c-.194-.357-.002-.645.431-.645z" class="cone" filter="url(#filter2810)"/>
+			<path fill="url(#linearGradient2252)" d="M9.982 6a2.5 2.5 0 0 0-2.464 2.201 2.5 2.5 0 0 0 .98 4.8 2.5 2.5 0 0 0 3.828.206 2.5 2.5 0 0 0 3.133-3.76 2.5 2.5 0 0 0-3.106-2.862 2.5 2.5 0 0 0-.528.208A2.5 2.5 0 0 0 9.982 6z" class="stormcloud"/>
+			<path fill="url(#linearGradient2250)" d="M12.483 7a2.5 2.5 0 0 0-1.982 1 2.5 2.5 0 0 0-2.416 3.148c.152.566.544 1.002.976 1.396.515 1.783 2.017 2.13 3.087 1.872a2.24 2.24 0 0 0 .527-.208 2.5 2.5 0 0 0 4.326-1.707 2.5 2.5 0 0 0-2.388-4.338A2.5 2.5 0 0 0 12.483 7z" class="stormcloud"/>
+			<path fill="#57717d" d="M7.555 13.337h10.506c.905 0-.79 2.123-1.156 2.238-2.822.89-5.503.518-8.2 0-.612-.117-1.23-.399-1.485-.895l-.23-.448c-.255-.496-.002-.895.565-.895z" class="debris" filter="url(#filter2858)" opacity=".8" style="mix-blend-mode:normal"/>
+		</g>`
   },
   {
     name: "fog",
-    weatherCode: [2000],
-    tag: ["50d","50n"],
-    defs: `<linearGradient id="gr-cloud">
-    <stop offset="0" stop-color="#90a4ae"/>
-    <stop offset="1" stop-color="#eceff1"/>
-  </linearGradient>
-  <linearGradient id="gr-fog">
-    <stop offset="0" stop-color="#cfd8dc"/>
-    <stop offset=".333" stop-color="#cfd8dc" stop-opacity=".867"/>
-    <stop offset="1" stop-color="#cfd8dc" stop-opacity="0"/>
-  </linearGradient>
-  <linearGradient id="b-fogcloud" x1="10.055" x2="6.011" y1="15.536" y2="7.668" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="a-fogcloud" x1="11" x2="7" y1="12" y2="4" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="c-fogcloud" x1="14" x2="10" y1="12" y2="4" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="e-fogcloud" x1="13" x2="9" y1="13" y2="5" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="d-fogcloud" x1="18" x2="14" y1="14" y2="6" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <linearGradient id="f-fogcloud" x1="15" x2="11" y1="16" y2="8" gradientUnits="userSpaceOnUse" xlink:href="#gr-cloud"/>
-  <radialGradient id="j-fog" cx="12" cy="14" r="12" gradientTransform="matrix(1 0 0 .33333 0 9.333)" gradientUnits="userSpaceOnUse" xlink:href="#gr-fog"/>
-  <radialGradient id="i-fog" cx="12" cy="16" r="12" gradientTransform="matrix(1 0 0 .5 0 8)" gradientUnits="userSpaceOnUse" xlink:href="#gr-fog"/>`,
-    path: `<g class="fogclouds">
-    <path fill="url(#a-fogcloud)" d="M9.49 4a2.504 2.504 0 00-1.81.793 2.506 2.506 0 00-1.824-.208 2.5 2.5 0 00-1.212 4.086c-.168.475-.187.99-.057 1.476a2.504 2.504 0 004.247 1.06 2.506 2.506 0 003.22-.768c1.681-.398 2.144-2.019 1.875-3.087-.25-.99-1.104-1.71-2.119-1.833A2.503 2.503 0 009.49 4z" class="cloud" />
-    <path fill="url(#b-fogcloud)" d="M9.518 7.563a2.5 2.5 0 012.437 2.968 2.5 2.5 0 01-2.628 4.24 2.5 2.5 0 01-4.124-.726 2.5 2.5 0 01-.245-4.923h.001a2.5 2.5 0 012.871-.918 2.5 2.5 0 011.688-.64z" class="cloud" />
-    <path fill="url(#c-fogcloud)" d="M11.51 12a2.504 2.504 0 001.81-.793c.56.298 1.212.372 1.825.208a2.5 2.5 0 001.212-4.085c.167-.475.187-.99.057-1.476a2.504 2.504 0 00-4.247-1.06 2.506 2.506 0 00-3.22.768c-1.681.398-2.144 2.019-1.875 3.086.25.99 1.104 1.712 2.119 1.834A2.503 2.503 0 0011.511 12z" class="cloud" />
-    <path fill="url(#d-fogcloud)" d="M16.596 6.002a2.501 2.501 0 00-1.922.791 2.5 2.5 0 00-3.133 3.76 2.499 2.499 0 003.633 2.654c.094.1.2.185.307.268a2.5 2.5 0 002.02 1.025 2.5 2.5 0 002.5-2.5 2.5 2.5 0 00-.047-.474A2.494 2.494 0 0018.5 7a2.5 2.5 0 00-1.904-.998z" class="cloud" />
-    <path fill="url(#e-fogcloud)" d="M9.983 5A2.5 2.5 0 007.52 7.201a2.5 2.5 0 00.98 4.8 2.5 2.5 0 003.826.206 2.5 2.5 0 003.133-3.76 2.5 2.5 0 00-3.106-2.862 2.5 2.5 0 00-.527.208A2.5 2.5 0 009.983 5z" class="cloud" />
-    <path fill="url(#f-fogcloud)" d="M12.483 8a2.5 2.5 0 00-1.982 1 2.5 2.5 0 00-2.415 3.147c.152.566.544 1.002.976 1.396.514 1.783 2.016 2.13 3.086 1.872a2.24 2.24 0 00.527-.208A2.5 2.5 0 0017 13.5a2.5 2.5 0 00-2.387-4.337A2.5 2.5 0 0012.483 8z" class="cloud" />
-  </g>  
-  <path fill="url(#i-fog)" d="M0 10h24v11H0z" class="fog" />
-  <path fill="url(#j-fog)" d="M0 10h24v9H0z" class="fog" />`
+    innerHtml: `<defs>
+      <linearGradient id="gr-cloud">
+        <stop id="stop1823" offset="0" stop-color="#90a4ae"/>
+        <stop id="stop1825" offset="1" stop-color="#eceff1"/>
+      </linearGradient>
+      <linearGradient id="gr-fog">
+        <stop id="stop1180" offset="0" stop-color="#cfd8dc"/>
+        <stop id="stop1182" offset=".333" stop-color="#cfd8dc" stop-opacity=".867"/>
+        <stop id="stop1184" offset="1" stop-color="#cfd8dc" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient href="#gr-cloud" id="b-fogcloud" x1="10.055" x2="6.011" y1="15.536" y2="7.668" gradientTransform="translate(0 2)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="a-fogcloud" x1="11" x2="7" y1="12" y2="4" gradientTransform="translate(0 2)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="c-fogcloud" x1="14" x2="10" y1="12" y2="4" gradientTransform="translate(0 2)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="e-fogcloud" x1="13" x2="9" y1="13" y2="5" gradientTransform="translate(0 2)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="d-fogcloud" x1="18" x2="14" y1="14" y2="6" gradientTransform="translate(0 2)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-cloud" id="f-fogcloud" x1="15" x2="11" y1="16" y2="8" gradientTransform="translate(0 2)" gradientUnits="userSpaceOnUse"/>
+      <radialGradient href="#gr-fog" id="j-fog" cx="12" cy="14" r="12" gradientTransform="matrix(1 0 0 .33333 0 11.333)" gradientUnits="userSpaceOnUse"/>
+      <radialGradient href="#gr-fog" id="i-fog" cx="12" cy="16" r="12" gradientTransform="matrix(1 0 0 .5 0 10)" gradientUnits="userSpaceOnUse"/>
+    </defs>
+    <g>
+      <path fill="url(#a-fogcloud)" d="M9.49 6a2.504 2.504 0 0 0-1.81.793 2.506 2.506 0 0 0-1.824-.208 2.5 2.5 0 0 0-1.212 4.086c-.168.475-.187.99-.057 1.476a2.504 2.504 0 0 0 4.247 1.06 2.506 2.506 0 0 0 3.22-.768c1.681-.398 2.144-2.019 1.875-3.087-.25-.99-1.104-1.71-2.119-1.833A2.503 2.503 0 0 0 9.49 6z" class="cloud"/>
+      <path fill="url(#b-fogcloud)" d="M9.518 9.563a2.5 2.5 0 0 1 2.437 2.968 2.5 2.5 0 0 1-2.628 4.24 2.5 2.5 0 0 1-4.124-.726 2.5 2.5 0 0 1-.245-4.923h.001a2.5 2.5 0 0 1 2.871-.918 2.5 2.5 0 0 1 1.688-.64z" class="cloud"/>
+      <path fill="url(#c-fogcloud)" d="M11.51 14a2.504 2.504 0 0 0 1.81-.793c.56.298 1.212.372 1.825.208a2.5 2.5 0 0 0 1.212-4.085c.167-.475.187-.99.057-1.476a2.504 2.504 0 0 0-4.247-1.06 2.506 2.506 0 0 0-3.22.768c-1.681.398-2.144 2.02-1.875 3.086.25.99 1.104 1.712 2.119 1.834A2.503 2.503 0 0 0 11.511 14z" class="cloud"/>
+      <path fill="url(#d-fogcloud)" d="M16.596 8.002a2.501 2.501 0 0 0-1.922.791 2.5 2.5 0 0 0-3.133 3.76 2.499 2.499 0 0 0 3.633 2.654c.094.1.2.185.307.268a2.5 2.5 0 0 0 2.02 1.025 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-.047-.474A2.494 2.494 0 0 0 18.5 9a2.5 2.5 0 0 0-1.904-.998z" class="cloud"/>
+      <path fill="url(#e-fogcloud)" d="M9.983 7A2.5 2.5 0 0 0 7.52 9.201a2.5 2.5 0 0 0 .98 4.8 2.5 2.5 0 0 0 3.826.206 2.5 2.5 0 0 0 3.133-3.76 2.5 2.5 0 0 0-3.106-2.862 2.5 2.5 0 0 0-.527.208A2.5 2.5 0 0 0 9.983 7z" class="cloud"/>
+      <path fill="url(#f-fogcloud)" d="M12.483 10a2.5 2.5 0 0 0-1.982 1 2.5 2.5 0 0 0-2.415 3.147c.152.566.544 1.002.976 1.396.514 1.783 2.016 2.13 3.086 1.872a2.24 2.24 0 0 0 .527-.208A2.5 2.5 0 0 0 17 15.5a2.5 2.5 0 0 0-2.387-4.337A2.5 2.5 0 0 0 12.483 10z" class="cloud"/>
+      <path fill="url(#i-fog)" d="M0 12h24v11H0Z" class="fog"/>
+      <path fill="url(#j-fog)" d="M0 12h24v9H0Z" class="fog"/>
+    </g>`
+  },
+  {
+    name: "wind",
+    innerHtml: `<defs>
+      <linearGradient id="gr-metal">
+        <stop id="stop3280" offset="0" stop-color="#cfd8dc"/>
+        <stop id="stop3282" offset="1" stop-color="#607d8b"/>
+      </linearGradient>
+      <linearGradient href="#gr-metal" id="b-windmill" x1="10" x2="13" y1="17" y2="17" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-metal" id="c-windmill" x1="9" x2="12" y1="8" y2="8" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-metal" id="d-windmill" x1="9" x2="12" y1="8" y2="8" gradientTransform="rotate(-120 12 12)" gradientUnits="userSpaceOnUse"/>
+      <linearGradient href="#gr-metal" id="e-windmill" x1="9" x2="12" y1="8" y2="8" gradientTransform="rotate(120 12 12)" gradientUnits="userSpaceOnUse"/>
+    </defs>
+    <path class="tower" fill="url(#b-windmill)" d="M12 11a1 1 0 0 0-1 1 1 1 0 0 0 .525.879C11.19 15.594 11 20.43 11 21.5c0 .277.223.5.5.5h1c.277 0 .5-.223.5-.5 0-1.069-.19-5.906-.525-8.621A1 1 0 0 0 13 12a1 1 0 0 0-1-1z"/>
+    <g class="rotors">
+      <path class="blade" fill="url(#c-windmill)" d="M11.558 2h-.01a.728.728 0 0 0-.7.528L9.278 8.03c-.165.578.134 1.172.47 1.6C10.09 10.07 11 11 12 11V2.442A.442.442 0 0 0 11.558 2Z"/>
+      <path class="blade" fill="url(#d-windmill)" d="m3.56 17.383.005.008a.728.728 0 0 0 .807.342l5.55-1.39c.584-.146.949-.702 1.152-1.207.21-.517.56-1.77.06-2.636l-7.411 4.28a.442.442 0 0 0-.162.603z"/>
+      <path class="blade" fill="url(#e-windmill)" d="m20.88 16.617.005-.008a.728.728 0 0 0-.107-.87L16.8 11.627c-.418-.432-1.082-.47-1.62-.393-.553.077-1.813.4-2.313 1.266l7.41 4.279a.442.442 0 0 0 .605-.162z"/>
+      <animateTransform attributeType="xml" 
+          attributeName="transform" type="rotate" 
+          from="0 12 12" to="360 12 12" dur="12s" 
+          repeatCount="indefinite"/>
+    </g>`
   }
 ];

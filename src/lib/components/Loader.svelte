@@ -11,7 +11,7 @@
 
 <div class="loader">
   {#if loading}
-  <kbd class="err" transition:fade>timed out</kbd>
+  <kbd class="err" transition:fade>timed out - try reloading</kbd>
   {:else}
   <div class="stripe" transition:fade/>
   {/if}

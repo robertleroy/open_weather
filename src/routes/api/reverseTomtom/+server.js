@@ -8,8 +8,6 @@ export async function POST({ request, cookies }) {
   const res = await fetch(`https://api.tomtom.com/search/2/reverseGeocode/${lat},${lon}.json?key=${TOMTOM_KEY}&radius=100&entityType=PostalCodeArea`);
 
   const data = await res.json();
-  // console.log(data.addresses[0]);
-
   const address = data.addresses[0].address;
   const pos = data.addresses[0].position.split(',');
 

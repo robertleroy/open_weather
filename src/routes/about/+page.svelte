@@ -1,47 +1,200 @@
 <script>
-  let title = 'About';
+  import { titlecase } from "$lib/store";
+  import WeatherIcon from "$lib/components/WeatherIcon.svelte";
+  import Darkcloud from "$lib/components/Darkcloud.svelte";
+  
+  const icons = [
+    {
+      id: 800,
+      main: "Clear",
+      description: "clear sky",
+      icon: "01d",
+    },
+    {
+      id: 800,
+      main: "Clear",
+      description: "clear sky",
+      icon: "01n",
+    },
+    {
+      id: 801,
+      main: "Clouds",
+      description: "few clouds: 11-25%",
+      icon: "02d",
+    },
+    {
+      id: 802,
+      main: "Clouds",
+      description: "scattered clouds: 25-50%",
+      icon: "03n",
+    },
+    {
+      id: 803,
+      main: "Clouds",
+      description: "broken clouds: 51-84%",
+      icon: "04d",
+    },
+    {
+      id: 803,
+      main: "Clouds",
+      description: "broken clouds: 51-84%",
+      icon: "04n",
+    },
+    {
+      id: 804,
+      main: "Clouds",
+      description: "overcast clouds: 85-100%",
+      icon: "04d",
+    },
+    {
+      id: 301,
+      main: "Drizzle",
+      description: "drizzle",
+      icon: "09d",
+    },
+    {
+      id: 501,
+      main: "Rain",
+      description: "moderate rain",
+      icon: "10d",
+    },
+    {
+      id: 600,
+      main: "Snow",
+      description: "light snow",
+      icon: "13d",
+    },
+    {
+      id: 601,
+      main: "Snow",
+      description: "snow",
+      icon: "13d",
+    },
+    {
+      id: 611,
+      main: "Snow",
+      description: "sleet",
+      icon: "13d",
+    },
+    {
+      id: 211,
+      main: "Thunderstorm",
+      description: "thunderstorm",
+      icon: "11d",
+    },
+    {
+      id: 741,
+      main: "Fog",
+      description: "fog",
+      icon: "50d",
+    },
+    {
+      id: 781,
+      main: "Tornado",
+      description: "tornado",
+      icon: "50d",
+    },
+    {
+      id: 799,
+      main: "Windy",
+      description: "wind",
+      icon: "99n",
+    },
+  ];
+
+  const max = 15;
+  let title = "Darkcloud";
+  let fontsize = 3.25;
 </script>
 
-
 <div class="page">
-  <h3>{title}</h3>
+  <div class="header">
+    <h3>{title}</h3>
+    <span>
+      Icon Size: 
+      <input type="number" bind:value={fontsize} min=1 {max} step=0.25> 
+      em
+    </span>
+  </div>
 
-<!-- <div class="toc">
-  <a href="#lorem">lorem</a>
-  <a href="#asperiores">asperiores</a>
-  <a href="#facilis">facilis</a>
-  <a href="#nesciunt">nesciunt</a>
-  <a href="#veritatis">veritatis</a>
-</div> -->
 
-<div class="lorem">
-  <!-- <p id="lorem">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa delectus corporis modi officiis itaque ad maiores veniam dolore illum voluptate, iste impedit amet totam repellat, reiciendis animi sunt nam rerum fugiat minus tenetur harum molestias. Ipsam itaque sed deserunt quos accusamus dolor cupiditate, non accusantium ad at inventore alias fugit odio. Dolorem, a ipsa. Quibusdam maiores delectus voluptates, totam nisi fuga culpa! Quod delectus, obcaecati quibusdam nostrum fugit quidem! Aliquid consequatur doloremque, veniam aperiam, esse quae officiis expedita distinctio iste nostrum commodi delectus! Libero esse quo neque vero provident quas fuga eos ipsa distinctio molestiae optio, hic reiciendis cumque iusto ipsam nisi reprehenderit consequuntur eum suscipit atque corrupti!
-  </p>
-  <p id="asperiores">
-    Asperiores minima eligendi placeat laborum modi quo culpa, et voluptas quidem voluptatem ad ullam. Optio asperiores ratione mollitia eaque est voluptatem temporibus magni a necessitatibus voluptate voluptas maiores sapiente dolorum officiis, itaque labore expedita officia! Ex beatae exercitationem laudantium laboriosam. Aliquid quam doloremque ipsam mollitia obcaecati amet! Repellat reprehenderit error consequuntur recusandae debitis non aperiam, iusto voluptates minus tempora saepe provident optio libero magni illum dolor consectetur animi harum facilis? 
-  </p>
-  <p id="facilis">
-    Facilis debitis, quaerat voluptas sunt quam veritatis accusamus officia est vitae voluptates aliquid rerum pariatur neque modi repellendus ipsum eos nihil! Quia non asperiores earum doloribus ratione neque dolores reprehenderit magnam consequatur sapiente amet, alias fuga nisi expedita facere nesciunt, aspernatur culpa maiores. Rem iste aliquid voluptate non quasi omnis voluptates numquam enim temporibus. Modi ab, ipsa ex recusandae asperiores consectetur debitis laborum odio nulla quidem ipsam reiciendis, corporis aliquam suscipit at, dicta similique animi pariatur.
-  </p>
-  <p id="nesciunt">
-    Ea sit nesciunt reprehenderit est odio vel facilis deserunt fuga perspiciatis, libero doloribus amet qui aut itaque, eos quidem culpa illo temporibus minus, perferendis sint! Corporis ea ullam, architecto at, sequi hic, sit natus labore expedita libero ipsum quisquam! Inventore laboriosam impedit error, omnis eveniet cupiditate voluptatibus in, tempore a aperiam placeat possimus nostrum provident. Quibusdam qui harum aliquid optio distinctio? Fugiat qui nam voluptas ab odit ipsum tempora optio ea fugit temporibus consequuntur eum distinctio, minus delectus deleniti cumque inventore. Alias eos, maxime autem libero sed aspernatur odio molestias fugit exercitationem non ut, nemo praesentium nihil perspiciatis beatae quam ea cumque, accusamus eligendi nisi distinctio voluptatem! Ipsa sapiente impedit corrupti corporis error, iusto vero, asperiores dolore autem minima possimus ipsam nemo voluptate debitis qui ducimus molestiae porro doloribus nam, ipsum consequatur atque nobis aut? Dolore, beatae.
-  </p> -->
-  <p id="veritatis">
-    Veritatis eveniet voluptates tempore error quaerat facilis, debitis alias iure deleniti illum expedita delectus quod, saepe cumque ab recusandae ad velit animi rem, voluptatibus dolores corrupti non! Rem eum labore qui, provident delectus, voluptatibus quod est quos atque corrupti ut praesentium ipsum dignissimos, corporis nobis unde? Facere ipsum corrupti odio sed saepe dolor accusamus inventore assumenda numquam error. Deserunt nihil ullam itaque sunt sed minima odio possimus! Incidunt, dolorum tempora cumque soluta, id quisquam et ipsam dicta alias obcaecati fuga voluptas quod, aperiam ex quam reprehenderit unde recusandae! Ea blanditiis rerum officia, nisi laudantium esse aliquid, nostrum cumque harum delectus hic necessitatibus explicabo iure consequuntur fugit? Tempora, ipsum eveniet.
-  </p>
+  <div class="icons">
+    {#each icons as icon}
+      <span title={titlecase(icon.description)}
+        ><WeatherIcon {icon} fontsize="{fontsize}em" /></span
+      >
+    {/each}
+
+    <span title="Darkcloud"
+        ><Darkcloud fontsize="{fontsize}em" /></span
+      >
+  </div>
+
+
+  <div class="tagline">Inspired by the <em>Darksky</em> app</div>
+  
+  <div class="grid">
+
+    <div class="dt">Web Hosting:</div>
+    <div class="dd">
+      <a href="https://vercel.com/" 
+      target="_blank" rel="noopener noreferrer">
+        Vercel
+      </a>
+    </div>
+    
+    <div class="dt">Location Search:</div>
+    <div class="dd">
+      <a href="https://developer.tomtom.com" 
+      target="_blank" rel="noopener noreferrer">
+        Tomtom
+      </a>
+    </div>
+    
+    <div class="dt">Weather Data:</div>
+    <div class="dd">
+      <a href="https://home.openweathermap.org/" 
+      target="_blank" rel="noopener noreferrer">
+        Open Weather Map
+      </a>
+    </div>
+  </div>
 </div>
 
-</div>
-
-
-<style lang='postcss'>
-  /* .toc {
-    position: fixed;
-    display: grid;
-    width: 300px;
+<style lang="postcss">   
+   .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0 1rem;
+    margin: 1.5rem 0 1rem;
   }
-  .lorem {
-    margin-left: 300px;
-  } */
+  [type="number"] {
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    border-radius: 0;
+    max-width: 4.5rem;
+  }
+  .icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 1ch;
+  }
+  
+  .tagline {
+    margin: 3rem 0 0.5rem;
+    /* grid-column: span 2;; */
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    /* justify-content: center; */
+    gap: 0 1rem;
+    margin: 0 2ch 3rem;
+  }
+  a {
+    text-decoration: 1px underline #999;
+  }
 </style>

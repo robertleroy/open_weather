@@ -18,14 +18,8 @@ export const actions = {
     });
     const newLocation = await res.json();
 
-    // const newObj = {
-    //   id: uid(8),
-    //   title: searchTerm,
-    // }
-
     return {
-      newLocation: await newLocation 
-      // listItem: newObj,
+      newLocation: await newLocation
     };
   },
 };

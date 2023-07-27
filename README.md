@@ -1,38 +1,31 @@
-# create-svelte
+# Darkcloud - 
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+- WobbleChart
+  - D3 dosen't play nice with svelte transitions
+  - .page transition `on weatherData`
+    - `drawChart()` called on load
+    - following transition on parent element 'undraws' chart
 
-## Creating a project
+  - workaround to call `drawChart()` after parent transition ends
+    - `on:introend`
+    - all other transition seem to work fine
+    - chart rendering is abrupt... 
+    - is it better to ditch this transition ??
 
-If you're seeing this, you've probably already done this step. Congrats!
+  - Alternative: eliminate `on weatherData` .page transition
+    - page transitions still happen
+    - weatherdata appears abruptly, but consistantly
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+#### Initial Deployment
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+- No `on weatherData` transition
+- everything works fine.. 
+- get her up and running, address this later
 
-## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+#### TODO
+- PWA
+  - manifest
 
-```bash
-npm run dev
+- rename local storage name 'testStore'
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

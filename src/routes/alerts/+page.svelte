@@ -1,10 +1,8 @@
 <script>
   import Accordion from "$lib/components/Accordion.svelte";
-  import alertsList from "./alerts";
   import { weatherData } from "$lib/store";
   
   const alerts = $weatherData?.alerts ?? [];
-  // const alerts = [...alertsList];
 
   let isOpen = alerts.length === 1 ? true : false;
 
@@ -50,6 +48,7 @@
 </script>
 
 <div class="page">
+  {#if alerts.length}
   <div class="list">
     {#each alerts as item, i}
       <div class="alert_event">
@@ -96,6 +95,9 @@
     {/each}
   </div>
   <!-- list -->
+  {:else}
+  <div class="list ">No Alerts ...</div>
+  {/if}
 </div>
 
 <!-- page -->

@@ -7,13 +7,14 @@
   --sans-serif: "Lato","Arimo","Open Sans", sans-serif;
   --serif: "Roboto Serif","Source Serif 4","Aleo","Roboto Slab", serif;
   --monospace: "Anonymous Pro", monospace, monospace;
-  
-  @media (min-width: 768px) {
+
+  @media (min-width: 480px) {
     --font-size: 17px;
   }
-  /* @media (min-width: 1600px) {
+
+  @media (min-width: 768px) {
     --font-size: 18px;
-  } */
+  }
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { 

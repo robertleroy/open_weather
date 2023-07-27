@@ -1,11 +1,9 @@
 <script>
+  import Accordion from '$lib/components/Accordion.svelte';
   import Hours from "$lib/components/Hours.svelte";
   import WeatherIcon from '$lib/components/WeatherIcon.svelte';
-  import Accordion from '$lib/components/Accordion.svelte';
   import RangeBar from '$lib/components/RangeBar.svelte';
-  import { round } from '$lib/store/filters.js';
-  import dateObj from '$lib/store/dateObj.js';
-  import { weatherData } from "$lib/store";
+  import { weatherData, sentencecase, round, dateObj } from '$lib/store';
   
   let day_hours = splitHours();
   let weekrange = getRange($weatherData?.daily);
@@ -45,7 +43,7 @@
       let symbol = '';
       if(code === 781) {
         symbol = `🌪️`;
-      } else if(code === 511 || code > 610 && code < 617) {
+      } else if(code === 511 || code > 610 && code < 614) {
         symbol = `🧊`;
       } else if (code >= 600 && code < 700) {
         symbol = `❄️`;
@@ -60,6 +58,10 @@
     let lows = days.map(el => round(el.temp.min));
     return [Math.min.apply(null, lows), Math.max.apply(null, highs)];
   }
+
+  function formatSummary(str) {
+    return sentencecase(str.replace(/(Expect a day of )|(There will be )|(The day will start with )|(You can expect )|(today)/g, ""));
+  }
 </script>
 
 <div class='days'>
@@ -69,7 +71,7 @@
     <svelte:fragment slot="header">
 
   <div class="day">
-    <WeatherIcon icon={day.weather[0].icon} fontsize="1.75em"/>
+    <WeatherIcon icon={day.weather[0]} fontsize="1.75em"/>
 
     <div class="weekday">
       <div class="date">{i === 0 ? 'Today' : dateObj(day.dt*1000, 'ddd')}</div>
@@ -90,7 +92,7 @@
 
 <svelte:fragment slot="body">
   <div class="body" >
-    <div class="summary">{day.summary}</div>
+    <div class="summary italic">{formatSummary(day.summary)}</div>
     {#if i < 5}
     <div class="">
       <Hours hours={day_hours[i]} />
@@ -108,45 +110,33 @@
     display: grid;
     grid-template-columns: 4.5rem 5rem 1fr;
     align-items: center;
-    padding: 0.5rem 1.1rem 0.5rem 0;
+    padding: 1rem 1.1rem 1rem 0;
 
     @media (min-width: 500px) {      
       grid-template-columns: 5rem 5rem 1fr;
     }
   }
-  /* .precip {
-    width: 2.5rem;
-
-    .pop {
-      display: inline-block;
-      font-size: 0.75rem;
-    }
-    .symbol {
-    display: inline-block;
-      font-size: 0.65rem;
-    }
-  } */
   .weekday {
-      .precip {
-        color: rgba( 51, 51, 51, 0.7);
-        font-size: 0.75rem;
-        line-height: 1.3;
-        div {
-          padding-right: 0.5rem;
-        }
-        span:first-child {
-          font-size: 0.55rem;
-          margin-right: 0.2rem;
-          vertical-align: 2px;
-          -webkit-filter: grayscale(60%);
-          filter: grayscale(60%);
-        }
+    .precip {
+      color: rgba( 51, 51, 51, 0.7);
+      font-size: 0.75rem;
+      line-height: 1.3;
+      div {
+        padding-right: 0.5rem;
+      }
+      span:first-child {
+        font-size: 0.55rem;
+        margin-right: 0.2rem;
+        vertical-align: 2px;
+        -webkit-filter: grayscale(60%);
+        filter: grayscale(60%);
       }
     }
-    .body {
-      padding: 0 0 1em;
-    }
-    .summary {
-      margin: 0 0 0.5rem ;
-    }
+  }
+  .body {
+    padding: 0 0 2em;
+  }
+  .summary {
+    margin: 0 0 0.5rem ;
+  }
 </style>

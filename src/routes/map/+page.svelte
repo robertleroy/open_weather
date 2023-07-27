@@ -21,10 +21,6 @@
 
     display: grid;
     place-items: center;
-
-    /* background-color: wheat; */
-
-    /* padding: 0; */
     z-index: 15;
   }
   iframe {

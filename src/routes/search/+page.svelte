@@ -4,9 +4,8 @@
   import { browser } from "$app/environment";
   import { goto } from "$app/navigation";
   import { enhance } from "$app/forms";
-  import { currentLocation, store, duration } from "$lib/store";
-  import { titlecase } from "$lib/store/filters";
   import { fade, slide } from "svelte/transition";
+  import { currentLocation, store, duration } from "$lib/store";
   import Search from "$lib/components/Search.svelte";
   import Gps from "$lib/components/Gps.svelte";
   import Delete from "$lib/components/Delete.svelte";
@@ -17,23 +16,24 @@
   let showError = false;
   let empty_list = "empty list";
 
+  // $: console.log("store", $store?.list.findIndex(el => el.city === "Avon"))
+
   $: form?.newLocation && additem();
 
   async function additem() {
-    // if (form?.badrequest === true || !form?.newLocation.id) {
-    //   showError = true;
-    //   setTimeout(() => {
-    //     showError = false;
-    //   }, 2000);
-    //   return;
-    // }
+    const test = $store?.list.findIndex(el => {
+      /* test for duplicate locations */
+      el.lat === form?.newLocation.lat && el.lon === form?.newLocation.lon;
+    });
 
-    if ($store?.list.includes(form?.newLocation)) {
-      /* prevent duplicqate ids and errent entries during dev ~ hangover formData on save */
-      return;
-    }
 
     $currentLocation = form?.newLocation;
+
+    if (test) {
+      /* prevent saving duplicate locations */
+      if (browser) { goto("/"); }
+      return;
+    }
 
     reorderList();
     await tick();

@@ -22,9 +22,9 @@ export async function load(event) {
     const region = decodeURIComponent(event.request.headers.get("x-vercel-ip-country-region") ?? "unknown");
 
     ipData = {
+      id: uid(12),
       src: "vercel-ip",
       ip: event.getClientAddress(),
-      id: uid(12),
       title: city.concat(", ", region),
       city,
       region,
@@ -34,8 +34,9 @@ export async function load(event) {
     };
   }
 
-  // save coordinates in cookies for tomtom location bias
+  // save coordinates in cookies for tomtom location bias ???
   /* assumes using tomtom location bias */
+  /* un-used */
   event.cookies.set("lat", ipData.lat, { path: "/" });
   event.cookies.set("lon", ipData.lon, { path: "/" });
 

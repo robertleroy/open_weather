@@ -1,26 +1,30 @@
 <script>
   import { onMount } from "svelte";
-  import { page } from "$app/stores";
-  import { fade, scale } from "svelte/transition";
-  import { titlecase, sentencecase, round } from '$lib/store/filters'; 
-  import { currentLocation, duration, weatherData } from "$lib/store";
+  import { fade } from "svelte/transition";
+  import { currentLocation, duration, weatherData, store } from "$lib/store";
   import Search from "$lib/components/Search.svelte";
   import Loader from "$lib/components/Loader.svelte";
   import "./app.css";
 
   export let data;
+
+  let timestamp = $weatherData?.timestamp ?? 0; 
+
   const routes = [
     { name: "Home", path: "/" },
     { name: "Map", path: "/map" },
-    // { name: "About", path: "/about" },
-    // { name: "Search", path: "/search" }
   ]
 	let innerWidth, outerWidth, innerHeight, outerHeight;
   $: alerts = $weatherData?.alerts;
-
-  $: currentRoute = $page.url.pathname.slice(1) || "home";
-  $: console.log("$currentLocation",$currentLocation);
-  $: console.log("$weatherData",$weatherData);
+  
+  $: { /* update key for weather change fade */
+    if ($weatherData?.timestamp !== timestamp) {
+      timestamp = $weatherData?.timestamp;
+      
+      console.log("currentLocation:",$currentLocation, "weatherData:", $weatherData);
+    }
+  }
+  
   $: {
     if ($currentLocation) {
       getWeather($currentLocation?.lat, $currentLocation?.lon).then((result) => {
@@ -30,6 +34,7 @@
       });
     }
   }
+
   function formatHour(obj) {
     return {
       clouds: obj.clouds.all || obj.clouds,
@@ -83,7 +88,7 @@
           $currentLocation = await data.location;
         },
         (err) => {
-          console.log("Browser Geolocation not available");
+          console.log("Browser Geolocation not available", err);
           $currentLocation = data?.ipData;
         },
         { // geolocation options
@@ -95,7 +100,6 @@
       console.log("Geolocation is not supported by your browser");
       $currentLocation = data?.ipData;
     }
-    
   } /* init */
 
   onMount(async () => {    
@@ -107,6 +111,7 @@
 </script>
 
 <svelte:window bind:innerWidth bind:outerWidth bind:innerHeight bind:outerHeight/>
+
 
 {#if data?.pathname !== "/map" && data?.pathname !== "/search"}
 <header class="" transition:fade="{{duration: $duration}}">
@@ -177,8 +182,6 @@
     align-items: baseline;
     gap: 0 1rem;
   }
-  .route {
-    transition: color 300ms;
-  }
+  .route { transition: color 300ms; }
   .loader { width: 250px; }
 </style>
