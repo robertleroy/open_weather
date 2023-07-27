@@ -12,7 +12,7 @@ export const transitionEnded = writable(null);
 
 
 const store_name = 'test_store';
-const version = '0.2.0';
+const version = '0.0.1';
 
 
 const init = JSON.parse(browser && localStorage

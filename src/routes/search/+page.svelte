@@ -21,19 +21,19 @@
   $: form?.newLocation && additem();
 
   async function additem() {
-    const test = $store?.list.findIndex(el => {
-      /* test for duplicate locations */
-      el.lat === form?.newLocation.lat && el.lon === form?.newLocation.lon;
-    });
+    /* test for duplicate locations */
+    // const test = $store?.list.findIndex(el => {
+    //   el.lat === form?.newLocation.lat && el.lon === form?.newLocation.lon;
+    // });
 
 
     $currentLocation = form?.newLocation;
 
-    if (test) {
-      /* prevent saving duplicate locations */
-      if (browser) { goto("/"); }
-      return;
-    }
+    /* prevent saving duplicate locations */
+    // if (test) {
+    //   if (browser) { goto("/"); }
+    //   return;
+    // }
 
     reorderList();
     await tick();
