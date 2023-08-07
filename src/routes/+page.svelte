@@ -1,6 +1,6 @@
 <script>
   import { fade } from "svelte/transition";
-  import { weatherData, sentencecase, dateObj, transitionEnded,
+  import { weatherData, titlecase, sentencecase, dateObj, transitionEnded,
   } from "$lib/store";
   import Current from "$lib/components/Current.svelte";
   import Hours from "$lib/components/Hours.svelte";
@@ -24,7 +24,7 @@
     alerts = [],
     fiveDayHours = [];
 
-  $: day_summary = getDaySummary(alerts);
+  // $: day_summary = getDaySummary(alerts);
   $: {
     current = $weatherData?.current;
     minutes = $weatherData?.minutely;
@@ -36,22 +36,31 @@
   $: hours = temphours?.slice(0, 23).filter((el, i) => i % 2);
 
 
-  function getDaySummary(arr) {
-    const n = arr.length;
+  function getDaySummary() {
+    // const n = arr.length;
 
     let str = sentencecase(
       $weatherData?.daily[0].summary.replace(
-        /(Expect a day of )|(There will be )|(The day will start with )|()/g,
-        ""
-      )
-    );
-    if (n > 0) {
-      str = `<a href="/alerts" style="color:tomato">${alerts[0]?.event}`;
-      n > 1 ? (str += `<sup> +${n - 1}</sup>`) : "";
-      str += `</a>`;
-    }
+        /(Expect a day of )|(There will be )|(The day will start with )|()/g, "" 
+    ));
+    
     return str;
   }
+
+  // function getDaySummary(arr) {
+  //   const n = arr.length;
+
+  //   let str = sentencecase(
+  //     $weatherData?.daily[0].summary.replace(
+  //       /(Expect a day of )|(There will be )|(The day will start with )|()/g, "" 
+  //   ));
+  //   if (n > 0) {
+  //     str = `<a href="/alerts" style="color:tomato">${alerts[0]?.event}`;
+  //     n > 1 ? (str += `<sup> +${n - 1}</sup>`) : "";
+  //     str += `</a>`;
+  //   }
+  //   return str;
+  // }
 </script>
 
 <div class="page">
@@ -71,7 +80,20 @@
             <Current />
 
             <div class="wrapper">
-              <div class="day summary italic">{@html day_summary}</div>
+
+              <div class="day summary italic">
+                <div>{getDaySummary()}</div>
+                {#if alerts.length}
+                <a href="/alerts" style="color:tomato">{titlecase(alerts[0]?.event)} 
+                  {#if alerts?.length > 1}
+                  <sup> +{alerts?.length - 1}</sup>
+                  {/if}
+                </a>
+                {/if}
+                
+              </div>
+
+              <!-- <div class="day summary italic">{@html day_summary}</div> -->
               <Hours {hours} />
 
               <div class="week summary">
@@ -109,6 +131,11 @@
   }
   .day.summary {
     margin: 0.5rem 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0 1ch;
   }
   .week.summary {
     margin: 3rem 0 0;

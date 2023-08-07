@@ -18,6 +18,12 @@ export function mmToInches(mm) {
   return (mm / 25.4);
 }
 
+export function getDescription(str) {
+  return  str.startsWith("scattered") ? "partly cloudy" :
+  str.startsWith("broken") ? "mostly cloudy" : 
+  str;
+}; /* str.startsWith("clear") ? "clear" : */
+
 /* 
 import { titlecase, sentencecase, round } from '$lib/js/filters'; 
 let str = "once upon a time";

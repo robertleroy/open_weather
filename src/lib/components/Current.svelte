@@ -1,11 +1,9 @@
 <script>
   import WeatherIcon from '$lib/components/WeatherIcon.svelte';
   import WobbleChart from "$lib/components/WobbleChart.svelte";
-  import { weatherData, titlecase, round, mmToInches, dateObj, transitionEnded } from "$lib/store";
+  import { weatherData, titlecase, round, mmToInches, dateObj, getDescription } from "$lib/store";
 
   const today = $weatherData?.daily[0];
-
-
 
   let minutes_of_precip = [];
   $: if ($weatherData?.minutely) {
@@ -14,12 +12,6 @@
     .filter((el) => el > 0)
     .length > 5;
   }
-
-  function getDescription(str) {
-    return  str.startsWith("scattered") ? "partly cloudy" :
-    str.startsWith("broken") ? "mostly cloudy" : 
-    str;
-  }; /* str.startsWith("clear") ? "clear" : */
 </script>
 
 <div class="current">
@@ -54,7 +46,7 @@
       {:else if $weatherData?.current.rain}
       Rain this hour: <var>{round(mmToInches($weatherData?.current.rain['1h']), 2) + '"'}</var>
       {:else}
-      This hour..  {titlecase($weatherData?.current.weather[0].description)}
+      This hour..  {titlecase(getDescription($weatherData?.current.weather[0].description))}
       {/if}
     </div>
     

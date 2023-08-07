@@ -1,7 +1,6 @@
 <script>
   import * as d3 from "d3";
   import { onMount } from "svelte";
-  // import { transitionEnded } from "$lib/store";
 
   export let minutes = [];
   let clientWidth;
@@ -15,7 +14,7 @@
     });
   let var_height = 150;
   let var_width = 350;
-  let var_margin = { top: 12, right: 3, bottom: 24, left: 3 };
+  let var_margin = { top: 12, right: 20, bottom: 24, left: 20 };
 
   // $: if ($transitionEnded) {
   //   drawChart();
@@ -138,9 +137,6 @@
   }
 
   onMount(() => {
-    // await new Promise(resolve => {
-    //   setTimeout(resolve, 1000)
-    // })
     drawChart();
   });
 </script>
