@@ -2,7 +2,7 @@ import { browser } from '$app/environment';
 import { writable } from 'svelte/store';
 
 export { default as dateObj } from "./dateObj.js";
-export { titlecase, sentencecase, round, mmToInches, getDescription } from './filters';
+export { titlecase, sentencecase, formatSummary, round, mmToInches, getDescription } from './filters';
 
 export const duration = writable(200);
 export const currentLocation = writable(null);

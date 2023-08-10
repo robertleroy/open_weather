@@ -3,7 +3,7 @@
   import Hours from "$lib/components/Hours.svelte";
   import WeatherIcon from '$lib/components/WeatherIcon.svelte';
   import RangeBar from '$lib/components/RangeBar.svelte';
-  import { weatherData, sentencecase, round, dateObj } from '$lib/store';
+  import { weatherData, formatSummary, round, dateObj } from '$lib/store';
   
   let day_hours = splitHours();
   let weekrange = getRange($weatherData?.daily);
@@ -59,9 +59,9 @@
     return [Math.min.apply(null, lows), Math.max.apply(null, highs)];
   }
 
-  function formatSummary(str) {
-    return sentencecase(str.replace(/(Expect a day of )|(There will be )|(The day will start with )|(You can expect )|(today)/g, ""));
-  }
+  // function formatSummary(str) {
+  //   return sentencecase(str.replace(/(Expect a day of )|(There will be )|(The day will start with )|(You can expect )|(today)/g, ""));
+  // }
 </script>
 
 <div class='days'>
@@ -92,7 +92,7 @@
 
 <svelte:fragment slot="body">
   <div class="body" >
-    <div class="summary italic">{formatSummary(day.summary)}</div>
+    <div class="summary italic">{formatSummary(day?.summary)}</div>
     {#if i < 5}
     <div class="">
       <Hours hours={day_hours[i]} />

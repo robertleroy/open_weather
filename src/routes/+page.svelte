@@ -1,7 +1,6 @@
 <script>
   import { fade } from "svelte/transition";
-  import { weatherData, titlecase, sentencecase, dateObj, transitionEnded,
-  } from "$lib/store";
+  import { weatherData, titlecase, sentencecase, formatSummary, dateObj, transitionEnded } from "$lib/store";
   import Current from "$lib/components/Current.svelte";
   import Hours from "$lib/components/Hours.svelte";
   import Days from "$lib/components/Days.svelte";
@@ -37,30 +36,8 @@
 
 
   function getDaySummary() {
-    // const n = arr.length;
-
-    let str = sentencecase(
-      $weatherData?.daily[0].summary.replace(
-        /(Expect a day of )|(There will be )|(The day will start with )|()/g, "" 
-    ));
-    
-    return str;
+    return formatSummary($weatherData?.daily[0].summary);
   }
-
-  // function getDaySummary(arr) {
-  //   const n = arr.length;
-
-  //   let str = sentencecase(
-  //     $weatherData?.daily[0].summary.replace(
-  //       /(Expect a day of )|(There will be )|(The day will start with )|()/g, "" 
-  //   ));
-  //   if (n > 0) {
-  //     str = `<a href="/alerts" style="color:tomato">${alerts[0]?.event}`;
-  //     n > 1 ? (str += `<sup> +${n - 1}</sup>`) : "";
-  //     str += `</a>`;
-  //   }
-  //   return str;
-  // }
 </script>
 
 <div class="page">

@@ -24,12 +24,6 @@ export function getDescription(str) {
   str;
 }; /* str.startsWith("clear") ? "clear" : */
 
-/* 
-import { titlecase, sentencecase, round } from '$lib/js/filters'; 
-let str = "once upon a time";
-let pi = 3.141592653589793238462643383279502884197;
-
-<div>titlecase(str)</div>
-<div>sentencecase(str)</div>
-<div>round(pi, 4)</div>
-*/  
+export function formatSummary(str) {
+  return sentencecase(str.replace(/(Expect a day of )|(There will be )|(The day will start with )|(You can expect )|(today)/g, ""));
+}
