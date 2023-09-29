@@ -24,15 +24,16 @@
     }
 
     for (let i = 0; i < $weatherData.fiveDay?.length; ++i) {
+      let today = new Date();
       let dayDate = new Date($weatherData.fiveDay[i].dt * 1000).getDate();
       
-      if (dayDate === todaysDate + 2) {
+      if (dayDate === new Date(today.setDate(todaysDate + 2)).getDate()) {
         arr[2].push($weatherData.fiveDay[i])
       } 
-      if (dayDate === todaysDate + 3) {
+      if (dayDate === new Date(today.setDate(todaysDate + 3)).getDate()) {
         arr[3].push($weatherData.fiveDay[i])
       } 
-      if (dayDate === todaysDate + 4) {
+      if (dayDate === new Date(today.setDate(todaysDate + 4)).getDate()) {
         arr[4].push($weatherData.fiveDay[i])
       } 
     }
@@ -58,10 +59,6 @@
     let lows = days.map(el => round(el.temp.min));
     return [Math.min.apply(null, lows), Math.max.apply(null, highs)];
   }
-
-  // function formatSummary(str) {
-  //   return sentencecase(str.replace(/(Expect a day of )|(There will be )|(The day will start with )|(You can expect )|(today)/g, ""));
-  // }
 </script>
 
 <div class='days'>

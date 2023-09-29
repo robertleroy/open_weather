@@ -165,7 +165,6 @@
     }
     input:focus {
       outline: none;
-      /* box-shadow: 1px 3px 2px #eee; */
       filter: drop-shadow(1px 2px 2px hsl(210,10%,90%));
       background: var(--background-color);
     }

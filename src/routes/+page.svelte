@@ -4,8 +4,6 @@
   import Current from "$lib/components/Current.svelte";
   import Hours from "$lib/components/Hours.svelte";
   import Days from "$lib/components/Days.svelte";
-  
-  // import WobbleChart from "$lib/components/WobbleChart.svelte";
 
   let minutes_of_precip = [];
   $: if ($weatherData?.minutely) {
@@ -23,7 +21,6 @@
     alerts = [],
     fiveDayHours = [];
 
-  // $: day_summary = getDaySummary(alerts);
   $: {
     current = $weatherData?.current;
     minutes = $weatherData?.minutely;
@@ -70,7 +67,6 @@
                 
               </div>
 
-              <!-- <div class="day summary italic">{@html day_summary}</div> -->
               <Hours {hours} />
 
               <div class="week summary">
@@ -103,9 +99,9 @@
 
     padding-bottom: var(--footer-height);
   }
-  .wrapper {
-    /* width: 100%; */
-  }
+  /* .wrapper {
+    width: 100%;
+  } */
   .day.summary {
     margin: 0.5rem 0;
 

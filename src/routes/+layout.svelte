@@ -29,8 +29,8 @@
     if ($currentLocation) {
       getWeather($currentLocation?.lat, $currentLocation?.lon).then((result) => {
         if (!result.hourly) return;
-        result.hourly = result?.hourly.map(el => formatHour(el))
-        result.fiveDay = result?.fiveDay.map(el => formatHour(el))
+        result.hourly = result?.hourly.map(el => formatHour(el)) ?? [];
+        result.fiveDay = result?.fiveDay.map(el => formatHour(el)) ?? [];
         $weatherData = result;
       });
     }

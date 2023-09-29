@@ -29,3 +29,6 @@
 
 - rename local storage name 'testStore'
 
+<!-- fetch onecall: https://api.openweathermap.org/data/2.5/forecast?lat=35.565052&lon=-97.636223&units=imperial&appid=826b835b9408db50ca70aa7158b06f23
+
+fetch fiveDay: https://api.openweathermap.org/data/2.5/forecast?lat=35.565052&lon=-97.636223&units=imperial&appid=826b835b9408db50ca70aa7158b06f23 -->
