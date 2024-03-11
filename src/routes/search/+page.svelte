@@ -125,7 +125,7 @@
                <!-- transition:slide|global -->
             <div class="handle" on:click|stopPropagation on:keypress role="button" tabindex="0">&vellip;&vellip;</div>
             <div class="title">
-              {item.title}
+              <span>{item.title}</span>
             </div>
             <Delete on:delete={deleteItem(item)} />
           </div>
@@ -200,6 +200,9 @@
     .title { 
       flex: 1; 
       cursor: default;
+      & span {
+        cursor: pointer;
+      }
     }
   }
   

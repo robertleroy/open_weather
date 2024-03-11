@@ -15,9 +15,13 @@
     { name: "Map", path: "/map" },
   ]
 	let innerWidth, outerWidth, innerHeight, outerHeight;
+
+  // $: console.log("debug", $currentLocation);
+
   $: alerts = $weatherData?.alerts;
   
   $: { /* update key for weather change fade */
+    
     if ($weatherData?.timestamp !== timestamp) {
       timestamp = $weatherData?.timestamp;
       
@@ -29,6 +33,8 @@
     if ($currentLocation) {
       getWeather($currentLocation?.lat, $currentLocation?.lon).then((result) => {
         if (!result.hourly) return;
+        // console.log("forecast",result?.hourly);
+        // console.log("fiveDay",result?.fiveDay);
         result.hourly = result?.hourly.map(el => formatHour(el)) ?? [];
         result.fiveDay = result?.fiveDay.map(el => formatHour(el)) ?? [];
         $weatherData = result;
@@ -37,23 +43,25 @@
   }
 
   function formatHour(obj) {
+    // console.log("OBJ", obj?.weather);
+    // if (!obj.wind_speed && obj.wind == undefined) console.log("ERR", obj);
     return {
-      clouds: obj.clouds.all || obj.clouds,
+      clouds: obj.clouds.all || obj.clouds || 0,
       dt: obj.dt,
-      temp: obj.temp || obj.main.temp,
-      feels_like: obj.feels_like || obj.main.feels_like,
-      pressure: obj.pressure || obj.main.pressure,
-      humidity: obj.humidity || obj.main.humidity,
-      visibility: obj.visibility,
-      wind_speed: obj.wind_speed || obj.wind.speed,
-      wind_deg: obj.wind_deg || obj.wind.deg,
-      wind_gust: obj.wind_gust || obj.wind.gust,
-      weather_id: obj.weather.id || obj.weather[0].id,
-      weather_main: obj.weather.main || obj.weather[0].main,
-      weather_description: obj.weather.description || obj.weather[0].description,
+      temp: obj.temp || obj.main.temp || 0,
+      feels_like: obj.feels_like || obj.main.feels_like || 0,
+      pressure: obj.pressure || obj.main.pressure || 0,
+      humidity: obj.humidity || obj.main.humidity || 0,
+      visibility: obj.visibility || 0,
+      wind_speed: obj.wind_speed || obj.wind.speed || 0,
+      wind_deg: obj.wind_deg || obj.wind.deg || 0,
+      wind_gust: obj.wind_gust || obj.wind.gust || 0,
+      weather_id: obj.weather.id || obj.weather[0].id || 0,
+      weather_main: obj.weather.main || obj.weather[0].main || "",
+      weather_description: obj.weather.description || obj.weather[0].description || "",
       weather_icon: obj.weather.icon || obj.weather[0].icon,
-      pop: obj.pop,
-      rain: obj.rain ? obj.rain["1h"] || obj.rain["3h"] : 0
+      pop: obj.pop || 0,
+      rain: obj.rain ? obj.rain["1h"] || obj.rain["3h"] || obj.snow["3h"] : 0
     }
   }
 

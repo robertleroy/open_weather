@@ -10,7 +10,7 @@ export const weatherData = writable(null);
 export const transitionEnded = writable(null);
 
 
-const store_name = 'test_store';
+const store_name = 'darkcloud_store';
 const version = '0.0.1';
 
 const init = JSON.parse(browser && localStorage

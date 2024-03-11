@@ -33,6 +33,7 @@ export async function load(event) {
       lon: decodeURIComponent(event.request.headers.get("x-vercel-ip-longitude") ?? "unknown"),
     };
   }
+  // console.log("ipData",ipData);
 
   // save coordinates in cookies for tomtom location bias ???
   /* assumes using tomtom location bias */
