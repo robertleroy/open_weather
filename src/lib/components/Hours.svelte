@@ -117,7 +117,7 @@
     <div class="stripe" 
     style:background={stripes[i].color} 
     class:topcap={ i === 0 } 
-    class:bottomcap={ i === hours.length-1 } />
+    class:bottomcap={ i === hours.length-1 } ></div>
 
     <div class="time">
       {dateObj(hour?.dt * 1000, "h aa")}
@@ -128,7 +128,7 @@
         stripes[i].text === stripes[i-1].text ? "" : 
         stripes[i].text}
 
-      <div class="line" />
+      <div class="line" ></div>
     </div> <!-- summary -->
   
     {#if 

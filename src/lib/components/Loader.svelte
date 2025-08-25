@@ -13,7 +13,7 @@
   {#if loading}
   <kbd class="err" transition:fade>timed out - try reloading</kbd>
   {:else}
-  <div class="stripe" transition:fade/>
+  <div class="stripe" transition:fade></div>
   {/if}
 </div>
 

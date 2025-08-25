@@ -142,7 +142,7 @@
 </script>
 
 
-<div id="chart" bind:clientWidth/>
+<div id="chart" bind:clientWidth></div>
 
 
 <style>

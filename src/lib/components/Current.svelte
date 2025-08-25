@@ -85,7 +85,7 @@
     display: flex;
     justify-content: center;
     gap: 0 1rem;
-    font-size: 0.85em;
+    font-size: 0.875em;
     color: #555;
   }
   .current_conditions {
